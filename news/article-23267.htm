@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-23267.htm" />
+    <title>ElasticSearch（五） 整合Spring-data-elasticsearch</title>
+        <meta name="description" content="spring-data-elasticsearch对ElasticSearch API进行了封装，很好的集成了Spring框架，我们只需要定义好实体类（定义文档、文档类型、索引字段，字段类型等）和实现" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="__ADDON__/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+    
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                                                        <a class="navbar-brand" href="/"><i></i>Hiddify Next Node</a>
+                                                    </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">ElasticSearch（五） 整合Spring-data-elasticsearch</h1>
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>spring-data-elasticsearch对ElasticSearch API进行了封装，很好的集成了Spring框架，我们只需要定义好实体类（定义文档、文档类型、索引字段，字段类型等）和实现对应的接口，即可操作ElasticSearch。<br /><strong>1. 版本对应关系</strong> :spring-data-elasticsearch 跟ElasticSearch客户端是有版本对应关系的，低版本的elasticsearch客户端是连接不了高版本的elasticsearch服务器，所以，使用spring-data-elasticsearch前要先确定好elasticsearch服务器版本，然后引入对应的spring-data-elasticsearch 版本。版本对应关系如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221113/b040a3c0150c960949d9f62dba9f0d47.jpg" alt="ElasticSearch（五） 整合Spring-data-elasticsearch"><br /><strong>2. 引入maven依赖</strong><br /> 引入maven包</p> <pre><code>&lt;dependency&gt;     &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;     &lt;artifactId&gt;spring-data-elasticsearch&lt;/artifactId&gt;     &lt;version&gt;3.1.6.RELEASE&lt;/version&gt; &lt;/dependency&gt;</code></pre> <p><strong>3.定义实体类和对应的Repository</strong><br /> 实体类：User.java，类注解和属性注解请看下一节解析。</p> <pre><code>@Document(indexName = "user_db", type = "user_table") public class User{     @Id     @Field(type = FieldType.Keyword)     private String userId;      @Field(type= FieldType.Keyword)     private String account;       @Field(type= FieldType.Keyword)     private String userName;      @Field(type= FieldType.Keyword)     private String idCard;       @Field(type = FieldType.Date,             format = DateFormat.custom,             pattern = "yyyy-MM-dd HH:mm:ss")     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")     private Date createTime;      //DOTO     //get和set方法     //toString()方法 }</code></pre> <p>定义Repository：UserRepository，Repository使用请看下一节解析</p> <pre><code>package com.myelastic.repository; import com.myelastic.model.User; import org.springframework.data.elasticsearch.repository.ElasticsearchRepository; public interface UserRepository extends ElasticsearchRepository&lt;User, String&gt; {     User findByUserId(StringuserId); }</code></pre> <p>至此，实体类和Repository就定义完成了，实体类主要是定义了Java对象跟ES索引、字段映射之间的关系，Repository仓库主要定义了对ES相关的操作，默认集成ElasticsearchRepository类是支持普通的增删查的。<br /><strong>4、引入XML，集成Spring</strong><br /> 定义完实体类和Reposity后，就可以通过配置xml文件，并且引入到Spring中。以下为spring-elasticsearch.xml配置：</p> <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;beans xmlns="http://www.springframework.org/schema/beans"        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"        xmlns:elasticsearch="http://www.springframework.org/schema/data/elasticsearch"        xsi:schemaLocation="http://www.springframework.org/schema/data/elasticsearch https://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd"&gt;      &lt;elasticsearch:repositories base-package="com.myelastic.repository"  elasticsearch-template-ref="elasticsearchTemplate"/&gt;      &lt;elasticsearch:transport-client id="client" cluster-nodes="ip:9300,ip:9300" cluster-name="elasticsearch" /&gt;      &lt;bean name="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate"&gt;         &lt;constructor-arg name="client" ref="client"/&gt;     &lt;/bean&gt;  &lt;/beans&gt;</code></pre> <p>base-package：指RepositoryJava类定义包路径，如UserRepository 在包com.myelastic.repository路径下。<br /> elasticsearch-template-ref：指向模板配置bean名称，不填默认为elasticsearchTemplate。<br /> cluster-nodes：集群节点，ip:端口号（Transport 端口，非http端口），多个节点英文逗号（,）隔开。<br /> cluster-name：集群节点名称，对应ES配置文件elasticsearch.yml<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://xn--cluster-vk1r.name"  rel="nofollow">的cluster.name</a>。<br /><strong>5、完成配置，调用实现</strong><br /> 完成以上配置后，就可以在程序中引用调用ES了。</p> <pre><code>@Service public class MyService {    @Autowired   private UserRepository repository;    //创建用户索引   public User userIndex(User user) {     	User userEs = repository.save(user);     	return userEs;   }     //根据用户ID查询用户信息   public User queryUserById(String userId) {   		User user = repository.findByUserId(userId);      	return user;   }   }</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-22812.htm">湖北宠物批发市场（湖北宠物市场在哪里）</a></p>
+                                        <p>下一个：<a href="/news/article-23269.htm">免费领养狗狗正规网站平台深圳官网下载的简单介绍</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-free-node-subscribe.htm" title="「9月19日」最高速度22.4M/S，2024年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「9月19日」最高速度22.4M/S，2024年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-free-clash.htm" title="「9月13日」最高速度18.8M/S，2024年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「9月13日」最高速度18.8M/S，2024年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-13-free-ssr-node.htm" title="「5月13日」最高速度18.3M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「5月13日」最高速度18.3M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-4-26-node-share-links.htm" title="「4月26日」最高速度21.5M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「4月26日」最高速度21.5M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-6-free-v2ray-subscribe.htm" title="「8月6日」最高速度19.4M/S，2024年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「8月6日」最高速度19.4M/S，2024年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-25-free-clash.htm" title="「6月25日」最高速度18.2M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「6月25日」最高速度18.2M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-free-node-subscribe.htm" title="「10月13日」最高速度20M/S，2024年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「10月13日」最高速度20M/S，2024年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-27-clash-v2ray-ss-ssr.htm" title="「6月27日」最高速度19M/S，2024年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「6月27日」最高速度19M/S，2024年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-2-clash-windows.htm" title="「6月2日」最高速度18.6M/S，2024年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「6月2日」最高速度18.6M/S，2024年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-clash.htm" title="「9月15日」最高速度19.1M/S，2024年SSR/V2ray/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「9月15日」最高速度19.1M/S，2024年SSR/V2ray/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
