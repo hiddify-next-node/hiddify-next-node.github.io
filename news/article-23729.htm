@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-23729.htm" />
+    <title>SpringBoot2.3应用制作Docker镜像详解</title>
+        <meta name="description" content="本篇简介  本篇的主题是动手实战，力求最快速度体验官方的镜像制作方案； 本篇不会涉及理论知识，这些留给下一章； 一通操作后可能会产生诸多疑问，文末留下了几个典型问题，您可以先思考再进入下一章揭晓；  " />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="__ADDON__/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+    
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                                                        <a class="navbar-brand" href="/"><i></i>Hiddify Next Node</a>
+                                                    </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">SpringBoot2.3应用制作Docker镜像详解</h1>
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3>本篇简介<br /><a id="SpringBoot23_0" rel="nofollow"></a></h3> <ol> <li>本篇的主题是动手实战，力求最快速度体验官方的镜像制作方案；</li> <li>本篇不会涉及理论知识，这些留给下一章；</li> <li>一通操作后可能会产生诸多疑问，文末留下了几个典型问题，您可以先思考再进入下一章揭晓；</li> </ol> <h3><a id="SpringBoot_16" rel="nofollow"></a>SpringBoot应用源码</h3> <ol> <li>本次实战用的是普通的SpringBoot工程，如果您不想写代码，源码可在GitHub下载到，地址和链接信息如下表所示(https://github.com/zq2599/blog_demos)：</li> </ol> <table> <thead> <tr> <th align="left">名称</th> <th align="left">链接</th> <th align="left">备注</th> </tr> </thead> <tbody> <tr> <td align="left">项目主页</td> <td align="left">https://github.com/zq2599/blog_demos</td> <td align="left">该项目在GitHub上的主页</td> </tr> <tr> <td align="left">git仓库地址(https)</td> <td align="left">https://github.com/zq2599/blog_demos.git</td> <td align="left">该项目源码的仓库地址，https协议</td> </tr> <tr> <td align="left">git仓库地址(ssh)</td> <td align="left">git@github.com:zq2599/blog_demos.git</td> <td align="left">该项目源码的仓库地址，ssh协议</td> </tr> </tbody> </table> <ol start="2"> <li>这个git项目中有多个文件夹，本章的应用在<font color="blue">dockerlayerdemo</font>文件夹下，如下图红框所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/ace2456d6fbfa3562f55962134a5a424.jpg" alt="SpringBoot2.3应用制作Docker镜像详解"></li> </ol> <h3><a id="_27" rel="nofollow"></a>版本信息</h3> <ol> <li>SpringBoot：2.3.0.RELEASE</li> <li>JDK：1.8.0_121</li> <li>Maven：3.3.9</li> <li>Docker：19.03.8</li> <li>操作系统：MacBook pro 13寸，macOS Catalina 10.15.4</li> </ol> <h3><a id="_33" rel="nofollow"></a>构建镜像实战</h3> <ol> <li>修改pom.xml，给<font color="blue">spring-boot-maven-plugin</font>插件的配置增加子节点，<font color="blue">enabled</font>的值为<font color="red">true</font>，如下图红框所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/65530e3de86c321384a6a611231e7521.jpg" alt="SpringBoot2.3应用制作Docker镜像详解"></li> <li>在pom.xml文件所在目录新增<font color="blue">Dockerfile</font>文件，内容如下：</li> </ol> <pre><code class="prism language-shell"><span class="token comment"># 指定基础镜像，这是分阶段构建的前期阶段</span> FROM openjdk:8u212-jdk-stretch as builder<span class="token comment"># 执行工作目录</span> WORKDIR application<span class="token comment"># 配置参数</span> ARG JAR_FILE<span class="token operator">=</span>target/*.jar<span class="token comment"># 将编译构建得到的jar文件复制到镜像空间中</span> COPY<span class="token variable">${JAR_FILE}</span> application.jar<span class="token comment"># 通过工具spring-boot-jarmode-layertools从application.jar中提取拆分后的构建结果</span> RUN java -Djarmode<span class="token operator">=</span>layertools -jar application.jar extract<span class="token comment"># 正式构建镜像</span> FROM openjdk:8u212-jdk-stretch WORKDIR application<span class="token comment"># 前一阶段从jar中提取除了多个文件，这里分别执行COPY命令复制到镜像空间中，每次COPY都是一个layer</span> COPY --from<span class="token operator">=</span>builder application/dependencies/ ./ COPY --from<span class="token operator">=</span>builder application/spring-boot-loader/ ./ COPY --from<span class="token operator">=</span>builder application/snapshot-dependencies/ ./ COPY --from<span class="token operator">=</span>builder application/application/ ./ ENTRYPOINT<span class="token punctuation">[</span><span class="token string">"java"</span>,<span class="token string">"org.springframework.boot.loader.JarLauncher"</span><span class="token punctuation">]</span></code></pre> <ol start="3"> <li>执行以下命令编译构建工程：</li> </ol> <pre><code class="prism language-shell">mvn clean package -U -DskipTests</code></pre> <ol start="4"> <li>编译构建完成后确保target目录有<font color="red">jar</font>文件生成；</li> <li>在Dockerfile所在目录执行以下命令构建镜像(请按照您的实际情况调整镜像名)：</li> </ol> <pre><code class="prism language-shell">docker build -t dockerlayerdemo:0.0.1<span class="token keyword">.</span></code></pre> <ol start="6"> <li>镜像构建成功的提示如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/d25df19db0b28779f83ae2ea9b26a50a.jpg" alt="SpringBoot2.3应用制作Docker镜像详解"></li> </ol> <h3><a id="_70" rel="nofollow"></a>验证</h3> <ol> <li>执行以下命令创建并启动容器：</li> </ol> <pre><code class="prism language-shell">docker run --rm -p 8080:8080 dockerlayerdemo:0.0.1</code></pre> <ol start="2"> <li>启动成功的控制台信息：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/2337983a25260100b7aa7cce9780539b.jpg" alt="SpringBoot2.3应用制作Docker镜像详解"></li> <li>浏览器访问：http://localhost:8080/hello ，如下图，一切正常：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/349793ab97dab608e1bc9fc2c279f63d.jpg" alt="SpringBoot2.3应用制作Docker镜像详解"></li> <li>看看镜像的分层信息，执行命令：</li> </ol> <pre><code class="prism language-shell">docker<span class="token function">history</span> dockerlayerdemo:0.0.1</code></pre> <ol start="5"> <li>如下图，整个jar的内容，例如class、依赖库、依赖资源等，分多次COPY到镜像空间中，所以今后如果只改了class，在更新镜像的时候，只需要下载class的layer即可（其他layer可以直接用之前缓存到本地的）：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/b65e11c6cbc09ecae9993699deb18efc.jpg" alt="SpringBoot2.3应用制作Docker镜像详解"></li> </ol> <h3><a id="_87" rel="nofollow"></a>留下的问题</h3> <p>至此，SpringBoot-2.3.0.RELEASE官方推荐的镜像构建方式就实践完成了，但是也留下了一些疑问：</p> <ol> <li>2.3版本推荐的镜像构建方案，和旧版本比有什么不同？</li> <li>pom.xml中spring-boot-maven-plugin插件新增的参数，到底做了什么？</li> <li>Dockerfile中，<font color="blue">java -Djarmode=layertools -jar application.jar extract</font>这个操作啥意思?</li> </ol> <p>这些问题留待<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/boling_cavalry/article/details/106598189"  rel="nofollow">下一篇文章</a>一起深入研究。</p> <h3><a id="_95" rel="nofollow"></a>参考信息</h3> <p>官方文档地址：<br /> https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/pdf/spring-boot-reference.pdf ，4.31章节</p> <h3><a id="GitHub_99" rel="nofollow"></a></h3> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23269.htm">免费领养狗狗正规网站平台深圳官网下载的简单介绍</a></p>
+                                        <p>下一个：<a href="/news/article-23731.htm">动物医院名字怎么取好听点的（动物医院名字怎么取好听点的呢）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-5-20-clash-node-daily-updates.htm" title="「5月20日」最高速度23M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「5月20日」最高速度23M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-14-free-v2ray.htm" title="「7月14日」最高速度19.8M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「7月14日」最高速度19.8M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-free-shadowrocket-node.htm" title="「9月9日」最高速度18.6M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「9月9日」最高速度18.6M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-21-free-node-subscribe.htm" title="「5月21日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「5月21日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-30-node-share.htm" title="「7月30日」最高速度20.4M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「7月30日」最高速度20.4M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-29-free-node-subscribe-links.htm" title="「5月29日」最高速度18.8M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「5月29日」最高速度18.8M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-28-clash-v2ray-ss-ssr.htm" title="「6月28日」最高速度22.9M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「6月28日」最高速度22.9M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-free-clash.htm" title="「9月24日」最高速度18.7M/S，2024年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「9月24日」最高速度18.7M/S，2024年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-9-free-clash.htm" title="「5月9日」最高速度18.3M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「5月9日」最高速度18.3M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-high-speed-nodes.htm" title="「11月7日」最高速度23M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「11月7日」最高速度23M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
