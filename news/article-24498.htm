@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-24498.htm" />
+    <title>Vue实战：基于Vue-ElementUI的权限管理系统之动态路由和动态按钮显示</title>
+        <meta name="description" content="1.首先登录 2.调用permission.js 的router.beforeEach((to, from, next)  to：进入到哪个路由去 from：从哪个路由离开 next：路由的控制参数，" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+    
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                                                        <a class="navbar-brand" href="/"><i></i>Hiddify Next Node</a>
+                                                    </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Vue实战：基于Vue-ElementUI的权限管理系统之动态路由和动态按钮显示</h1>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <h3></h3> <h3>1.首先登录</h3> <h3>2.调用permission.js 的router.beforeEach((to, from, next)</h3> <blockquote> <p>to：进入到哪个路由去<br /> from：从哪个路由离开<br /> next：路由的控制参数，常用的有next(true)和next(false)<br /> 首先判断进入的是否是login页面？然后再判断是否已经登陆？<br /> 已经登陆了就进入你要跳转的页面，没登录就进入login页面</p> <p>为了更加明显一点，我将页面命名的简单一些，ps：</p> <p>Login.vue是登陆页面<br /> Index.vue是全局页面（包含公共导航组件）<br /> A.vue是普通页面（此处我做为首页）<br /> B.vue是普通页面</p> </blockquote> <pre><code class="language-javascript">permission.js router.beforeEach(async(to, from, next) =&gt; {   NProgress.start()   document.title = getPageTitle(to.meta.title)   const hasToken = getToken()   // 判断是否存在token,没有就重新登陆   if (hasToken) {     if (to.path === '/login') {       // if is logged in, redirect to the home page       next({ path: '/' })       NProgress.done()     } else {       // 这里指的是src/store/getters.js的roles       const hasRoles = store.getters.roles &amp;&amp; store.getters.roles.length &gt; 0       if (hasRoles) {         next()       } else {         try {           // 获取roles           // get user info 获取当前登录用户的Button按钮列表,和当前用户角色名           store.dispatch('user/getInfo')            // generate accessible routes map based on roles 获取后端角色列表            const DbRoutes = await store.dispatch('permission/getSideMenus')           router.addRoutes(DbRoutes)           next({ ...to, replace: true })         } catch (error) {           // remove token and go to login page to re-login           await store.dispatch('user/resetToken')           Message.error(error || 'Has Error')           next(`/login?redirect=${to.path}`)           NProgress.done()         }       }     }   } })</code></pre> <h3>2.store.getter</h3> <pre><code class="language-javascript">const getters = {   token: state =&gt; state.user.token,   name: state =&gt; state.user.name,   roles: state =&gt; state.user.roles,//角色名列表   permission_routes: state =&gt; state.permission.routes,//页面路由   permissions: state =&gt; state.user.permissions //菜单按钮列表 } export default getters</code></pre> <h3>3.store.dispatch('user/getInfo')调用&nbsp;Store文件夹下user.js的 getInfo方法&nbsp;获取当前登录用户的Button按钮列表,和当前用户角色名</h3> <pre><code class="language-javascript">import { login, logout, getInfo, getRoleList } from '@/api/user' import { getToken, setToken, removeToken } from '@/utils/auth' import router, { resetRouter } from '@/router'  const state = {   token: getToken(),   roles: [] }  const mutations = {   SET_TOKEN: (state, token) =&gt; {     state.token = token   },   //存储登录角色信息   SET_ROLES: (state, roles) =&gt; {     state.roles = roles   },  //存储按钮信息   SET_PERMISSIONS: (state, permissions) =&gt; {     state.permissions = permissions   } }  const actions = {     // get user info   getInfo({ commit, state }) {     return new Promise((resolve, reject) =&gt; {       getInfo(state.token).then(response =&gt; {         const { data } = response         if (!data) {           reject('Verification failed, please Login again.')         }         const { roles, permissions } = data         console.error('roles' + roles)         console.error('permissions' + permissions)         // roles must be a non-empty array         if (!roles || roles.length &lt;= 0) {           reject('getInfo: roles must be a non-null array!')         }         if (!permissions || permissions.length &lt;= 0) {           reject('getInfo: permissions must be a non-null array!')         }          commit('SET_ROLES', roles)         commit('SET_PERMISSIONS', permissions)         resolve(data)       }).catch(error =&gt; {         reject(error)       })     })   } }  export default {   namespaced: true,   state,   mutations,   actions }</code></pre> <h3></h3> <h3>4.&nbsp;store.dispatch('permission/getSideMenus')调用&nbsp;Store文件夹下psermission.js的 getSideMenus方法</h3> <pre><code class="language-javascript">const actions = {   getSideMenus({ commit, state }) {     return new Promise((resolve, reject) =&gt; {        //import { listForRouter } from '@/api/user'       listForRouter().then(response =&gt; {         const menus = response.data         //import { traverseRoutes } from '@/utils/router'         const remoteroutes = traverseRoutes(menus)         commit('SET_ROUTES', remoteroutes)         resolve(remoteroutes)       }).catch(error =&gt; {         console.log('list', error)         router.replace({           path: '/login',           query: { redirect: router.currentRoute.path }         })         // reject(error)       })     })   } }</code></pre> <p>import { traverseRoutes } from '@/utils/router'</p> <pre><code class="language-javascript">export function traverseRoutes(menus) {   const routes = menus.map(menu =&gt; {     if (menu.children === null) {       menu.children = []     }     if (menu.component) {       const name = menu.component       menu.component = (resolve) =&gt; require(['@/' + name], resolve)       // menu.component = resolve =&gt; require(['@/views/UserManagement/user'], resolve)     }      if (menu.children &amp;&amp; menu.children.length) {       menu.children = traverseRoutes(menu.children)     }     return menu   })   return routes }</code></pre> <pre><code class="language-javascript">api文件夹下user.js&nbsp;import { userInfo} from '@/api/user' export function getInfo(token) {   return request({     url: '/admin/info',     method: 'get',     params: { token }   }) }</code></pre> <h3>api文件夹下role.js&nbsp;import { listForRouter } from '@/api/role'</h3> <pre><code class="language-javascript">export function listForRouter() {   return request({     url: '/admin/getLoginSideBarMenus',     method: 'get'   }) }</code></pre> <h3>后端admin/Info 返回给前端信息</h3> <pre><code class="language-javascript">{ "code":200, "msg":"成功", "data": {"permissions":["userAdd","userDeleted","userUpdated","userReset","userSetRole","roleAdd","userDeleted", "roleUpdated","authAdd","authDeleted","authUpdated"], "roles":["超级管理员"] } }</code></pre> <p>后端admin/getLoginSideBarMenus返回给前端信息</p> <pre><code class="language-javascript">{"code":200,"msg":"成功", "data":[{"id":1,"parentId":0,"path":"/system","component":"layout","name":"系统管理","num":1,"hidden":false,"url":"/system","meta":{"title":"系统管理","icon":"form"},"children":[{"id":2,"parentId":1,"path":"/user","component":"views/UserManagement/user.vue","name":"用户管理","num":1,"hidden":false,"url":"/user","meta":{"title":"用户管理","icon":"user"},"children":null},{"id":8,"parentId":1,"path":"/role","component":"views/UserManagement/role.vue","name":"角色管理","num":1,"hidden":false,"url":"/role","meta":{"title":"角色管理","icon":"international"},"children":null},{"id":14,"parentId":1,"path":"/auth","component":"views/UserManagement/auth.vue","name":"资源管理","num":1,"hidden":false,"url":"/auth","meta":{"title":"资源管理","icon":"list"},"children":null},{"id":18,"parentId":1,"path":"/test","component":"views/test/index.vue","name":"测试菜单","num":1,"hidden":false,"url":"/test","meta":{"title":"测试菜单","icon":"lock"},"children":[{"id":19,"parentId":18,"path":"/children1","component":"views/test/children/children1.vue","name":"测试菜单1","num":2,"hidden":false,"url":"/children1","meta":{"title":"测试菜单1","icon":"icon"},"children":null}]}]}]}</code></pre> <h2>动态按钮显示</h2> <h2>main.js</h2> <pre><code class="language-javascript">// main.js import { checkArray } from './utils/btnPermission.js' Vue.directive('permission', {   inserted(el, binding) {     const permission = binding.value // 获取到 v-permission的值     if (permission) {       const hasPermission = checkArray(permission) // 检测是否有权限       if (!hasPermission) { // 没有权限 移除Dom元素         el.parentNode &amp;&amp; el.parentNode.removeChild(el)       }     }   } })</code></pre> <h2>./utils/btnPermission.js</h2> <pre><code class="language-javascript">import store from '@/store' export function checkArray(key) {   // store.dispatch('user/getInfo')    const arr = store.getters.permissions //store文件下getter.   const index = arr.indexOf(key)   if (index &gt; -1) {     return true // 有权限   } else {     return false // 无权限   } }</code></pre> <p>界面使用方法 auth.js</p> <pre><code class="language-html">界面使用方法 auth.js  &lt;el-table-column fixed="right" label="操作" width="300px"&gt;           &lt;template slot-scope="scope"&gt;             &lt;el-button               v-permission="'authAdd'"               icon="el-icon-plus"               type="success"               size="small"               @click="add(scope.row.code,scope.row.pcodes)"             &gt;               新增子级             &lt;/el-button&gt;             &lt;el-button               v-permission="'authUpdated'"               type="primary"               icon="el-icon-edit"               size="small"               @click="handleEdit(scope.row.id, scope.row)"             &gt;编辑&lt;/el-button&gt;             &lt;el-button               v-permission="'authDeleted'"               type="danger"               icon="el-icon-delete"               size="small"               @click.native.prevent="deleted(scope.row.id)"             &gt;               删除             &lt;/el-button&gt;           &lt;/template&gt;         &lt;/el-table-column&gt;</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-24497.htm">python end用法_python end用法</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-12-free-clash.htm" title="「8月12日」最高速度19.2M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「8月12日」最高速度19.2M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24497.htm" title="python end用法_python end用法">python end用法_python end用法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-23-free-shadowrocket-node.htm" title="「6月23日」最高速度21.6M/S，2024年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「6月23日」最高速度21.6M/S，2024年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-31-clash-v2ray-ss-ssr.htm" title="「5月31日」最高速度22.7M/S，2024年SSR/Shadowrocket/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「5月31日」最高速度22.7M/S，2024年SSR/Shadowrocket/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-21-free-node-subscribe.htm" title="「5月21日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「5月21日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-4-28-clash-node-daily-updates.htm" title="「4月28日」最高速度21.6M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「4月28日」最高速度21.6M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-4-12-free-v2ray.htm" title="4月12日19.1M/S|SSR/Shadowrocket/V2ray/Clash免费节点每天更新订阅链接">4月12日19.1M/S|SSR/Shadowrocket/V2ray/Clash免费节点每天更新订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-ssr-subscribe.htm" title="「12月8日」最高速度20.2M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「12月8日」最高速度20.2M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22358.htm" title="动物疫苗属于兽药吗为什么不能打了（动物疫苗包括哪些）">动物疫苗属于兽药吗为什么不能打了（动物疫苗包括哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-28-free-ssr-subscribe.htm" title="「8月28日」最高速度21.6M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「8月28日」最高速度21.6M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
