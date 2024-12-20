@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-28386.htm" />
+    <title>Kafka集成Kerberos之后如何使用生产者消费者命令</title>
+        <meta name="description" content="1、生产者1.1、准备jaas.conf并添加到环境变量(使用以下方式的其中一种)1.1.1、使用Kinit方式前提是手动kinit 配置内容为：  KafkaClient { com.sun.sec" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+    
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                                                        <a class="navbar-brand" href="/"><i></i>Hiddify Next Node</a>
+                                                    </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Kafka集成Kerberos之后如何使用生产者消费者命令</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html" style="font-size: 16px;"> <p>1、生产者<br />1.1、准备jaas.conf并添加到环境变量(使用以下方式的其中一种)<br />1.1.1、使用Kinit方式<br />前提是手动kinit</p> <p>配置内容为：</p> <div class="cnblogs_code"> <pre><code class="has">KafkaClient { com.sun.security.auth.module.Krb5LoginModule required useTicketCache=true renewTicket=true serviceName="kafka"; };</code> </pre> </p></div> <p>1.1.2、使用指定keytab和票据的方式</p> <p>准备好你的keytab文件</p> <p>配置内容为：</p> <div class="cnblogs_code"> <pre><code class="has">KafkaClient { com.sun.security.auth.module.Krb5LoginModule required useKeyTab=true keyTab="/usr/keytab/xiet.keytab" principal="xiet@BETA.COM"; };</code> </pre> </p></div> <p>* 添加到环境变量:</p> <div class="cnblogs_code"> <pre><code class="has">export KAFKA_OPTS="-Djava.security.auth.login.config=/home/xxx/jaas.conf"</code> </pre> </p></div> <p>2、执行命令</p> <div class="cnblogs_code"> <pre><code class="has">kafka-console-producer --broker-list xxx:9092,yyy:9092 --topic sparktest --security-protocol SASL_PLAINTEXT</code> </pre> </p></div> <p>或者使用配置文件的方式</p> <p>producer.properties</p> <div class="cnblogs_code"> <pre><code class="has">security.protocol=SASL_PLAINTEXT sasl.mechanism=GSSAPI sasl.kerberos.service.name=kafka</code> </pre> </p></div> <div class="cnblogs_code"> <pre><code class="has"> kafka-console-producer --broker-list 10.211.55.5:9093 --topic test --producer.config  config/producer.properties</code> </pre> </p></div> <p><em id="__mceDel">2、消费者<br />2.1、准备jaas.conf并添加到环境变量<br />内容同1.1节</em></p> <p>2.2、准备consumer.properties<br />文件内容为：</p> <div class="cnblogs_code"> <pre><code class="has">security.protocol=SASL_PLAINTEXT sasl.mechanism=GSSAPI sasl.kerberos.service.name=kafka group.id=test-consumer-group</code> </pre> </p></div> <p><em id="__mceDel">2.3、执行命令</em></p> <div class="cnblogs_code"> <pre><code class="has">kafka-console-consumer --bootstrap-server xxx:9092,yyy:9092 --topic sparktest  --from-beginning --consumer.config ./consumer.properties</code> </pre> </p></div> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28385.htm">命令提示符窗口中的快捷键及其使用说明</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-5-8-clash-v2ray-ss-ssr.htm" title="「5月8日」最高速度21.7M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「5月8日」最高速度21.7M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-18-free-node-subscribe-links.htm" title="「5月18日」最高速度21.9M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「5月18日」最高速度21.9M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-5-free-v2ray-subscribe.htm" title="「7月5日」最高速度21.9M/S，2024年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「7月5日」最高速度21.9M/S，2024年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-clash-node.htm" title="「10月19日」最高速度21.9M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「10月19日」最高速度21.9M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-11-node-share-links.htm" title="「6月11日」最高速度18.3M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「6月11日」最高速度18.3M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-22-free-shadowrocket-node.htm" title="「6月22日」最高速度21.4M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「6月22日」最高速度21.4M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-free-ssr-node.htm" title="「10月24日」最高速度19.6M/S，2024年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「10月24日」最高速度19.6M/S，2024年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-1-clash-windows.htm" title="「8月1日」最高速度18.7M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「8月1日」最高速度18.7M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-8-free-v2ray-subscribe.htm" title="「6月8日」最高速度21.3M/S，2024年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「6月8日」最高速度21.3M/S，2024年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-node-subscribe-links.htm" title="「11月29日」最高速度21.3M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「11月29日」最高速度21.3M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

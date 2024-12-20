@@ -8,7 +8,7 @@
         <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="icon" href="__ADDON__/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
     
     <script type="application/x-javascript">
     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
@@ -119,7 +119,8 @@
                         <li class="active">正文</li>
                     </ol>
                     <h1 class="tittle">Spring boot 注解@Async不生效 无效 不起作用</h1>
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>今天在做公司项目时，有一个发邮件的需求。所以写了一个发送邮件的方法后来发现发邮件很慢，导致接口响应也很慢。于是我便想到要使用异步调用去处理这个方法。于是我把注解@Async 加到了自己service类下的一个发邮件的一个方法，后来发现并没有生效。</p> <p>&nbsp;</p> <p>调用处代码：</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="118" src="http://img.555519.xyz/uploads/20230119/2f7863f352860f42082fad7d6c2d86f9.jpg"></p> <p><span style="color:#f33b45;"><strong>我在以下两个方法上都试过加上@Async注解 可是都并没有生效</strong></span></p> <p>发送邮件代码：</p> <p><img decoding="async" alt="" class="has" height="564" src="http://img.555519.xyz/uploads/20230119/ea8e318e2a670366b3e439636a6d05c4.jpg"></p> <p>&nbsp;</p> <p><img decoding="async" alt="" class="has" height="574" src="http://img.555519.xyz/uploads/20230119/c912a5c081667572855b647b5b105b37.jpg"></p> <p>我思考了一下可能应该是因为aop代理的缘故，<span style="color:#f33b45;"><strong>被调用方法 和 调用处的代码都处在同一个类，所以只是相当于本类调用，并没有使用代理类 从而@Async并没有产生效果。</strong></span></p> <p>&nbsp;</p> <p>于是我查询了一下资料，证实了我的想法，于是我把@Async 注解放到了工具类&nbsp;MailService 下</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="116" src="http://img.555519.xyz/uploads/20230119/4fcb08ed9623e913b1b07539bcd8a142.jpg"></p> <p><img loading="lazy" decoding="async" alt="" class="has" height="1200" src="http://img.555519.xyz/uploads/20230119/4d158ec695ca5aa7377a65c6235a897d.jpg"></p> <p>&nbsp;</p> <p>修改了注解的添加位置后，接口调用明显速度加快了，成功！</p> <p>总结：</p> <p>失效原因<br /> 1.@SpringBootApplication启动类当中没有添加@EnableAsync注解。<br /> 2.异步方法使用注解@Async的返回值只能为void或者Future。<br /> 3.没有走Spring的代理类。因为@Transactional和@Async注解的实现都是基于Spring的AOP，而AOP的实现是基于动态代理模式实现的。那么注解失效的原因就很明显了，有可能因为调用方法的是对象本身而不是代理对象，因为没有经过Spring容器管理。</p> <p>&nbsp;</p> <p>解决方法:<br /> 这里具体说一下第三种情况的解决方法。<br /> 1.注解的方法必须是public方法。<br /> 2.方法一定要从另一个类中调用，也就是从类的外部调用，类的内部调用是无效的。<br /> 3.如果需要从类的内部调用，需要先获取其代理类。</p> <p>&nbsp;</p> <p>扩展阅读：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/YoungLee16/article/details/88398045"  rel="nofollow">https://blog.csdn.net/YoungLee16/article/details/88398045</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/QYHuiiQ/article/details/85014983"  rel="nofollow">https://blog.csdn.net/QYHuiiQ/article/details/85014983</a></p> <p>&nbsp;</p> <div id="gtx-trans"> <div class="gtx-trans-icon">   &nbsp;  </div> </div></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>今天在做公司项目时，有一个发邮件的需求。所以写了一个发送邮件的方法后来发现发邮件很慢，导致接口响应也很慢。于是我便想到要使用异步调用去处理这个方法。于是我把注解@Async 加到了自己service类下的一个发邮件的一个方法，后来发现并没有生效。</p> <p>&nbsp;</p> <p>调用处代码：</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="118" src="http://img.555519.xyz/uploads/20230119/2f7863f352860f42082fad7d6c2d86f9.jpg"></p> <p><span style="color:#f33b45;"><strong>我在以下两个方法上都试过加上@Async注解 可是都并没有生效</strong></span></p> <p>发送邮件代码：</p> <p><img decoding="async" alt="" class="has" height="564" src="http://img.555519.xyz/uploads/20230119/ea8e318e2a670366b3e439636a6d05c4.jpg"></p> <p>&nbsp;</p> <p><img decoding="async" alt="" class="has" height="574" src="http://img.555519.xyz/uploads/20230119/c912a5c081667572855b647b5b105b37.jpg"></p> <p>我思考了一下可能应该是因为aop代理的缘故，<span style="color:#f33b45;"><strong>被调用方法 和 调用处的代码都处在同一个类，所以只是相当于本类调用，并没有使用代理类 从而@Async并没有产生效果。</strong></span></p> <p>&nbsp;</p> <p>于是我查询了一下资料，证实了我的想法，于是我把@Async 注解放到了工具类&nbsp;MailService 下</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="116" src="http://img.555519.xyz/uploads/20230119/4fcb08ed9623e913b1b07539bcd8a142.jpg"></p> <p><img loading="lazy" decoding="async" alt="" class="has" height="1200" src="http://img.555519.xyz/uploads/20230119/4d158ec695ca5aa7377a65c6235a897d.jpg"></p> <p>&nbsp;</p> <p>修改了注解的添加位置后，接口调用明显速度加快了，成功！</p> <p>总结：</p> <p>失效原因<br /> 1.@SpringBootApplication启动类当中没有添加@EnableAsync注解。<br /> 2.异步方法使用注解@Async的返回值只能为void或者Future。<br /> 3.没有走Spring的代理类。因为@Transactional和@Async注解的实现都是基于Spring的AOP，而AOP的实现是基于动态代理模式实现的。那么注解失效的原因就很明显了，有可能因为调用方法的是对象本身而不是代理对象，因为没有经过Spring容器管理。</p> <p>&nbsp;</p> <p>解决方法:<br /> 这里具体说一下第三种情况的解决方法。<br /> 1.注解的方法必须是public方法。<br /> 2.方法一定要从另一个类中调用，也就是从类的外部调用，类的内部调用是无效的。<br /> 3.如果需要从类的内部调用，需要先获取其代理类。</p> <p>&nbsp;</p> <p>扩展阅读：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/YoungLee16/article/details/88398045"  rel="nofollow">https://blog.csdn.net/YoungLee16/article/details/88398045</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/QYHuiiQ/article/details/85014983"  rel="nofollow">https://blog.csdn.net/QYHuiiQ/article/details/85014983</a></p> <p>&nbsp;</p> <div id="gtx-trans"> <div class="gtx-trans-icon">   &nbsp;  </div> </div></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-20064.htm">戴尔成就bios设置ssd启动项（戴尔最新bios设置ssd）</a></p>
                                         <p>下一个：<a href="/news/article-20524.htm">开个小型宠物食品加工厂需要什么手续和证件呢 开个宠物食品加工厂要多少钱</a></p>
@@ -132,16 +133,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-v2ray-ss-ssr.htm" title="「11月30日」最高速度21M/S，2024年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「11月30日」最高速度21M/S，2024年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-high-speed-nodes.htm" title="「10月12日」最高速度22.6M/S，2024年Shadowrocket/Clash/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「10月12日」最高速度22.6M/S，2024年Shadowrocket/Clash/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-clash-node-daily-updates.htm" title="「8月15日」最高速度22.7M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「8月15日」最高速度22.7M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-11-free-v2ray-subscribe.htm" title="「9月11日」最高速度22.6M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「9月11日」最高速度22.6M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-5-24-free-ssr-node.htm" title="「5月24日」最高速度19.1M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「5月24日」最高速度19.1M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-4-clash-node-daily-updates.htm" title="「9月4日」最高速度22.9M/S，2024年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「9月4日」最高速度22.9M/S，2024年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-2-free-ssr-node.htm" title="「9月2日」最高速度19M/S，2024年SSR/V2ray/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「9月2日」最高速度19M/S，2024年SSR/V2ray/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-24-free-node-subscribe.htm" title="「7月24日」最高速度22.2M/S，2024年Shadowrocket/V2ray/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「7月24日」最高速度22.2M/S，2024年Shadowrocket/V2ray/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-19-free-node-subscribe-links.htm" title="「6月19日」最高速度18.5M/S，2024年Shadowrocket/V2ray/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「6月19日」最高速度18.5M/S，2024年Shadowrocket/V2ray/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-5-21-free-node-subscribe.htm" title="「5月21日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「5月21日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-clash-windows.htm" title="「10月28日」最高速度20.3M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「10月28日」最高速度20.3M/S，2024年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-4-15-free-clash.htm" title="「4月15日」最高速度20.7M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「4月15日」最高速度20.7M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-subscribe-node.htm" title="「10月21日」最高速度18.6M/S，2024年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「10月21日」最高速度18.6M/S，2024年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25598.htm" title="2020上海宠物领养日什么时候结束的（上海领养宠物狗）">2020上海宠物领养日什么时候结束的（上海领养宠物狗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-25-free-clash-subscribe.htm" title="「7月25日」最高速度20.1M/S，2024年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「7月25日」最高速度20.1M/S，2024年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-4-13-free-ssr-subscribe.htm" title="「4月13日」最高速度22.8M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「4月13日」最高速度22.8M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-2-free-subscribe-node.htm" title="「10月2日」最高速度19.9M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「10月2日」最高速度19.9M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-ssr-node.htm" title="「10月30日」最高速度20.5M/S，2024年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「10月30日」最高速度20.5M/S，2024年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-free-node-subscribe-links.htm" title="「10月25日」最高速度20.9M/S，2024年V2ray/Shadowrocket/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「10月25日」最高速度20.9M/S，2024年V2ray/Shadowrocket/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-clash.htm" title="「9月27日」最高速度21.7M/S，2024年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「9月27日」最高速度21.7M/S，2024年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -153,7 +154,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -192,6 +193,15 @@
         <!-- footer-top -->
     <div class="footer-top">
         <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
             <p>
                 HiddifyNextNode官网节点站 版权所有
                 <br />
