@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-42870.htm" />
+    <title>Git基础blob对象详解</title>
+        <meta name="description" content="目录  （一）Git对象的存放目录 （二）Git中对象类型 （三）blob对象  1、blob对象说明  （1）blob对象定义 （2）blob对象说明 （3）blob对象存储的方式 （4）查看blo" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-42870.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="Git基础blob对象详解" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/9ff070342d8aacdd121579ef3cb2eafc.webp" />
+        <meta property="og:release_date" content="2025-01-19T07:09:44" />
+    <meta property="og:updated_time" content="2025-01-19T07:09:44" />
+        <meta property="og:description" content="目录  （一）Git对象的存放目录 （二）Git中对象类型 （三）blob对象  1、blob对象说明  （1）blob对象定义 （2）blob对象说明 （3）blob对象存储的方式 （4）查看blo" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                                                        <a class="navbar-brand" href="/"><i></i>Hiddify Next Node</a>
+                                                    </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Git基础blob对象详解</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E4%B8%80git%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95" rel="nofollow">（一）Git对象的存放目录</a></li> <li><a href="#%E4%BA%8Cgit%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B" rel="nofollow">（二）Git中对象类型</a></li> <li><a href="#%E4%B8%89blob%E5%AF%B9%E8%B1%A1" rel="nofollow">（三）blob对象</a> <ul> <li><a href="#1blob%E5%AF%B9%E8%B1%A1%E8%AF%B4%E6%98%8E" rel="nofollow">1、blob对象说明</a> <ul> <li><a href="#1blob%E5%AF%B9%E8%B1%A1%E5%AE%9A%E4%B9%89" rel="nofollow">（1）blob对象定义</a></li> <li><a href="#2blob%E5%AF%B9%E8%B1%A1%E8%AF%B4%E6%98%8E" rel="nofollow">（2）blob对象说明</a></li> <li><a href="#3blob%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E5%BC%8F" rel="nofollow">（3）blob对象存储的方式</a></li> <li><a href="#4%E6%9F%A5%E7%9C%8Bblob%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AE%B9" rel="nofollow">（4）查看blob对象内容</a></li> <li><a href="#5%E6%9F%A5%E7%9C%8Bgit%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB%E5%9E%8B" rel="nofollow">（5）查看Git对象的类型</a></li> <li><a href="#6git%E7%AE%A1%E7%90%86%E6%96%87%E4%BB%B6" rel="nofollow">（6）Git管理文件</a></li> <li><a href="#7git%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E8%BF%87%E7%9A%84%E6%96%87%E4%BB%B6" rel="nofollow">（7）Git管理修改过的文件</a></li> </ul> </li> <li><a href="#2blob%E5%AF%B9%E8%B1%A1%E6%80%BB%E7%BB%93" rel="nofollow">2、blob对象总结</a></li> <li><a href="#3%E9%97%AE%E9%A2%98" rel="nofollow">3、问题</a></li> <li><a href="#4%E6%9C%AC%E6%96%87%E7%94%A8%E5%88%B0%E7%9A%84%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93" rel="nofollow">4、本文用到的命令总结</a></li> </ul> </li> </ul> </div> <blockquote> <p>Git 是一套内容寻址文件系统。什么意思呢？</p> <p>就是Git的核心部分是一个简单的键值数据库（<code>key-value data store</code>）。你可以向该数据库插入任意类型的内容，并会返回一个键值，通过该键值可以在任何时候再取出该内容。</p> </blockquote> </h1> <p>Git中对象都保存在本地版本库的<code>.git/objects</code> 目录（即：<strong>对象数据库</strong>）中。</p> <p>首先初使化一个赶紧的Git仓库：</p> <pre><code class="language-bash"># 创建一个本地的git仓库git_learning L@DESKTOP-T2AI2SU MINGW64 /j/git-repository $ mkdir git_learning  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository $ cd git_learning/  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning $ git init Initialized empty Git repository in J:/git-repository/git_learning/.git/  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ ll -a total 8 drwxr-xr-x 1 L 197121 0  4月 10 20:24 ./ drwxr-xr-x 1 L 197121 0  4月 10 20:23 ../ drwxr-xr-x 1 L 197121 0  4月 10 20:24 .git/</code></pre> <p>确认<code>objects</code> 目录是默认初始状态：</p> <pre><code class="language-bash"># 查看.git/objects/目录 L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ ll -a .git/objects/ total 4 drwxr-xr-x 1 L 197121 0  4月 10 20:24 ./ drwxr-xr-x 1 L 197121 0  4月 10 20:24 ../ drwxr-xr-x 1 L 197121 0  4月 10 20:24 info/ drwxr-xr-x 1 L 197121 0  4月 10 20:24 pack/  # 查看info目录和pack目录中的内容 L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ ll -a .git/objects/info/ total 0 drwxr-xr-x 1 L 197121 0  4月 10 20:24 ./ drwxr-xr-x 1 L 197121 0  4月 10 20:24 ../  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ ll -a .git/objects/pack/ total 0 drwxr-xr-x 1 L 197121 0  4月 10 20:24 ./ drwxr-xr-x 1 L 197121 0  4月 10 20:24 ../</code></pre> <p>从上可以看到Git初始化一个本地版本库的时候，就已经初始化了<code>objects</code>目录，并在其中创建了<code>pack</code>和<code>info</code>子目录，但是没有其他常规文件，<code>pack</code>和<code>info</code>子目录中也没有文件。我们只关注<code>objects</code>目录下除了<code>info</code>和<code>pack</code>目录之外的变化。</p> </h1> <p>Git中对象类型有四种：<code>blob（块）</code>对象，<code>tree（目录树）</code>对象，<code>commit（提交）</code>对象和<code>tag（标签）</code>对象，这四种原子对象构成了Git高层数据结构的基础。</p> </h1> <h2 id="1blob对象说明">1、blob对象说明</h2> <h3 id="1blob对象定义">（1）blob对象定义</h3> <p><code>blob</code>对象有叫数据对象。</p> <p><code>blob</code>对象是用来存储文本内容的。即把一个文本文件的内容，作为一个<code>blob</code>对象存储在Git系统中。</p> <p>翻译：</p> <ul> <li>Git中<code>blob</code>对象就是对应文件系统中的文件，确切的说是文件的内容，包含<br /> 键：一个hash值和校验值的组合，<br /> 值：文件的内容。</li> <li>比较特殊的是：<code>blob</code>对象只存内容，不存文件名，文件名在<code>tree</code>对象中保存。</li> </ul> <p><strong><code>blob</code>对象存储方式如下图</strong>：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/efd658cb3ac47244e44b766d400300ae.jpg" alt="Git基础blob对象详解"></p> <h3 id="2blob对象说明">（2）blob对象说明</h3> <p>通过底层命令<code>git hash-object</code> 来演示，该命令可将任意数据保存于<code>.git/objects</code> 目录（即<strong>对象数据库</strong>）中，并返回指向该数据对象的唯一的键。</p> <p><strong>1）创建一个新的数据对象，并将它手动存入你的新Git数据库中：</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ echo 'git object test content' | git hash-object -w --stdin cb2eb834126f53952590c448f14fece6cbb1bff3</code></pre> <p><strong>说明</strong>：这是在Git中以最简单的形式存储数据到Git版本库中，<code>git hash-object</code>命令会接受你传给它的东西，而它只会返回，可以存储在Git仓库中数据对象的唯一的键。</p> <p>命令含义如下：</p> <ul> <li><code>git hash-object</code>：Git底层命令，可以根据传入的文本内容返回表示这些内容的键值。</li> <li><code>git object test content</code>：为文本文件中的内容。</li> <li><code>-w</code>选项：表示<code>hash-object</code>命令将数据对象存储到Git数据库中；若不指定此选项，则该命令仅返回对应的键（也就是那串Hash值）</li> <li><code>--stdin</code> 选项：表示该命令从标准输入（比如键盘）读取内容，若不指定此选项，则须在命令尾部给出待存储文件的路径。例如：<code>git hash-object -w 文件路径</code>。</li> </ul> <p>此命令输出一个长度为40个字符的校验和，这是一个<code>SHA-1</code>哈希值，如上<code>cb2eb834126f53952590c448f14fece6cbb1bff3</code>。该值是文件原内容加上特定头部信息拼接起来，做散列计算得到的数值。（只要文本内容相同，计算出的结果都是一样的）</p> <p><strong>2）在计算机中查看本地版本库<code>.git/objects</code> 目录中的变化。</strong></p> <p>可以看到<code>.git/objects</code> 目录中多了一个<code>cb</code>文件夹，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/18c0eb6089faca79c7f4cbce4b7393af.jpg" alt="Git基础blob对象详解"></p> <p>进入<code>cb</code>文件夹，可以看到有一个文件，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/526c267c0d86dd52599c06057791d599.jpg" alt="Git基础blob对象详解"></p> <p>好，我们就看到这里就行，这样看比较复杂，还是回到Git Bash中查看。</p> <p><strong>3）看本地版本库<code>.git/objects</code> 目录中的变化。</strong></p> <pre><code class="language-bash"># 只看文件可以加 -type f选项参数 L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ find .git/objects .git/objects .git/objects/cb .git/objects/cb/2eb834126f53952590c448f14fece6cbb1bff3 .git/objects/info .git/objects/pack</code></pre> <p>我们可以看到<code>cb</code>目录和<code>cb</code>目录中的<code>2eb834126f53952590c448f14fece6cbb1bff3</code>文件。</p> <p>这就是Git中一个<code>blob</code>对象的存储。</p> <h3 id="3blob对象存储的方式">（3）blob对象存储的方式</h3> <p>Git对象的寻址使用40位的16进制数表示，也就是<code>SHA-1</code>散列码，例如：<code>cb2eb834126f53952590c448f14fece6cbb1bff3</code>。</p> <p><strong>为了管理方便，在文件系统中前两位作为<code>.git/objects/</code> 子目录的名字，后38为作为文件名字。</strong></p> <p>如下：</p> <pre><code class="language-bash"># 查看objects目录中的文件，一个文件对应一个Git对象（数据内容） L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ find .git/objects -type f .git/objects/cb/2eb834126f53952590c448f14fece6cbb1bff3  # 输出数据对象的hash键，不保存该数据对象。 L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ echo 'git object test content' | git hash-object --stdin cb2eb834126f53952590c448f14fece6cbb1bff3</code></pre> <p>我们可以看到两个Hash串是一样的。</p> <blockquote> <p>提示：你可能感觉用40位作为Git对象的寻址ID，可能会存在不同的内容但是散列码相同的情况，你的感觉是正确的，但是这种情况出现的概率肯定可以忽略不计了。</p> </blockquote> <h3 id="4查看blob对象内容">（4）查看blob对象内容</h3> <p>我们先用<code>cat</code>命令直接读取上面文件，看看是什么情况，如下图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/2d665937688eae3bd614f9410bb01e3e.jpg" alt="Git基础blob对象详解"></p> <p>可以看到显示的内容是一片乱码。</p> <p><strong>我们需要根据Hash键读取数据，使用命令<code>git cat-file -p 键</code></strong>。</p> <p><code>-p</code>选项可指示该命令自动判断内容的类型，并为我们使用友好的格式显示内容。</p> <p>如下：</p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git cat-file -p cb2eb834126f53952590c448f14fece6cbb1bff3 git object test content</code></pre> <blockquote> <p>提示：</p> <p>用<code>cat</code>命令直接读取Git对象文件，为什么是乱码信息？</p> <p>文件内容是先通过<code>zlib</code> 压缩，然后将<code>zlib</code> 压缩后的内容写入磁盘文件(<code>SHA-1</code> 前两个字符作为子目录名称，后 38 个字符作为子目录文件的名称)</p> </blockquote> <h3 id="5查看git对象的类型">（5）查看Git对象的类型</h3> <p>通过<code>git cat-file -t 键</code>命令，可以查看<code>.git/objects</code> 目录中Git对象的类型</p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git cat-file -t cb2eb834126f53952590c448f14fece6cbb1bff3 blob</code></pre> <p>这里也说明，我们之前存储的Git对象是一个<code>blob</code>对象。</p> <h3 id="6git管理文件">（6）Git管理文件</h3> <p>至此，你已经掌握了如何向 Git 中存入内容，以及如何将它们取出。</p> <p>我们同样可以将这些操作应用于文件中的内容。 例如，可以对一个文件进行简单的版本控制。</p> <p><strong>1）首先，创建一个文件。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ echo "hello-git.txt v1" &gt; hello-git.txt  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ ll total 1 -rw-r--r-- 1 L 197121 17  4月 10 23:17 hello-git.txt  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ cat hello-git.txt hello-git.txt v1</code></pre> <p>此时文件还有被Git管理。</p> <p><strong>2）将<code>hello-git.txt</code>文件存入Git数据库。</strong></p> <pre><code class="language-bash"># 加入版本库，生成blob对象 L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git hash-object -w ./hello-git.txt a620c95d3001e1f64cecfc6715f9750cc7bbbf98</code></pre> <p><strong>3）查看Git数据库内容。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ find .git/objects -type f .git/objects/a6/20c95d3001e1f64cecfc6715f9750cc7bbbf98 .git/objects/cb/2eb834126f53952590c448f14fece6cbb1bff3</code></pre> <p>可以看到有多了一个<code>a6</code>子目录，就说明有新增了一个对象。</p> <p><strong>4）查看<code>a6</code>对象的内容。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git cat-file -p a620c95d3001e1f64cecfc6715f9750cc7bbbf98 hello-git.txt v1</code></pre> <p><strong>5）查看<code>a6</code>对象的类型。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git cat-file -t a620c95d3001e1f64cecfc6715f9750cc7bbbf98 blob</code></pre> <p>可以看到，不管是你存储一个文件还是存储控制台内容到Git中，最终存储到Git数据库中的都是一个<code>blob</code>类型的Git对象。（即：<code>blob</code>对象是存储数据内容的）</p> <h3 id="7git管理修改过的文件">（7）Git管理修改过的文件</h3> <p><strong>1）我们继续向<code>hello-git.txt</code>文件中添加内容。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ echo "hello-git.txt v2" &gt;&gt; hello-git.txt  L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ cat hello-git.txt hello-git.txt v1 hello-git.txt v2</code></pre> <p><strong>2）查看Git数据库中的对象。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ find .git/objects -type f .git/objects/a6/20c95d3001e1f64cecfc6715f9750cc7bbbf98 .git/objects/cb/2eb834126f53952590c448f14fece6cbb1bff3</code></pre> <p>可以看到还是之间的两个对象<code>cb</code>和<code>a6</code>，说明我们修改过的文件不会自动的存储到Git数据库中。</p> <p>我们还需要手动的把修改后的<code>hello-git.txt</code>文件，存储到Git数据库中。</p> <p><strong>3）把修改后的<code>hello-git.txt</code>文件添加到Git数据库中。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git hash-object -w ./hello-git.txt 7c320a2d671f2ff177063f98343a0123432521dd</code></pre> <p><strong>4）再次查看Git数据库中的对象。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ find .git/objects -type f .git/objects/7c/320a2d671f2ff177063f98343a0123432521dd .git/objects/a6/20c95d3001e1f64cecfc6715f9750cc7bbbf98 .git/objects/cb/2eb834126f53952590c448f14fece6cbb1bff3</code></pre> <p>我们可以看到Git数据库中多了一个<code>7c</code>对象。</p> <p><strong>5）查看<code>7c</code>对象存储的内容。</strong></p> <pre><code class="language-bash">L@DESKTOP-T2AI2SU MINGW64 /j/git-repository/git_learning (master) $ git cat-file -p 7c320a2d671f2ff177063f98343a0123432521dd hello-git.txt v1 hello-git.txt v2</code></pre> <p>如上所示，我们可以看到<code>7c</code>对象存储了<code>v1</code>和<code>v2</code>的内容，<code>v1</code>内容即在<code>a6</code>对象中，也在<code>7c</code>对象中。所以对于Git来说，存储的不是文件内容的增量。</p> <h2 id="2blob对象总结">2、blob对象总结</h2> <ul> <li>Git的核心部分是一个简单的键值数据库（<code>key-value data store</code>），键就是文本内容的<code>Hash</code>，值就是文本内容。</li> <li><code>blob</code>对象都存储在<code>.git/objects</code> 目录中，子目录+目录中的文件名，就是40位<code>Hash</code>值，也就是对象的键值。</li> <li>通过这个键就能找到对应的内容。</li> <li>每个文本内容存储到Git数据库的时候，内容都会进行<code>zlib</code> 压缩再存储。</li> <li><code>blob</code>对象存储的是文件的内容，相同的内容不产生新的<code>blob</code>对象。</li> <li><code>blob</code>对象并没有存储文件名。</li> </ul> <blockquote> <p>提示：Git对象的<code>hash</code>键，我们截取前几位就行，练习时对象不那么对，就不用全部都写，能够表示唯一对象就行。</p> </blockquote> <h2 id="3问题">3、问题</h2> <p>我们对文件做一次修改，存储到Git数据库中，都会在Git数据库中创建一个新的<code>blob</code>对象。而在实际的工作中，我们需要做很多的改动，才提交一个版本，我们是否可以用一个<code>blob</code>对象代表整个项目的一次快照。</p> <p><strong>不能</strong>，只能代表一次存储时，一个文件中的内容，与之前数据内容相同时不新增Git对象，数据内容不同时再次新增<code>blob</code>对象。即：只要有新的内容被Git纳入管理，必定有一个<code>blob</code>对象与之对应。</p> <p>那么还有如下问题：</p> <ol> <li>记住文件的每一个版本所对应的<code>SHA-1</code>值并不现实。</li> <li>在<code>blob</code>对象中，文件名并没有被保存，仅保存了文件的内容。</li> </ol> <p>所以，没有文件名就没有办法通过文件名来读取数据，只能用40位<code>Hash</code>值读取，非常的不现实。</p> <p>解决方案：树对象。</p> <blockquote> <p>提示：以上的操作都是在工作区和本地版本库之间进行操，不涉及暂存区，因为我们直接存储到了本地版本库中。</p> </blockquote> <h2 id="4本文用到的命令总结">4、本文用到的命令总结</h2> <p>Git底层命令：</p> <ul> <li><code>git hash-object -w 文件路径</code>：把工作区的一个文件提交到本地版本库中。</li> <li><code>find .git/objects -type f</code>：查看Git数据库中的对象。（Linux命令）</li> <li><code>git cat-file -p 键</code>：查看该Git对象的内容。</li> <li><code>git cat-file -t 键</code>：查看该Git对象的类型。</li> </ul> <blockquote> <p>参考：</p> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/jasongrass/p/10582465.html"  target="_blank" rel="nofollow">https://www.cnblogs.com/jasongrass/p/10582465.html</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/songyunzu/article/details/92023816"  target="_blank" rel="nofollow">https://blog.csdn.net/songyunzu/article/details/92023816</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/weixin_39881387/article/details/111199788"  target="_blank" rel="nofollow">https://blog.csdn.net/weixin_39881387/article/details/111199788</a></li> </ul> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-42389.htm">动物疫苗监管部门投诉电话是多少（动物疫苗监管部门投诉电话是多少号）</a></p>
+                                        <p>下一个：<a href="/news/article-42871.htm">动物疫苗间隔时间多长可以打第三针（动物疫苗接种间隔）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19607.htm" title="兰州去哪买狗（兰州去哪买狗狗比较好）">兰州去哪买狗（兰州去哪买狗狗比较好）</a></li>
+                        <li class="py-2"><a href="/news/article-30743.htm" title="木炭生产机器全套全自动价格（木炭生产机器 全套 全自动价格）">木炭生产机器全套全自动价格（木炭生产机器 全套 全自动价格）</a></li>
+                        <li class="py-2"><a href="/news/article-32165.htm" title="养猫***贵吗多少钱（养猫***要花多少钱）">养猫***贵吗多少钱（养猫***要花多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-clash-windows.htm" title="「12月3日」最高速度19.7M/S，2024年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「12月3日」最高速度19.7M/S，2024年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35410.htm" title="宜养猫的属相有哪几个（宜养猫的属相有哪几个呢）">宜养猫的属相有哪几个（宜养猫的属相有哪几个呢）</a></li>
+                        <li class="py-2"><a href="/news/article-28843.htm" title="宠颐生动物中心医院怎么样（宠颐生动物医院方庄店）">宠颐生动物中心医院怎么样（宠颐生动物医院方庄店）</a></li>
+                        <li class="py-2"><a href="/news/article-25597.htm" title="多线程详解 创建多线程">多线程详解 创建多线程</a></li>
+                        <li class="py-2"><a href="/news/article-26529.htm" title="哪些属相不能养狗狗（什么属相不适合养狗狗）">哪些属相不能养狗狗（什么属相不适合养狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-30272.htm" title="宠物领养app信息架构设计案例（宠物领养网站设计的需求调研）">宠物领养app信息架构设计案例（宠物领养网站设计的需求调研）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-clash.htm" title="「10月18日」最高速度20.2M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「10月18日」最高速度20.2M/S，2024年V2ray/Clash/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
