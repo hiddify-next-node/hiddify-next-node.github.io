@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-46359.htm" />
+    <title>原型模式在实际开发中的应用BeanUtils</title>
+        <meta name="description" content="&nbsp; &nbsp; &nbsp; &nbsp;我们学习设计模式的时候学了原型模式，原型模式在我们的实际开发中使用场景也是很多的，我在实际开发中主要有以下两大场景： &nbsp; &nbsp; " />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-46359.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="原型模式在实际开发中的应用BeanUtils" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/ef18753b1a27e38c98f2633b4ea9931c.webp" />
+        <meta property="og:release_date" content="2025-01-26T09:58:49" />
+    <meta property="og:updated_time" content="2025-01-26T09:58:49" />
+        <meta property="og:description" content="&nbsp; &nbsp; &nbsp; &nbsp;我们学习设计模式的时候学了原型模式，原型模式在我们的实际开发中使用场景也是很多的，我在实际开发中主要有以下两大场景： &nbsp; &nbsp; " />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="原型模式在实际开发中的应用BeanUtils">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                                                        <a class="navbar-brand" href="/"><i></i>Hiddify Next Node</a>
+                                                    </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">原型模式在实际开发中的应用BeanUtils</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp;我们学习设计模式的时候学了原型模式，原型模式在我们的实际开发中使用场景也是很多的，我在实际开发中主要有以下两大场景：</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1、在我们希望接下来这个类的操作与之前这个类的操作之间相互不影响；</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2、通常在异步操作的时候避免多线程问题，在调用方法的时候不希望被调用方法对对象的操作影响本层的剩余业务逻辑处理；</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;在需要这样的时候我可以直接new一个对象自己赋值不采用原型模式呢？</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;当然可以，只要你不嫌麻烦，前辈们为我们提供了原型模式肯定是因为原型模式对我们有大大的好处的，一般来说原型模式给我们带来了以下的好处：</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1、程序运行效率：可以节省new创建对象的时间，</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2、代码开发效率：可以一个clone()方法搞定，无需复杂的赋值操作</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3、代码的稳定性：依次一个一个的进行代码赋值，会不会因为一个Cv操作失误导致一个细微难察觉的代码bug发布出来了呢？</p> <p>&nbsp;那么首先我们来看看要通过clone实现原型模式的代码吧</p> <pre class="has"><code class="language-java">//第一步：对象实现Cloneable接口 //第二步：重写clone方法； public Object clone() throws CloneNotSupportedException{     Student student=(Student)super.clone();     student.setStudentFiles((StudentFiles)studentFiles.clone());     return student; }    //当我们需要进行深克隆的时候可以通过序列化的方式实现；</code></pre> <p>但是在实际开发中就会发现当我们需要使用原型模式的时候还需要去对对象model进行clone这种方式真的不是很友好；</p> <p>&nbsp; &nbsp; &nbsp; what？ 不友好吗？</p> <p>&nbsp; &nbsp; &nbsp; 当然，首先，这不符合开闭原则，我们在使用前并不知道这个需要使用原型模式，当需要使用的时候还需要去改老代码，这不是不符合开闭原则吗？</p> <p>&nbsp; &nbsp; &nbsp; 其次，我只是需要一个克隆对象，还需要去实现一堆复杂的浅克隆，深克隆代码吗？是不是有点太耗费功夫了呢？是的，作为程序员的我就是这么懒；</p> <p>&nbsp; &nbsp; &nbsp; 那么我们不使用clone，怎么快速友好，非侵入的实现原型模式呢？</p> <p>&nbsp; &nbsp; &nbsp; 这个时候我们的猪脚就上场了，而且还是两个</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;org.springframework.beans.BeanUtils</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; org.apache.commons.beanutils.BeanUtils</p> <p><strong>按照惯例，我们分析就从源码进入</strong>：</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;org.springframework.beans.BeanUtils</p> <pre class="has"><code class="language-java">    //使用无参数构造函数实例化类的便利方法。         public static &lt;T&gt; T instantiate(Class&lt;T&gt; clazz) throws BeanInstantiationException { 		Assert.notNull(clazz, "Class must not be null"); 		if (clazz.isInterface()) { 			throw new BeanInstantiationException(clazz, "Specified class is an interface"); 		} 		try { 			return clazz.newInstance(); 		} 		catch (InstantiationException ex) { 			throw new BeanInstantiationException(clazz, "Is it an abstract class?", ex); 		} 		catch (IllegalAccessException ex) { 			throw new BeanInstantiationException(clazz, "Is the constructor accessible?", ex); 		} 	}          //使用无参数的构造函数实例化一个类。     public static &lt;T&gt; T instantiateClass(Class&lt;T&gt; clazz) throws BeanInstantiationException   { 		Assert.notNull(clazz, "Class must not be null"); 		if (clazz.isInterface()) { 			throw new BeanInstantiationException(clazz, "Specified class is an interface"); 		} 		try { 			return instantiateClass(clazz.getDeclaredConstructor()); 		} 		catch (NoSuchMethodException ex) { 			throw new BeanInstantiationException(clazz, "No default constructor found", ex); 		} 	}        //将给定源bean的属性值复制到目标bean中。     public static void copyProperties(Object source, Object target) throws BeansException { 		copyProperties(source, target, null, (String[]) null); 	}         //将给定源bean的属性值复制到给定目标bean中，     //只设置在给定的“可编辑”类(或接口)中定义的属性。     public static void copyProperties(Object source, Object target, Class&lt;?&gt; editable) throws BeansException { 		copyProperties(source, target, editable, (String[]) null); 	}        //将给定源bean的属性值复制到给定目标bean中，忽略给定的“ignoreProperties”。     public static void copyProperties(Object source, Object target, String... ignoreProperties) throws BeansException { 		copyProperties(source, target, null, ignoreProperties); 	}          //真正的属性拷贝处理方法：     //将给定源bean的属性值复制到给定目标bean中。     private static void copyProperties(Object source, Object target, Class&lt;?&gt; editable, String... ignoreProperties) 			throws BeansException {  		Assert.notNull(source, "Source must not be null"); 		Assert.notNull(target, "Target must not be null");  		Class&lt;?&gt; actualEditable = target.getClass(); 		if (editable != null) { 			if (!editable.isInstance(target)) { 				throw new IllegalArgumentException("Target class [" + target.getClass().getName() + 						"] not assignable to Editable class [" + editable.getName() + "]"); 			} 			actualEditable = editable; 		} 		PropertyDescriptor[] targetPds = getPropertyDescriptors(actualEditable); 		List&lt;String&gt; ignoreList = (ignoreProperties != null ? Arrays.asList(ignoreProperties) : null);  		for (PropertyDescriptor targetPd : targetPds) { 			Method writeMethod = targetPd.getWriteMethod(); 			if (writeMethod != null &amp;&amp; (ignoreList == null || !ignoreList.contains(targetPd.getName()))) { 				PropertyDescriptor sourcePd = getPropertyDescriptor(source.getClass(), targetPd.getName()); 				if (sourcePd != null) { 					Method readMethod = sourcePd.getReadMethod(); 					if (readMethod != null &amp;&amp; 							ClassUtils.isAssignable(writeMethod.getParameterTypes()[0], readMethod.getReturnType())) { 						try { 							if (!Modifier.isPublic(readMethod.getDeclaringClass().getModifiers())) { 								readMethod.setAccessible(true); 							} 							Object value = readMethod.invoke(source); 							if (!Modifier.isPublic(writeMethod.getDeclaringClass().getModifiers())) { 								writeMethod.setAccessible(true); 							} 							writeMethod.invoke(target, value); 						} 						catch (Throwable ex) { 							throw new FatalBeanException( 									"Could not copy property '" + targetPd.getName() + "' from source to target", ex); 						} 					} 				} 			} 		} 	}</code></pre> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp;org.apache.commons.beanutils.BeanUtils</strong></p> <pre class="has"><code class="language-java">    //根据可用的属性getter和setter克隆一个bean，即使bean类本身没有实现Cloneable。     public static Object cloneBean(Object bean) throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().cloneBean(bean);     }      //对于所有属性名相同的情况，将属性值从原始bean复制到目标bean。     public static void copyProperties(Object dest, Object orig) throws IllegalAccessException, InvocationTargetException {         BeanUtilsBean.getInstance().copyProperties(dest, orig);     }      //将指定的属性值复制到指定的目标bean，执行所需的任何类型转换。     public static void copyProperty(Object bean, String name, Object value) throws IllegalAccessException, InvocationTargetException {         BeanUtilsBean.getInstance().copyProperty(bean, name, value);     }      //返回指定bean提供读方法的整个属性集。     public static Map describe(Object bean) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().describe(bean);     }      //以字符串数组的形式返回指定bean的指定数组属性的值。     public static String[] getArrayProperty(Object bean, String name) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getArrayProperty(bean, name);     }      //以字符串的形式返回指定bean的指定索引属性的值。     public static String getIndexedProperty(Object bean, String name) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getIndexedProperty(bean, name);     }      //以字符串的形式返回指定bean的指定索引属性的值。     public static String getIndexedProperty(Object bean, String name, int index) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getIndexedProperty(bean, name, index);     }      //以字符串的形式返回指定bean的指定索引属性的值。     public static String getMappedProperty(Object bean, String name) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getMappedProperty(bean, name);     }      //以字符串的形式返回指定bean的指定索引属性的值。     public static String getMappedProperty(Object bean, String name, String key) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getMappedProperty(bean, name, key);     }      //为指定bean返回指定名称(可能是嵌套的)属性的值，作为字符串。     public static String getNestedProperty(Object bean, String name) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getNestedProperty(bean, name);     }      //以字符串的形式返回指定bean的指定属性的值，无论使用哪种属性引用格式。     public static String getProperty(Object bean, String name) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getProperty(bean, name);     }      //返回转换为字符串的指定bean的指定简单属性的值。     public static String getSimpleProperty(Object bean, String name) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {         return BeanUtilsBean.getInstance().getSimpleProperty(bean, name);     }      //根据指定的名称/值对填充指定bean的javabean属性。     public static void populate(Object bean, Map properties) throws IllegalAccessException, InvocationTargetException {         BeanUtilsBean.getInstance().populate(bean, properties);     }      //设置指定的属性值，根据需要执行类型转换以符合目标属性的类型。     public static void setProperty(Object bean, String name, Object value) throws IllegalAccessException, InvocationTargetException {         BeanUtilsBean.getInstance().setProperty(bean, name, value);     }</code></pre> <p><strong>使用推荐</strong>：</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;spring 与apache的BeanUtils相比，在性能上spring有极大的优势，因此在简单做属性赋值的时候推荐使用spring的，经过测试在大规模的赋值操作中spring性能可以达到apace性能的100倍；</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45859.htm">CommonsCollection6反序列化链学习</a></p>
+                                        <p>下一个：<a href="/news/article-46361.htm">宠物疫苗证明怎么开（宠物接种疫苗证明）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-33600.htm" title="广州宠物零食市场批发市场在哪里啊多少钱（广州宠物食品市场）">广州宠物零食市场批发市场在哪里啊多少钱（广州宠物食品市场）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-node-subscribe.htm" title="「11月11日」最高速度20.3M/S，2024年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「11月11日」最高速度20.3M/S，2024年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26994.htm" title="幼猫首次驱虫后多久打疫苗（幼猫首次驱虫后多久打疫苗啊）">幼猫首次驱虫后多久打疫苗（幼猫首次驱虫后多久打疫苗啊）</a></li>
+                        <li class="py-2"><a href="/news/article-33140.htm" title="宠物领养app申请界面在哪找（宠物领养app申请界面在哪找到）">宠物领养app申请界面在哪找（宠物领养app申请界面在哪找到）</a></li>
+                        <li class="py-2"><a href="/news/article-22810.htm" title="为什么给猫打针打不进去了（为什么给猫打疫苗打不进去）">为什么给猫打针打不进去了（为什么给猫打疫苗打不进去）</a></li>
+                        <li class="py-2"><a href="/news/article-22358.htm" title="动物疫苗属于兽药吗为什么不能打了（动物疫苗包括哪些）">动物疫苗属于兽药吗为什么不能打了（动物疫苗包括哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-24662.htm" title="孩子10几天后才说被猫咬了,打个狂犬疫苗能喝点小酒吗（打了狂犬疫苗六个月后又被猫抓伤了能茶喝吗?）">孩子10几天后才说被猫咬了,打个狂犬疫苗能喝点小酒吗（打了狂犬疫苗六个月后又被猫抓伤了能茶喝吗?）</a></li>
+                        <li class="py-2"><a href="/news/article-38919.htm" title="弹层-自定义拖拽指令">弹层-自定义拖拽指令</a></li>
+                        <li class="py-2"><a href="/news/article-25598.htm" title="2020上海宠物领养日什么时候结束的（上海领养宠物狗）">2020上海宠物领养日什么时候结束的（上海领养宠物狗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-v2ray.htm" title="「10月22日」最高速度21.4M/S，2024年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「10月22日」最高速度21.4M/S，2024年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
