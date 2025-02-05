@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-50336.htm" />
+    <title>Java中的字符串常量池是什么？</title>
+        <meta name="description" content="当您将字符串存储为 String&nbsp;str1&nbsp;=&nbsp;"Hello"; JVM会直接在一个单独的内存块（称为String常量池）中创建具有给定值的String对象。 每当我们尝" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-50336.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="Java中的字符串常量池是什么？" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/e10917faa3a2db8f98f50b5ceb348079.webp" />
+        <meta property="og:release_date" content="2025-02-03T09:25:34" />
+    <meta property="og:updated_time" content="2025-02-03T09:25:34" />
+        <meta property="og:description" content="当您将字符串存储为 String&nbsp;str1&nbsp;=&nbsp;"Hello"; JVM会直接在一个单独的内存块（称为String常量池）中创建具有给定值的String对象。 每当我们尝" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java中的字符串常量池是什么？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Java中的字符串常量池是什么？</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>当您将字符串存储为</p> <pre>String&nbsp;str1&nbsp;=&nbsp;"Hello";</pre> <p>JVM会直接在一个单独的内存块（称为String常量池）中创建具有给定值的String对象。</p> <p>每当我们尝试创建另一个String作为</p> <pre>String&nbsp;str2&nbsp;=&nbsp;"Hello";</pre> <p>JVM会验证String常量池中是否存在具有相同值的String对象，如果不是，JVM会创建新对象而不是创建新对象，而是将现有对象的引用分配给新变量。</p> <p>当我们将String存储为</p> <pre>String&nbsp;str&nbsp;=&nbsp;new&nbsp;String("Hello");</pre> <p>使用new关键字，将创建具有给定值的新对象，而与String常量池的内容无关。</p> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-49823.htm">宠物粮食加工厂设备生产厂家排名榜名单最新（宠物粮食加工厂需要投资多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-50337.htm">动物医院诊疗范围包括哪些（动物医院诊疗范围包括哪些项目）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-clash.htm" title="「12月2日」最高速度22M/S，2024年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「12月2日」最高速度22M/S，2024年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-clash-subscribe.htm" title="「11月23日」最高速度18.5M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「11月23日」最高速度18.5M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-shadowrocket-node.htm" title="「1月19日」最高速度19.9M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「1月19日」最高速度19.9M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25598.htm" title="2020上海宠物领养日什么时候结束的（上海领养宠物狗）">2020上海宠物领养日什么时候结束的（上海领养宠物狗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-v2ray.htm" title="「11月8日」最高速度18.6M/S，2024年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「11月8日」最高速度18.6M/S，2024年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-49823.htm" title="宠物粮食加工厂设备生产厂家排名榜名单最新（宠物粮食加工厂需要投资多少钱）">宠物粮食加工厂设备生产厂家排名榜名单最新（宠物粮食加工厂需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-30103.htm" title="动物生物疫苗概念股票有哪些 动物生物疫苗概念股票有哪些公司">动物生物疫苗概念股票有哪些 动物生物疫苗概念股票有哪些公司</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-subscribe-node.htm" title="「1月12日」最高速度19.3M/S，2025年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月12日」最高速度19.3M/S，2025年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-high-speed-nodes.htm" title="「11月7日」最高速度23M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「11月7日」最高速度23M/S，2024年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21898.htm" title="宠物寄养协议书范本免费模板图片高清（宠物寄养协议书范本免费模板图片高清下载）">宠物寄养协议书范本免费模板图片高清（宠物寄养协议书范本免费模板图片高清下载）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

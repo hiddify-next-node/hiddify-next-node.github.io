@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-40405.htm" />
@@ -9,12 +9,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
-    
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-40405.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="C++引用及其底层原理" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/655cd581496a37d53f6142352f95b95b.webp" />
+        <meta property="og:release_date" content="2025-01-14T07:34:42" />
+    <meta property="og:updated_time" content="2025-01-14T07:34:42" />
+        <meta property="og:description" content="文章目录        引用 引用的注意事项   引用做参数 实参传值和传引用的优劣   引用做函数返回值 传引用返回 引用的权限 引用经典笔试题 产生临时变量的情况 关于右值 引用的底层原理    " />
+            
     <script type="application/x-javascript">
     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 
     function hideURLbar() { window.scrollTo(0, 1); }
     </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C++引用及其底层原理">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- //for-mobile-apps -->
     <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -133,16 +161,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-high-speed-nodes.htm" title="「12月26日」最高速度19.8M/S，2024年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「12月26日」最高速度19.8M/S，2024年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-24498.htm" title="Vue实战：基于Vue-ElementUI的权限管理系统之动态路由和动态按钮显示">Vue实战：基于Vue-ElementUI的权限管理系统之动态路由和动态按钮显示</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-shadowrocket-node.htm" title="「10月10日」最高速度23M/S，2024年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「10月10日」最高速度23M/S，2024年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-29-clash-v2ray-ss-ssr.htm" title="「12月29日」最高速度18.9M/S，2024年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「12月29日」最高速度18.9M/S，2024年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-39905.htm" title="宠物用品在哪进货最便宜的（宠物用品批发进货渠道app）">宠物用品在哪进货最便宜的（宠物用品批发进货渠道app）</a></li>
-                        <li class="py-2"><a href="/news/article-39418.htm" title="新手开宠物店需要了解哪些知识（新手开宠物店需要会什么）">新手开宠物店需要了解哪些知识（新手开宠物店需要会什么）</a></li>
-                        <li class="py-2"><a href="/news/article-31177.htm" title="动物医院评价怎么写好（宠物医院评价怎么写）">动物医院评价怎么写好（宠物医院评价怎么写）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-6-clash-node.htm" title="「1月6日」最高速度19.8M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「1月6日」最高速度19.8M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-node-subscribe-links.htm" title="「11月29日」最高速度21.3M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「11月29日」最高速度21.3M/S，2024年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-11-clash-windows.htm" title="「1月11日」最高速度19.8M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「1月11日」最高速度19.8M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30271.htm" title="Vue组件之间传值/调用方法的几种方式">Vue组件之间传值/调用方法的几种方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-free-clash-subscribe.htm" title="「2月2日」最高速度20.9M/S，2025年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「2月2日」最高速度20.9M/S，2025年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-48800.htm" title="vue实现动态列表尾部添加数据执行动画_vue.js">vue实现动态列表尾部添加数据执行动画_vue.js</a></li>
+                        <li class="py-2"><a href="/news/article-28386.htm" title="Kafka集成Kerberos之后如何使用生产者消费者命令">Kafka集成Kerberos之后如何使用生产者消费者命令</a></li>
+                        <li class="py-2"><a href="/news/article-44869.htm" title="宠物店培训学校在哪里报名（宠物培训班收费多少钱）">宠物店培训学校在哪里报名（宠物培训班收费多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-26991.htm" title="设计模式学习笔记原型模式以及深浅拷贝的区别">设计模式学习笔记原型模式以及深浅拷贝的区别</a></li>
+                        <li class="py-2"><a href="/news/article-48265.htm" title="木炭生产机器全套全自动（木炭生产机器 全套 全自动）">木炭生产机器全套全自动（木炭生产机器 全套 全自动）</a></li>
+                        <li class="py-2"><a href="/news/article-40881.htm" title="兽用疫苗回温器（兽用疫苗回温器怎么用）">兽用疫苗回温器（兽用疫苗回温器怎么用）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="「1月22日」最高速度20.3M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月22日」最高速度20.3M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29299.htm" title="我们如何将值添加到MySQL表的列中？">我们如何将值添加到MySQL表的列中？</a></li>
                     </ul>
     </div>
 </div>
@@ -154,16 +182,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
