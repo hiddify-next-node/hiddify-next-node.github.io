@@ -321,13 +321,14 @@ ul.callbacks_tabs.callbacks1_tabs {
     text-align: center;
     margin-top: 14em;
 }
-.banner-info h3 {
+.banner-info h3, .banner-info h2 {
 	font-family: 'Days One', sans-serif;
     color: #fff;
     font-size: 44px;
 	line-height:1.3em;
 }
-.banner-info h3 span {
+.banner-info h2 {font-size: 50px;}
+.banner-info h3, .banner-info h2 span {
 	display:block;
 }
 .banner-info p {
@@ -1290,7 +1291,7 @@ padding:80px 0;
 	.navbar-default .navbar-brand {
 		font-size: 32px;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 38px;
 	}
 	.banner-info {
@@ -1464,7 +1465,7 @@ padding:80px 0;
 	.navbar-default .navbar-nav > li > a {
 		font-size: 15px;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 36px;
 	}
 	.banner-info p {
@@ -1497,7 +1498,7 @@ padding:80px 0;
 	.navbar-nav {
 		width: 63%;
 	}	
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 30px;
 	}
 	.banner-bottom p {
@@ -1695,7 +1696,7 @@ padding:80px 0;
 	.contact-form input[type=submit] {
 		padding: 8px 23px;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 27px;
 	}
 	.banner {
@@ -1966,7 +1967,7 @@ padding:80px 0;
 	.callbacks_nav {
 		top: 24%;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 25px;
 	}
 	.banner-info p {
@@ -2008,7 +2009,7 @@ padding:80px 0;
 	.callbacks_nav {
 		top: 51%;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 23px;
 	}
 	.banner-info p {
@@ -2092,7 +2093,7 @@ padding:80px 0;
 	.nav > li > a {
 		padding: 8px 0px;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 21px;
 	}
 	.callbacks_nav {
@@ -2147,7 +2148,7 @@ padding:80px 0;
 	.navbar-header {
 		margin-top: 0;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 20px;
 	}
 	.banner-info p {
@@ -2167,7 +2168,7 @@ padding:80px 0;
 	.sb-search-input {
 		width: 80%;
 	}
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 18px;
 	}
 	.banner-info p {
@@ -2335,7 +2336,7 @@ padding:80px 0;
 	}
 }
 @media (max-width: 384px){
-	.banner-info h3 span {
+	.banner-info h3 span, .banner-info h2 span {
 		display: inline-block;
 	}
 	.banner-info p {
@@ -2433,7 +2434,7 @@ padding:80px 0;
 	
 }
 @media (max-width: 320px){
-	.banner-info h3 {
+	.banner-info h3, .banner-info h2 {
 		font-size: 19px;
 	}
 	.banner-info p {

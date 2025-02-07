@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-52971.htm" />
+    <title>Blazor 使用拖放（drag and drop）上传文件 , 粘贴文件上传</title>
+        <meta name="description" content="在很多上传文件的应用实例中, 都可以看到[拖放文件到此上传]这种骚功能 ,今天我们就来试试Blazor能不能完成这个想法. 原文链接：https://www.cnblogs.com/densen201" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-52971.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="Blazor 使用拖放（drag and drop）上传文件 , 粘贴文件上传" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/fe20841bff72332ef94bf3352c5b3469.webp" />
+        <meta property="og:release_date" content="2025-02-08T04:39:37" />
+    <meta property="og:updated_time" content="2025-02-08T04:39:37" />
+        <meta property="og:description" content="在很多上传文件的应用实例中, 都可以看到[拖放文件到此上传]这种骚功能 ,今天我们就来试试Blazor能不能完成这个想法. 原文链接：https://www.cnblogs.com/densen201" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Blazor 使用拖放（drag and drop）上传文件 , 粘贴文件上传">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                                <li>
+                                    <a href="#">关于</a>
+                                </li>
+                                <li>
+                                    <a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Blazor 使用拖放（drag and drop）上传文件 , 粘贴文件上传</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="在很多上传文件的应用实例中-都可以看到拖放文件到此上传这种骚功能-今天我们就来试试blazor能不能完成这个想法">在很多上传文件的应用实例中, 都可以看到[拖放文件到此上传]这种骚功能 ,今天我们就来试试Blazor能不能完成这个想法.</h3> <p>原文链接：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/densen2014/p/16128246.html"  target="_blank" rel="nofollow">https://www.cnblogs.com/densen2014/p/16128246.html</a></p> <h2 id="简述html5拖放">简述HTML5拖放</h2> <p>拖放是HTML5标准的一部分，任何元素都能够拖放，也能够将本地的文件拖放到页面上。</p> <h3 id="设置元素可拖放">设置元素可拖放</h3> <p>为了使元素可拖动，把 draggable 属性设置为 true</p> <pre><code>&lt;img draggable="true" /&gt;</code></pre> <h3 id="拖放事件">拖放事件</h3> <p>有7个拖放事件可以捕获，如下：</p> <p>dragstart：开始拖元素触发</p> <p>dragenter：元素拖进可drop元素（绑定drop事件的元素）时触发</p> <p>dragover：当元素拖动到drop元素上时触发</p> <p>drop：当元素放下到drop元素触发</p> <p>dragleave ：当元素离开drop元素时触发</p> <p>drag：每次元素被拖动时会触发</p> <p>dragend：放开拖动元素时触发</p> <p>完成一次拖放的事件过程是： dragstart –&gt; dragenter –&gt; dragover –&gt; drop –&gt; dragend</p> <h3 id="浏览器支持">浏览器支持</h3> <p>Edge、Firefox、Opera 12、Chrome 以及 Safari 5 支持拖放。</p> <h2 id="拖拽上传实现">拖拽上传实现</h2> <h3 id="1新建工程n02drag将项目添加到解决方案中">1.新建工程n02drag,将项目添加到解决方案中</h3> <pre><code>dotnet new blazorserver -o n02drag dotnet sln add n02drag/n02drag.csproj</code></pre> <h3 id="2在文件夹wwwrootlib添加drag子文件夹新建appjs文件">2.在文件夹wwwroot/lib,添加drag子文件夹,新建app.js文件</h3> <p>先阻止页面默认的拖放行为，不然页面会被拖放的文件替换了。</p> <pre><code>//阻止浏览器默认行为 document.addEventListener( "dragleave", function(e) {      e.preventDefault(); }, false); document.addEventListener( "drop", function(e) {      e.preventDefault(); }, false); document.addEventListener( "dragenter", function(e) {      e.preventDefault(); }, false); document.addEventListener( "dragover", function(e) {      e.preventDefault(); }, false);</code></pre> <p>设置drop区域</p> <p>当文件拖放到drop区域时，就能触发上传。</p> <pre><code>    element.addEventListener("drop", function (e) {          try {             var fileList = e.dataTransfer.files; //获取文件对象             //检测是否是拖拽文件到页面的操作             if (fileList.length == 0) {                 return false;             }              inputFile.files = e.dataTransfer.files;             const event = new Event('change', { bubbles: true });             inputFile.dispatchEvent(event);         }         catch (e) {             wrapper.invokeMethodAsync('DropAlert', e);         }     }, false);</code></pre> <h3 id="2在文件pagesindexrazor添加上传组件">2.在文件Pages/Index.razor,添加上传组件</h3> <p>页面</p> <pre><code>@implements IAsyncDisposable @inject IJSRuntime JS  &lt;div @ref="UploadElement" style="padding: 20px; width: 200px; height: 200px; background-color: cornflowerblue; border: 2px dashed #0087F7; border-radius: 5px; "&gt;     &lt;p&gt;拖放上传文件&lt;/p&gt;      &lt;InputFile OnChange="OnChange" class="form-control" multiple @ref="inputFile"/&gt; &lt;/div&gt;  &lt;pre&gt; &lt;code&gt;         @uploadstatus &lt;/code&gt; &lt;/pre&gt;</code></pre> <p>代码</p> <ol> <li>InputFile 开启 multiple ,接受多文件上传</li> <li>使用JS隔离技术</li> <li>Dispose处理回收</li> </ol> <pre><code> @code{     [Inject] protected Microsoft.AspNetCore.Hosting.IWebHostEnvironment? HostEnvironment { get; set; } //获取IWebHostEnvironment      protected ElementReference UploadElement { get; set; }     protected InputFile? inputFile { get; set; }      private DotNetObjectReference&lt;Index&gt;? wrapper;      private IJSObjectReference? module;     private IJSObjectReference? dropInstance;      protected string UploadPath = "";     protected string? uploadstatus;     long maxFileSize = 1024 * 1024 * 15;      protected override void OnAfterRender(bool firstRender)     {         if (!firstRender) return;         UploadPath = Path.Combine(HostEnvironment!.WebRootPath, "Upload"); //初始化上传路径         if (!Directory.Exists(UploadPath)) Directory.CreateDirectory(UploadPath); //不存在则新建目录     }      protected async Task OnChange(InputFileChangeEventArgs e)     {         int i = 0;         var selectedFiles = e.GetMultipleFiles(100);         foreach (var item in selectedFiles)         {             i++;             await OnSubmit(item);             uploadstatus += Environment.NewLine + $"[{i}]: " + item.Name;         }     }      protected async Task OnSubmit(IBrowserFile efile)     {         if (efile == null) return;         var tempfilename = Path.Combine(UploadPath, efile.Name);         await using FileStream fs = new(tempfilename, FileMode.Create);         using var stream = efile.OpenReadStream(maxFileSize);         await stream.CopyToAsync(fs);         StateHasChanged();     }       protected override async Task OnAfterRenderAsync(bool firstRender)     {         if (!firstRender) return;          module = await JS.InvokeAsync&lt;IJSObjectReference&gt;("import", "./lib/drag/app.js");         wrapper = DotNetObjectReference.Create(this);         dropInstance = await module.InvokeAsync&lt;IJSObjectReference&gt;("init", wrapper , UploadElement, inputFile!.Element);     }      [JSInvokable]     public void DropAlert(string msg)     {         uploadstatus  += Environment.NewLine + $"[!Alert!]: " + msg;         StateHasChanged();     }       async ValueTask IAsyncDisposable.DisposeAsync()     {         if (dropInstance != null)         {             await dropInstance.InvokeVoidAsync("dispose");             await dropInstance.DisposeAsync();         }          if (wrapper != null)         {             wrapper.Dispose();         }          if (module != null)         {             await module.DisposeAsync();         }     }  }</code></pre> <h3 id="3就这么简单吗我们还可以加上一些骚功能--粘贴文件上传">3.就这么简单吗?我们还可以加上一些骚功能 ???????? 粘贴文件上传</h3> <pre><code>    element.addEventListener('paste', function (e) {              inputFile.files = e.clipboardData.files;         const event = new Event('change', { bubbles: true });         inputFile.dispatchEvent(event);     }, false);</code></pre> <h3 id="4限制传输格式">4.限制传输格式</h3> <p>*时间有限,js部分同学们自己完成吧,这里是InputFile 上限制一下</p> <pre><code>&lt;div style="padding-top:40px; padding: 20px; width: 200px; height: 200px; background-color: cornflowerblue; border: 2px dashed #0087F7; border-radius: 5px; "&gt;     上传图片     &lt;InputFile OnChange="OnChange" style="max-width: 400px" class="form-control" multiple accept='image/*' /&gt; &lt;/div&gt;</code></pre> <h3 id="5完整js代码">5.完整JS代码</h3> <pre><code>export function init(wrapper, element, inputFile) {      //阻止浏览器默认行为     document.addEventListener("dragleave", function (e) {         e.preventDefault();     }, false);     document.addEventListener("drop", function (e) {         e.preventDefault();     }, false);     document.addEventListener("dragenter", function (e) {         e.preventDefault();     }, false);     document.addEventListener("dragover", function (e) {         e.preventDefault();     }, false);       element.addEventListener("drop", function (e) {          try {             var fileList = e.dataTransfer.files; //获取文件对象             //检测是否是拖拽文件到页面的操作             if (fileList.length == 0) {                 return false;             }              inputFile.files = e.dataTransfer.files;             const event = new Event('change', { bubbles: true });             inputFile.dispatchEvent(event);         }         catch (e) {             wrapper.invokeMethodAsync('DropAlert', e);         }     }, false);      element.addEventListener('paste', function (e) {              inputFile.files = e.clipboardData.files;         const event = new Event('change', { bubbles: true });         inputFile.dispatchEvent(event);     }, false);      return {         dispose: () =&gt; {             element.removeEventListener('dragleave', onDragLeave);             element.removeEventListener("drop", onDrop);             element.removeEventListener('dragenter', onDragHover);             element.removeEventListener('dragover', onDragHover);             element.removeEventListener('paste', handler);         }     } }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/eba4d9069d9c632b9c938493e6285c19.jpg" alt="Blazor 使用拖放（drag and drop）上传文件 , 粘贴文件上传"></p> <h3 id="参考资料">参考资料</h3> <p>用20行代码实现文件上传,浏览目录功能 (Blazor server)<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/densen2014/Blazor100/wiki/9.-%E7%94%A820%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0,%E6%B5%8F%E8%A7%88%E7%9B%AE%E5%BD%95%E5%8A%9F%E8%83%BD-(Blazor-server)"  target="_blank" rel="nofollow">https://github.com/densen2014/Blazor100/wiki/9.-用20行代码实现文件上传,浏览目录功能-(Blazor-server)</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52443.htm">猫瘟***多少钱（猫瘟***需要多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-52972.htm">狗粮在哪里进货（狗粮在哪里进货渠道）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-30743.htm" title="木炭生产机器全套全自动价格（木炭生产机器 全套 全自动价格）">木炭生产机器全套全自动价格（木炭生产机器 全套 全自动价格）</a></li>
+                        <li class="py-2"><a href="/news/article-46844.htm" title="宠物领养网免费同城多少钱一个 宠物领养网免费同城多少钱一个月">宠物领养网免费同城多少钱一个 宠物领养网免费同城多少钱一个月</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-v2ray-ss-ssr.htm" title="「11月30日」最高速度21M/S，2024年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「11月30日」最高速度21M/S，2024年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37925.htm" title="Java-GUI编程之处理位图">Java-GUI编程之处理位图</a></li>
+                        <li class="py-2"><a href="/news/article-49319.htm" title="宠物粮市场销售渠道分析报告（宠物粮市场前景怎么样）">宠物粮市场销售渠道分析报告（宠物粮市场前景怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-42871.htm" title="动物疫苗间隔时间多长可以打第三针（动物疫苗接种间隔）">动物疫苗间隔时间多长可以打第三针（动物疫苗接种间隔）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-shadowrocket-node.htm" title="「12月31日」最高速度22.6M/S，2025年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「12月31日」最高速度22.6M/S，2025年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-clash-v2ray-ss-ssr.htm" title="「1月4日」最高速度22.9M/S，2025年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「1月4日」最高速度22.9M/S，2025年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26529.htm" title="哪些属相不能养狗狗（什么属相不适合养狗狗）">哪些属相不能养狗狗（什么属相不适合养狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-47330.htm" title="郑州市动物防疫站电话查询号码（郑州动物防疫监督所）">郑州市动物防疫站电话查询号码（郑州动物防疫监督所）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
