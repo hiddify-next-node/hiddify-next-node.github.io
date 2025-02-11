@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-54600.htm" />
+    <title>SpringMVC之@RequestMapping注解</title>
+        <meta name="description" content="目录 1.@RequestMapping注解的功能 2.@RequestMapping注解的位置 3.@RequestMapping注解的value属性 4、@RequestMapping注解的met" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-54600.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="SpringMVC之@RequestMapping注解" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/e52e2ba9497edc31f92f7f84775ee5dd.webp" />
+        <meta property="og:release_date" content="2025-02-11T05:42:17" />
+    <meta property="og:updated_time" content="2025-02-11T05:42:17" />
+        <meta property="og:description" content="目录 1.@RequestMapping注解的功能 2.@RequestMapping注解的位置 3.@RequestMapping注解的value属性 4、@RequestMapping注解的met" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringMVC之@RequestMapping注解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">SpringMVC之@RequestMapping注解</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc"><strong>目录</strong></p> <p id="1.%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%8A%9F%E8%83%BD-toc" style="margin-left:0px;"><a href="#1.%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%8A%9F%E8%83%BD" rel="nofollow">1.@RequestMapping注解的功能</a></p> <p id="2.%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%8D%E7%BD%AE-toc" style="margin-left:0px;"><a href="#2.%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84%E4%BD%8D%E7%BD%AE" rel="nofollow">2.@RequestMapping注解的位置</a></p> <p id="3.%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84value%E5%B1%9E%E6%80%A7-toc" style="margin-left:0px;"><a href="#3.%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84value%E5%B1%9E%E6%80%A7" rel="nofollow">3.@RequestMapping注解的value属性</a></p> <p id="4%E3%80%81%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84method%E5%B1%9E%E6%80%A7-toc" style="margin-left:0px;"><a href="#4%E3%80%81%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84method%E5%B1%9E%E6%80%A7" rel="nofollow">4、@RequestMapping注解的method属性</a></p> <p id="5%E3%80%81%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84params%E5%B1%9E%E6%80%A7%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89-toc" style="margin-left:0px;"><a href="#5%E3%80%81%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84params%E5%B1%9E%E6%80%A7%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89" rel="nofollow">5、@RequestMapping注解的params属性（了解）</a></p> <p id="6%E3%80%81%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84headers%E5%B1%9E%E6%80%A7%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89-toc" style="margin-left:0px;"><a href="#6%E3%80%81%40RequestMapping%E6%B3%A8%E8%A7%A3%E7%9A%84headers%E5%B1%9E%E6%80%A7%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89" rel="nofollow">6、@RequestMapping注解的headers属性（了解）</a></p> <p id="7%E3%80%81SpringMVC%E6%94%AF%E6%8C%81ant%E9%A3%8E%E6%A0%BC(%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D)%E7%9A%84%E8%B7%AF%E5%BE%84-toc" style="margin-left:0px;"><a href="#7%E3%80%81SpringMVC%E6%94%AF%E6%8C%81ant%E9%A3%8E%E6%A0%BC%28%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%29%E7%9A%84%E8%B7%AF%E5%BE%84" rel="nofollow">7、SpringMVC支持ant风格(模糊匹配)的路径</a></p> <p id="8%E3%80%81SpringMVC%E6%94%AF%E6%8C%81%E8%B7%AF%E5%BE%84%E4%B8%AD%E7%9A%84%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89-toc" style="margin-left:0px;"><a href="#8%E3%80%81SpringMVC%E6%94%AF%E6%8C%81%E8%B7%AF%E5%BE%84%E4%B8%AD%E7%9A%84%E5%8D%A0%E4%BD%8D%E7%AC%A6%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89" rel="nofollow">8、SpringMVC支持路径中的占位符（重点）</a></p> <hr id="hr-toc"/> </h1> <p>从注解名称上我们可以看到，@RequestMapping注解的作用就是将请求和处理请求的控制器方法关联 起来，建立映射关系。 SpringMVC 接收到指定的请求，就会来找到在映射关系中对应的控制器方法来处理这个请求。</p> </h1> <p>2.1@RequestMapping标识一个类：设置映射请求的请求路径的初始信息</p> <p>2.2@RequestMapping标识一个方法：设置映射请求请求路径的具体信息</p> <pre><code class="language-java">@Controller @RequestMapping("/test") public class RequestMappingController { //此时请求映射所映射的请求的请求路径为：/test/testRequestMapping @RequestMapping("/testRequestMapping") public String testRequestMapping(){ return "success"; } }</code></pre> </h1> <p><img fetchpriority="high" decoding="async" alt="" height="312" src="http://img.555519.xyz/uploads3/20220830/44cfcf7ec3d67a2188683d073696879e.jpg"></p> <p>@RequestMapping注解的value属性通过请求的请求地址匹配请求映射</p> <p>@RequestMapping注解的value属性是一个字符串类型的数组，表示该请求映射能够匹配多个请求地址 所对应的请求</p> <p>@RequestMapping注解的value属性必须设置，至少通过请求地址匹配请求映射</p> </h1> <p>@RequestMapping注解的method属性通过请求的请求方式（get或post）匹配请求映射 @RequestMapping注解的method属性是一个RequestMethod类型的数组，表示该请求映射能够匹配</p> <p>多种请求方式的请求 若当前请求的请求地址满足请求映射的value属性，但是请求方式不满足method属性，则浏览器报错 405：Request method 'POST' not supported</p> <pre><code class="language-html">&lt;a th:href="@{/test}"&gt;测试@RequestMapping的value属性--&gt;/test&lt;/a&gt;&lt;br&gt; &lt;form th:action="@{/test}" method="post"&gt; &lt;input type="submit"&gt; &lt;/form&gt;</code></pre> <pre><code class="language-java">@RequestMapping( value = {"/testRequestMapping", "/test"}, method = {RequestMethod.GET, RequestMethod.POST} ) public String testRequestMapping(){ return "success"; }</code></pre> <p>注： 1、对于处理指定请求方式的控制器方法，SpringMVC中提供了@RequestMapping的派生注解 处理get请求的映射--&gt;@GetMapping 处理post请求的映射--&gt;@PostMapping 处理put请求的映射--&gt;@PutMapping 处理delete请求的映射--&gt;@DeleteMapping 2、常用的请求方式有get，post，put，delete</p> <p>但是目前浏览器只支持get和post，若在form表单提交时，为method设置了其他请求方式的字符 串（put或delete），则按照默认的请求方式get处理 若要发送put和delete请求，则需要通过spring提供的过滤器HiddenHttpMethodFilter，在 RESTful部分会讲到</p> </h1> <p>@RequestMapping注解的params属性通过请求的请求参数匹配请求映射</p> <p>@RequestMapping注解的params属性是一个字符串类型的数组，可以通过四种表达式设置请求参数 和请求映射的匹配关系</p> <p>"param"：要求请求映射所匹配的请求必须携带param请求参数</p> <p>"!param"：要求请求映射所匹配的请求必须不能携带param请求参数</p> <p>&nbsp;"param=value"：要求请求映射所匹配的请求必须携带param请求参数且param=value</p> <p>"param!=value"：要求请求映射所匹配的请求必须携带param请求参数但是param!=value</p> <pre><code class="language-html">&lt;a th:href="@{/test(username='admin',password=123456)"&gt;测试@RequestMapping的 params属性--&gt;/test&lt;/a&gt;&lt;br&gt;</code></pre> <pre><code class="language-java">@RequestMapping( value = {"/testRequestMapping", "/test"} ,method = {RequestMethod.GET, RequestMethod.POST} ,params = {"username","password!=123456"} ) public String testRequestMapping(){ return "success"; }</code></pre> <p>注： 若当前请求满足@RequestMapping注解的value和method属性，但是不满足params属性，此时 页面回报错400：Parameter conditions "username, password!=123456" not met for actual request parameters: username={admin}, password={123456}</p> </h1> <p>@RequestMapping注解的headers属性通过请求的请求头信息匹配请求映射</p> <p>@RequestMapping注解的headers属性是一个字符串类型的数组，可以通过四种表达式设置请求头信 息和请求映射的匹配关系</p> <p>"header"：要求请求映射所匹配的请求必须携带header请求头信息</p> <p>"!header"：要求请求映射所匹配的请求必须不能携带header请求头信息</p> <p>"header=value"：要求请求映射所匹配的请求必须携带header请求头信息且header=value</p> <p>"header!=value"：要求请求映射所匹配的请求必须携带header请求头信息且header!=value</p> <p>若当前请求满足@RequestMapping注解的value和method属性，但是不满足headers属性，此时页面 显示404错误，即资源未找到</p> </h1> <p>&nbsp;？：表示任意的单个字符（/ ，？不行）</p> <p>*：表示任意的0个或多个字符</p> <p>**：表示任意的一层或多层目录</p> <p>注意：在使用**时，只能使用/**/xxx的方式</p> <pre><code class="language-java"> @RequestMapping(             value = {"/a?a/test"},             method = {RequestMethod.GET,RequestMethod.POST},             params = {"username","password!=123456"},             headers = {"header"}       )</code></pre> <pre><code class="language-html">&lt;a th:href="@{//a1a/test(username'admin',password=123456)}"&gt;param&lt;/a&gt;</code></pre> </h1> <p>原始方式：/deleteUser?id=1</p> <p>user/SpringMVC/to/controller</p> <p>rest方式：/deleteUser/1</p> <p>SpringMVC路径中的占位符常用于RESTful风格中，当请求路径中将某些数据通过路径的方式传输到服 务器中，就可以在相应的@RequestMapping注解的value属性中通过占位符{xxx}表示传输的数据，在 通过@PathVariable注解，将占位符所表示的数据赋值给控制器方法的形参</p> <pre><code class="language-html">&lt;a th:href="@{/testRest/1/admin}"&gt;测试路径中的占位符--&gt;/testRest&lt;/a&gt;&lt;br&gt;</code></pre> <pre><code class="language-java">@RequestMapping("/testRest/{id}/{username}") public String testRest(@PathVariable("id") String id, @PathVariable("username") String username){ System.out.println("id:"+id+",username:"+username); return "success"; } //最终输出的内容为--&gt;id:1,username:admin</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-54054.htm">同城免费领养小动物（同城免费领养猫猫）</a></p>
+                                        <p>下一个：<a href="/news/article-54601.htm">Vue3+Element plus项目搭建</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-47817.htm" title="动物疫苗注射方法有哪些图片 动物疫苗注射方法有哪些图片大全">动物疫苗注射方法有哪些图片 动物疫苗注射方法有哪些图片大全</a></li>
+                        <li class="py-2"><a href="/news/article-44870.htm" title="宠物粮食加工厂设备哪的好一点呢知乎 宠物粮食加工厂设备哪的好一点呢知乎">宠物粮食加工厂设备哪的好一点呢知乎 宠物粮食加工厂设备哪的好一点呢知乎</a></li>
+                        <li class="py-2"><a href="/news/article-30104.htm" title="给动物打疫苗要多少钱猫咪打的（猫打宠物疫苗多少钱）">给动物打疫苗要多少钱猫咪打的（猫打宠物疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-34917.htm" title="广州宠物救助站电话号码查询（广州宠物狗救助站电话）">广州宠物救助站电话号码查询（广州宠物狗救助站电话）</a></li>
+                        <li class="py-2"><a href="/news/article-39417.htm" title="标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）">标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-clash.htm" title="「12月2日」最高速度22M/S，2024年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「12月2日」最高速度22M/S，2024年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-33139.htm" title="幼猫体内驱虫药推荐（幼猫体内驱虫注意事项）">幼猫体内驱虫药推荐（幼猫体内驱虫注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-46844.htm" title="宠物领养网免费同城多少钱一个 宠物领养网免费同城多少钱一个月">宠物领养网免费同城多少钱一个 宠物领养网免费同城多少钱一个月</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-v2ray.htm" title="「12月1日」最高速度20.4M/S，2024年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「12月1日」最高速度20.4M/S，2024年Shadowrocket/SSR/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41882.htm" title="招财最厉害的狗（招财最厉害的狗图片带字大全）">招财最厉害的狗（招财最厉害的狗图片带字大全）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

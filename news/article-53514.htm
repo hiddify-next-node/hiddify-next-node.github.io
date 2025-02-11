@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-53514.htm" />
+    <title>js  查找字符串中指定字符 模糊查询  不区分大小写</title>
+        <meta name="description" content="js &nbsp;查找特定字符 模糊查询 &nbsp;不区分大小写   var str = "hello  world ! hello  coder!" ;   //查找‘HELLO’是否存在,找不到" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-53514.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="js  查找字符串中指定字符 模糊查询  不区分大小写" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/655cd581496a37d53f6142352f95b95b.webp" />
+        <meta property="og:release_date" content="2025-02-09T10:03:47" />
+    <meta property="og:updated_time" content="2025-02-09T10:03:47" />
+        <meta property="og:description" content="js &nbsp;查找特定字符 模糊查询 &nbsp;不区分大小写   var str = "hello  world ! hello  coder!" ;   //查找‘HELLO’是否存在,找不到" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="js  查找字符串中指定字符 模糊查询  不区分大小写">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">js  查找字符串中指定字符 模糊查询  不区分大小写</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>js &nbsp;查找特定字符 模糊查询 &nbsp;不区分大小写</strong></p> <pre><code>  var str = "hello  world ! hello  coder!" ;   //查找‘HELLO’是否存在,找不到返回null   var reg = new RegExp('HELLO','i') ;   var isHas = str.match(reg);   console.log(isHas);    //打印结果： ["hello", index: 0, input: "hello  world ! hello  coder!", groups: undefined]</code></pre> <pre><code>var str="Hello world!"; //查找"Hello" var patt=new RegExp('HELLO','i') ; var result=patt.test(str); console.log(result) // true</code></pre> <p>如上两种，用正则new RegExp，test/match查找可以实现，不区分大小写</p> <p>js 查找字符串中是否包含指定的字符串</p> <p>1、indexOf()</p> <pre><code>var str = "123"; console.log(str.indexOf("3") != -1 ); // true</code></pre> <p>indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。如果要检索的字符串值<strong>没有找到，则该方法返回 -1</strong>。</p> <p>2、includes()</p> <pre><code>var str = "Hello world, welcome to the Runoob。"; var n = str.includes("world"); //true</code></pre> <p>includes() 方法用于判断字符串是否包含指定的子字符串，如果找到匹配的字符串则返回 true，否则返回 false。注意： includes() 方法<strong>区分</strong>大小写。</p> <p>3、search()</p> <pre><code>var str="Visit W3School!" console.log(str.search(/W3School/)) //6  var str="Visit W3School!" console.log(str.search('W3School')) //6</code></pre> <p>search() 方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。如果匹配到字符串则返回，字符串所在索引。</p> <p>4、match()</p> <pre><code>var str="The rain in SPAIN stays mainly in the plain"; var n=str.match(/ain/g); // ain,ain,ain</code></pre> <p>match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。注意： includes() 方法不区分大小写。</p> <p>5、test()</p> <pre><code>if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) { &nbsp;&nbsp;&nbsp;&nbsp;console.log("移动") } else { &nbsp;&nbsp;&nbsp;&nbsp;console.log("PC") }  var str="Hello world!"; //查找"Hello" var patt=/Hello/g; var result=patt.test(str); console.log(result) // true</code></pre> <p>test() 方法用于检测一个字符串是否匹配某个模式。如果字符串中有匹配的值返回 true ，否则返回 false。</p> <p>6、exec()</p> <pre><code>var str="Hello world!"; //查找"Hello" var patt=/Hello/g; var result=patt.exec(str); console.log(result) // Hello</code></pre> <p>exec() 方法用于检索字符串中的正则表达式的匹配。如果字符串中有匹配的值返回该匹配值，否则返回 null。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52972.htm">狗粮在哪里进货（狗粮在哪里进货渠道）</a></p>
+                                        <p>下一个：<a href="/news/article-53515.htm">Kubernetes Ingress作用及Ingress-Nginx实际操作详解</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-clash-windows.htm" title="「1月5日」最高速度21.6M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「1月5日」最高速度21.6M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-node-subscribe.htm" title="「12月24日」最高速度21.5M/S，2024年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「12月24日」最高速度21.5M/S，2024年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22358.htm" title="动物疫苗属于兽药吗为什么不能打了（动物疫苗包括哪些）">动物疫苗属于兽药吗为什么不能打了（动物疫苗包括哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-39418.htm" title="新手开宠物店需要了解哪些知识（新手开宠物店需要会什么）">新手开宠物店需要了解哪些知识（新手开宠物店需要会什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-free-v2ray-subscribe.htm" title="「12月19日」最高速度20.7M/S，2024年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「12月19日」最高速度20.7M/S，2024年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-3-free-high-speed-nodes.htm" title="「1月3日」最高速度18.1M/S，2025年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「1月3日」最高速度18.1M/S，2025年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-38920.htm" title="vue中this.$http.post()跨域和请求参数丢失的解决_vue.js">vue中this.$http.post()跨域和请求参数丢失的解决_vue.js</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-clash-subscribe.htm" title="「11月23日」最高速度18.5M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「11月23日」最高速度18.5M/S，2024年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-clash.htm" title="「12月2日」最高速度22M/S，2024年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「12月2日」最高速度22M/S，2024年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-46361.htm" title="宠物疫苗证明怎么开（宠物接种疫苗证明）">宠物疫苗证明怎么开（宠物接种疫苗证明）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
