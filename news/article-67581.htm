@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-67581.htm" />
+    <title>GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？</title>
+        <meta name="description" content="将GET_FORMAT()函数与DATE_FORMAT()和STR_TO_DATE()函数结合在一起非常有用。 与DATE_FORMAT()组合 当它与DATE_FORMAT()结合使用时，它将以从G" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-67581.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/ef18753b1a27e38c98f2633b4ea9931c.webp" />
+        <meta property="og:release_date" content="2025-03-05T11:11:21" />
+    <meta property="og:updated_time" content="2025-03-05T11:11:21" />
+        <meta property="og:description" content="将GET_FORMAT()函数与DATE_FORMAT()和STR_TO_DATE()函数结合在一起非常有用。 与DATE_FORMAT()组合 当它与DATE_FORMAT()结合使用时，它将以从G" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>将GET_FORMAT()函数与DATE_FORMAT()和STR_TO_DATE()函数结合在一起非常有用。</p> <h2>与DATE_FORMAT()组合</h2> <p>当它与DATE_FORMAT()结合使用时，它将以从GET_FORMAT()函数获得的格式排列特定的日期或时间或日期时间。</p> <pre>mysql&gt;&nbsp;Select&nbsp;DATE_FORMAT('2017-10-22',GET_FORMAT(date,'USA'))AS&nbsp;'DATE&nbsp;IN&nbsp;USA&nbsp;FORMAT'; +-------------------+ |&nbsp;DATE&nbsp;IN&nbsp;USA&nbsp;FORMAT&nbsp;| +-------------------+ |&nbsp;10.22.2017&nbsp;| +-------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询以美国格式返回给定的日期。</p> <p>它还用于检索以某种特定格式存储在表中的日期值，如下所示：</p> <pre>mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;date_testing1; +-------+------------+ |&nbsp;Name&nbsp;|&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +-------+------------+ |&nbsp;Ram&nbsp;&nbsp;&nbsp;|&nbsp;2017-05-03&nbsp;| |&nbsp;Shyam&nbsp;|&nbsp;2003-10-31&nbsp;| +-------+------------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.07&nbsp;sec)  mysql&gt;&nbsp;Select&nbsp;Name,&nbsp;Date,&nbsp;DATE_FORMAT(date,GET_FORMAT(date,'USA'))AS&nbsp;'DATE&nbsp;IN&nbsp;US&nbsp;FORMAT'from&nbsp;date_testing1&nbsp;Where&nbsp;Name='Ram'; +------+------------+-------------------+ |&nbsp;Name&nbsp;|&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DATE&nbsp;IN&nbsp;US&nbsp;FORMAT&nbsp;| +------+------------+-------------------+ |&nbsp;Ram&nbsp;|&nbsp;2017-05-03&nbsp;&nbsp;|&nbsp;05.03.2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +------+------------+-------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询以USA格式返回日期，其中名称为“ Ram”。</p> <h2>与STR_TO_DATE()组合</h2> <p>它与STR_TO_DATE()函数一起使用，方式与DATE_FORMAT()MySQL函数一起使用的方式类似。</p> <pre>mysql&gt;&nbsp;Select&nbsp;STR_TO_DATE('22.10.2017',GET_FORMAT(DATE,'EUR'))AS&nbsp;'EUROPEAN&nbsp;FORMAT'; +-----------------+ |&nbsp;EUROPEAN&nbsp;FORMAT&nbsp;| +-----------------+ |&nbsp;2017-10-22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +-----------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询以欧洲格式返回日期。</p> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66927.htm">小猫养多久才认主人?怎样不让猫得猫藓呢（小猫养多久才认家）</a></p>
+                                        <p>下一个：<a href="/news/article-67584.htm">猫咪领养协议模板免费下载（领养猫的协议是什么样的）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-high-speed-nodes.htm" title="「1月8日」最高速度18M/S，2025年V2ray/Shadowrocket/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「1月8日」最高速度18M/S，2025年V2ray/Shadowrocket/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-50845.htm" title="显卡除了a卡n卡还有什么(哪些显卡是a卡)">显卡除了a卡n卡还有什么(哪些显卡是a卡)</a></li>
+                        <li class="py-2"><a href="/news/article-54601.htm" title="Vue3+Element plus项目搭建">Vue3+Element plus项目搭建</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-free-clash.htm" title="「1月14日」最高速度21.6M/S，2025年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「1月14日」最高速度21.6M/S，2025年Clash/SSR/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44372.htm" title="toString()和new String()区别">toString()和new String()区别</a></li>
+                        <li class="py-2"><a href="/news/article-59075.htm" title="成都寄宠物的物流公司在哪里（成都宠物运输快递公司）">成都寄宠物的物流公司在哪里（成都宠物运输快递公司）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-free-high-speed-nodes.htm" title="「2月12日」最高速度19.9M/S，2025年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「2月12日」最高速度19.9M/S，2025年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-shadowrocket-node.htm" title="「1月31日」最高速度22.5M/S，2025年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月31日」最高速度22.5M/S，2025年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45360.htm" title="动物医院前台工作内容（动物医院前台工作流程）">动物医院前台工作内容（动物医院前台工作流程）</a></li>
+                        <li class="py-2"><a href="/news/article-51912.htm" title="饲料粉碎搅拌机组（饲料粉碎搅拌机运转强福机械稳定）">饲料粉碎搅拌机组（饲料粉碎搅拌机运转强福机械稳定）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
