@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-69497.htm" />
+    <title>Python生成sql语句</title>
+        <meta name="description" content="def generate_sql(table_name, ignore_col_set):     """     根据数据库中的列名生成字典格式的sql语句     :param table_nam" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-69497.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="Python生成sql语句" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/cc2a12266233b5c897bae37ec43ae7ae.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:05:27" />
+    <meta property="og:updated_time" content="2025-03-08T05:05:27" />
+        <meta property="og:description" content="def generate_sql(table_name, ignore_col_set):     """     根据数据库中的列名生成字典格式的sql语句     :param table_nam" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python生成sql语句">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Python生成sql语句</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <pre><code class="prism language-python"><span class="token keyword">def</span> <span class="token function">generate_sql</span><span class="token punctuation">(</span>table_name<span class="token punctuation">,</span> ignore_col_set<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token triple-quoted-string string">"""     根据数据库中的列名生成字典格式的sql语句     :param table_name 待生成sql的表名     :param ignore_col_set 要忽略的列名集合     :return: 生成的sql语句     """</span>      sql <span class="token operator">=</span> <span class="token string">"show columns from %s"</span> <span class="token operator">%</span> table_name     <span class="token comment"># 我写的get_conn是获取一个全局的数据库连接对象,各位可以随意改改</span>     rs <span class="token operator">=</span> get_result<span class="token punctuation">(</span>get_conn<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sql<span class="token punctuation">)</span>     col_list <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">for</span> row <span class="token keyword">in</span> rs<span class="token punctuation">:</span>         <span class="token keyword">if</span> row<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token keyword">in</span> ignore_col_set<span class="token punctuation">:</span>             <span class="token keyword">continue</span>         <span class="token keyword">else</span><span class="token punctuation">:</span>             col_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>     sql <span class="token operator">=</span> <span class="token string">"INSERT INTO %s (%s) \nVALUES ("</span> <span class="token operator">%</span> <span class="token punctuation">(</span>table_name<span class="token punctuation">,</span> <span class="token string">", "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">,</span> col_list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     sql <span class="token operator">=</span> <span class="token string">"%s%s )"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>sql<span class="token punctuation">,</span> <span class="token string">", "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> item<span class="token punctuation">:</span> <span class="token string">"%("</span> <span class="token operator">+</span> item <span class="token operator">+</span> <span class="token string">")s"</span><span class="token punctuation">,</span> col_list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     get_conn<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">return</span> sql </code></pre> <p>举个例子:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/48055730c224a5b58c082cf6f84a1ddc.jpg" alt="Python生成sql语句"><br /> 先说好，这个表不是我设计的QAQ.<br /> 生成sql语句如下:</p> <pre><code class="prism language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> notice_library <span class="token punctuation">(</span>ggcxmc<span class="token punctuation">,</span> pcdm<span class="token punctuation">,</span> ggxhn<span class="token punctuation">,</span> pp<span class="token punctuation">,</span> lx<span class="token punctuation">,</span> edzl<span class="token punctuation">,</span> zzl<span class="token punctuation">,</span> zbzl<span class="token punctuation">,</span> rlzl<span class="token punctuation">,</span> pfbzyj<span class="token punctuation">,</span> pfbz<span class="token punctuation">,</span> zs<span class="token punctuation">,</span> zj<span class="token punctuation">,</span> zh<span class="token punctuation">,</span> thps<span class="token punctuation">,</span> lts<span class="token punctuation">,</span> ltgg<span class="token punctuation">,</span> jjlqj<span class="token punctuation">,</span> qhx<span class="token punctuation">,</span> qlj<span class="token punctuation">,</span> hlj<span class="token punctuation">,</span> sbm<span class="token punctuation">,</span> zcc<span class="token punctuation">,</span> zck<span class="token punctuation">,</span> zcg<span class="token punctuation">,</span> hxc<span class="token punctuation">,</span> hxk<span class="token punctuation">,</span> hxg<span class="token punctuation">,</span> zgcs<span class="token punctuation">,</span> edzk<span class="token punctuation">,</span> jsszcrs<span class="token punctuation">,</span> zxxs<span class="token punctuation">,</span> ztgczzl<span class="token punctuation">,</span> zzllyxs<span class="token punctuation">,</span> bgcazzdcszl<span class="token punctuation">,</span> qymc<span class="token punctuation">,</span> pl<span class="token punctuation">,</span> gl<span class="token punctuation">)</span>  <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token operator">%</span><span class="token punctuation">(</span>ggcxmc<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>pcdm<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>ggxhn<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>pp<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>lx<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>edzl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zzl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zbzl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>rlzl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>pfbzyj<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>pfbz<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zs<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zj<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zh<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>thps<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>lts<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>ltgg<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>jjlqj<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>qhx<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>qlj<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>hlj<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>sbm<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zcc<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zck<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zcg<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>hxc<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>hxk<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>hxg<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zgcs<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>edzk<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>jsszcrs<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zxxs<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>ztgczzl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>zzllyxs<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>bgcazzdcszl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>qymc<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>pl<span class="token punctuation">)</span>s<span class="token punctuation">,</span> <span class="token operator">%</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>s <span class="token punctuation">)</span>  </code></pre> <p>然后呢，为了避免重复生成sql语句，全局定义一个变量，一开始设置为None，然后:</p> <pre><code class="prism language-python"><span class="token keyword">global</span> global_sql <span class="token keyword">if</span> global_sql <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span> 	<span class="token comment"># 不忽略任何一列</span> 	global_sql <span class="token operator">=</span> generate_sql<span class="token punctuation">(</span>table_name<span class="token punctuation">,</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 用该sql语句做一些不可描述的事情...</span> </code></pre> <p>大功告成</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-68848.htm">Android中EditText光标的显示与隐藏方法</a></p>
+                                        <p>下一个：<a href="/news/article-69498.htm">宠物鲜粮市场创业（宠物鲜粮市场创业项目）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-clash-windows.htm" title="「1月11日」最高速度19.8M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「1月11日」最高速度19.8M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-clash.htm" title="「1月16日」最高速度23M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「1月16日」最高速度23M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-clash-node.htm" title="「2月25日」最高速度23M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「2月25日」最高速度23M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-55701.htm" title="延吉市兽医站地址 延吉市兽医站地址在哪里">延吉市兽医站地址 延吉市兽医站地址在哪里</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-clash-windows.htm" title="「2月20日」最高速度22.6M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「2月20日」最高速度22.6M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36961.htm" title="狗能听懂主人骂它吗（免费的狗语翻译器）">狗能听懂主人骂它吗（免费的狗语翻译器）</a></li>
+                        <li class="py-2"><a href="/news/article-68191.htm" title="k8s入门之Service">k8s入门之Service</a></li>
+                        <li class="py-2"><a href="/news/article-63829.htm" title="南京宠物猫领养中心电话地址查询（南京猫咪领养中心）">南京宠物猫领养中心电话地址查询（南京猫咪领养中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-shadowrocket-node.htm" title="「1月30日」最高速度18.5M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月30日」最高速度18.5M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-50336.htm" title="Java中的字符串常量池是什么？">Java中的字符串常量池是什么？</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
