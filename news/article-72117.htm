@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-72117.htm" />
+    <title>当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</title>
+        <meta name="description" content="当我们在MySQL列上使用AUTO_INCREMENT时，序列号总是从默认值1或我们指定的值开始以升序递增。 MySQL不允许将AUTO_INCREMENT值更改为小于当前序列号的值。通过以下示例可以" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-72117.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/da9264a77013aa9193ce0d20808c5fd4.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:07:33" />
+    <meta property="og:updated_time" content="2025-03-12T06:07:33" />
+        <meta property="og:description" content="当我们在MySQL列上使用AUTO_INCREMENT时，序列号总是从默认值1或我们指定的值开始以升序递增。 MySQL不允许将AUTO_INCREMENT值更改为小于当前序列号的值。通过以下示例可以" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>当我们在MySQL列上使用AUTO_INCREMENT时，序列号总是从默认值1或我们指定的值开始以升序递增。</p> <p>MySQL不允许将AUTO_INCREMENT值更改为小于当前序列号的值。通过以下示例可以理解-</p> <h2>示例</h2> <p>假设我们有一个名为“ emp1”的表，并在创建表时将AUTO_INCREMENT VALUE指定为100。在表中插入值之后，该序列将从100开始，如以下查询的输出所示-</p> <pre>mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;Sohan&nbsp;&nbsp;&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| +-----+---------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>当我们尝试通过ALTER TABLE查询将AUTO_INCREMENT值更改为90时，MySQL不会返回错误和警告，因为查询还可以，但是当我们在表中插入新值时，MySQL会将指定的AUTO_INCREMENT值与当前序列号进行比较。由于指定的AUTO_INCREMENT值(90)小于当前序列号(101)，MySQL开始从102开始累积新值，可以从以下查询中观察到-</p> <pre>mysql&gt;&nbsp;ALTER&nbsp;TABLE&nbsp;EMP1&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;90; Records:&nbsp;2&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Aryan');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;Sohan&nbsp;&nbsp;&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| |&nbsp;102&nbsp;|&nbsp;Aryan&nbsp;&nbsp;&nbsp;| +-----+---------+ 3&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>相反，如果我们尝试将AUTO_INCREMENT更改为高于当前序列号的值，则MySQL将开始从指定值开始累积新值。</p> <p>为了在表'emp1'中更加清楚，我们将AUTO_INCREMENT值更改为108，高于当前序列号，因此MySQL从指定的AUTO_INCREMENT值（即从108开始）开始累积新插入的值。</p> <pre>mysql&gt;&nbsp;ALTER&nbsp;TABLE&nbsp;EMP1&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;108; Records:&nbsp;3&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Daksh');  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Yashraj');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;Sohan&nbsp;&nbsp;&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| |&nbsp;102&nbsp;|&nbsp;Aryan&nbsp;&nbsp;&nbsp;| |&nbsp;108&nbsp;|&nbsp;Daksh&nbsp;&nbsp;&nbsp;| |&nbsp;109&nbsp;|&nbsp;Yashraj&nbsp;| +-----+---------+ 5&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71454.htm">美容美甲化妆纹绣学校（美容美甲化妆纹绣学校那家好）</a></p>
+                                        <p>下一个：<a href="/news/article-72118.htm">由浅入深，带你用JavaScript实现响应式原理（Vue2、Vue3响应式原理）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-67581.htm" title="GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？">GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？</a></li>
+                        <li class="py-2"><a href="/news/article-61427.htm" title="宠物粮食加工厂加盟费多少钱啊一个月（宠物粮食加工厂需要投资多少钱）">宠物粮食加工厂加盟费多少钱啊一个月（宠物粮食加工厂需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-70795.htm" title="国内十大宠物粮食品牌（国内十大宠物粮食品牌排名）">国内十大宠物粮食品牌（国内十大宠物粮食品牌排名）</a></li>
+                        <li class="py-2"><a href="/news/article-47818.htm" title="宠物粮食怎么销售赚钱 宠物粮食怎么销售赚钱呢">宠物粮食怎么销售赚钱 宠物粮食怎么销售赚钱呢</a></li>
+                        <li class="py-2"><a href="/news/article-41881.htm" title="宠物零食货源（宠物零食货源一件代发）">宠物零食货源（宠物零食货源一件代发）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-free-node-subscribe.htm" title="「2月5日」最高速度19M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「2月5日」最高速度19M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37925.htm" title="Java-GUI编程之处理位图">Java-GUI编程之处理位图</a></li>
+                        <li class="py-2"><a href="/news/article-46844.htm" title="宠物领养网免费同城多少钱一个 宠物领养网免费同城多少钱一个月">宠物领养网免费同城多少钱一个 宠物领养网免费同城多少钱一个月</a></li>
+                        <li class="py-2"><a href="/news/article-69497.htm" title="Python生成sql语句">Python生成sql语句</a></li>
+                        <li class="py-2"><a href="/news/article-66301.htm" title="Redis缓存过期策略">Redis缓存过期策略</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
