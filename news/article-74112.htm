@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-74112.htm" />
+    <title>xpath的使用</title>
+        <meta name="description" content="XPath是xml的路径语言，也是一门在xml文档中查找信息的语言。     表达式 描述     nodename 选取此节点的所有节点   / 从当前节点选取子节点（从根节点开始定位）   // " />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-74112.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="xpath的使用" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/648fd8314e051167033e6a09bfb75037.webp" />
+        <meta property="og:release_date" content="2025-03-15T07:19:13" />
+    <meta property="og:updated_time" content="2025-03-15T07:19:13" />
+        <meta property="og:description" content="XPath是xml的路径语言，也是一门在xml文档中查找信息的语言。     表达式 描述     nodename 选取此节点的所有节点   / 从当前节点选取子节点（从根节点开始定位）   // " />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="xpath的使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">xpath的使用</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>XPath是xml的路径语言，也是一门在xml文档中查找信息的语言。</p> </h1> <table border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <thead> <tr> <th style="text-align:center;width:85px;">表达式</th> <th style="text-align:center;width:414px;">描述</th> </tr> </thead> <tbody> <tr> <td style="text-align:center;width:85px;">nodename</td> <td style="width:414px;">选取此节点的所有节点</td> </tr> <tr> <td style="text-align:center;width:85px;">/</td> <td style="width:414px;">从当前节点选取子节点（从根节点开始定位）</td> </tr> <tr> <td style="text-align:center;width:85px;">//</td> <td style="width:414px;">从当前节点选取子孙节点</td> </tr> <tr> <td style="text-align:center;width:85px;">.</td> <td style="width:414px;">选取当前节点</td> </tr> <tr> <td style="text-align:center;width:85px;">..</td> <td style="width:414px;">选取当前节点的父节点</td> </tr> <tr> <td style="text-align:center;width:85px;">@</td> <td style="width:414px;">选取属性</td> </tr> <tr> <td style="text-align:center;width:85px;">text()</td> <td style="width:414px;">选取文本，/text()选取标签中直系的文本内容，//text()选取标签中所有文本内容。</td> </tr> </tbody> </table> <h2 id="%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90">（一）、举个例子</h2> <pre><code class="language-python">&lt;body&gt; &lt;div class="container logo-search"&gt;     &lt;div class="col search row-search-mobile"&gt;     &lt;form action="index.php"&gt;       &lt;input class="placeholder" placeholder="搜索……" name="s" autocomplete="off"&gt;            &lt;/form&gt;   &lt;/div&gt;    &lt;div class="row"&gt;     &lt;div class="col logo"&gt;       &lt;h1&gt;&lt;a href="/"&gt;学的不仅是技术，更是梦想！&lt;/a&gt;&lt;/h1&gt;     &lt;/div&gt;              &lt;div class="col search search-desktop last"&gt;       &lt;div class="search-input" &gt;       &lt;form action="//www.runoob.com/" target="_blank"&gt;         &lt;input class="placeholder" id="s" name="s" placeholder="搜索……"  autocomplete="off" style="height: 44px;"&gt;       &lt;/form&gt;              &lt;/div&gt;     &lt;/div&gt;   &lt;/div&gt; &lt;/div&gt; &lt;/body&gt;</code></pre> <p>&nbsp;以上代码树状图<img fetchpriority="high" decoding="async" alt="" height="546" src="http://img.555519.xyz/uploads/20230217/4d2aa517f97d22810c4c0b183a5efac3.jpg"></p> <p><strong>1.lxml.xpath('body'):表示选取body下面的所有子节点。</strong></p> <p><strong>2.lxml.xpath('/body'):表示从根节点开始选取body</strong></p> <p><strong>3.lxml.xpath('body/div'):表示选取body下面含有div的所有子节点。（只能选取儿子,孙子不能选取）</strong></p> <p><strong>4.lxml.xpath('body//div'):表示选取body下面含有div的所有节点。（只要含有div节点，儿子，孙子，重孙都可以选取）</strong></p> <p><strong>5.lxml.xpath('//div'):选取所有body元素(不管是重孙，孙子，儿子只要含有div都可以选取，位置不限)</strong></p> <p><strong>6.lxml.xpath('//@placeholder'):选取名为placeholder的所有属性。</strong></p> </h1> <p>谓语用来查找某个特定的节点或者包含某个特定值的节点，谓语用“[]”括起来。</p> <p>实例</p> <table border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <tbody> <tr> <td style="text-align:center;width:120px;">表达式</td> <td style="text-align:center;width:579px;">描述</td> </tr> <tr> <td style="width:120px;">/div/p[n]</td> <td style="width:579px;">选取div子元素的第n个p元素</td> </tr> <tr> <td style="width:120px;">/div/p[last()]</td> <td style="width:579px;"> <p>选取div子元素的最后一个p元素</p> </td> </tr> <tr> <td style="width:120px;">/div/p[last()-1]</td> <td style="width:579px;">选取div子元素的倒数第二个p元素</td> </tr> <tr> <td style="width:120px;">/div/p[book&lt;n]</td> <td style="width:579px;">选取div子元素的前n-1个book元素</td> </tr> <tr> <td style="width:120px;">//div/[@binbin]</td> <td style="width:579px;">选取所有名称为binbin的div元素</td> </tr> <tr> <td style="width:120px;">//div[@binbin='ch'</td> <td style="width:579px;">选取所有div元素，且这些元素的值为ch的binbin属性</td> </tr> </tbody> </table> </h1> <p>通配符用来选取未知节点</p> <table border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <tbody> <tr> <td style="text-align:center;width:146px;">通配符</td> <td style="width:553px;">描述</td> </tr> <tr> <td style="text-align:center;width:146px;">*</td> <td style="width:553px;">匹配任何元素的节点</td> </tr> <tr> <td style="text-align:center;width:146px;">@*</td> <td style="width:553px;">匹配任何属性的节点</td> </tr> <tr> <td style="text-align:center;width:146px;">node</td> <td style="width:553px;">匹配任何类型的节点</td> </tr> </tbody> </table> <p>实例</p> <table border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <tbody> <tr> <td style="width:147px;">路径表达式</td> <td style="width:552px;">结果</td> </tr> <tr> <td style="width:147px;">//div/*</td> <td style="width:552px;">选取div下的所有子元素</td> </tr> <tr> <td style="width:147px;">//div[@*]</td> <td style="width:552px;">选取带有属性的div元素</td> </tr> </tbody> </table> <p><span style="color:#fe2c24;">HTML属性知识补充：</span></p> <p>属性总是以名称/值的形式出现，比如：name='binbin'，属性值用双引号括起来。</p> <p>属性总是在HTML元素的开始标签中规定。</p> <p>HTML元素的属性</p> <table border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <tbody> <tr> <td style="width:69px;">属性</td> <td style="width:124px;">值</td> <td style="width:506px;">描述</td> </tr> <tr> <td style="width:69px;">class</td> <td style="width:124px;">classname</td> <td style="width:506px;">规定元素的类名（classname）</td> </tr> <tr> <td style="width:69px;">id</td> <td style="width:124px;">id</td> <td style="width:506px;">规定元素的唯一 id</td> </tr> <tr> <td style="width:69px;">style</td> <td style="width:124px;">style_definition</td> <td style="width:506px;">规定元素的行内样式</td> </tr> <tr> <td style="width:69px;">title</td> <td style="width:124px;">text</td> <td style="width:506px;">规定元素的额外信息</td> </tr> </tbody> </table> </h1> <table border="1" cellpadding="1" cellspacing="1" style="width:700px;"> <tbody> <tr> <td style="text-align:center;width:111px;"></td> <td style="text-align:center;width:299px;">属性的获取</td> <td style="text-align:center;">属性匹配</td> </tr> <tr> <td style="width:111px;">获取a节点的href属性</td> <td style="width:299px;">路径表达式/a/@href</td> <td></td> </tr> <tr> <td style="width:111px;">获取a节点的文本</td> <td style="width:299px;"></td> <td>路径表达式/a/[@class="thumbnail"]</td> </tr> </tbody> </table> <h3>获取a节点的href属性</h3> <pre><code>import requests from lxml import etree url="http://www.kmlvyouw.com/lvyoujingdian/index.html" headers={"User-Agent": 放自己的"} response=requests.get(url, headers=headers) # 返回一个经过解码的字符串，response.text返回一个文本数据。 text=response.text # text=response.content html=etree.HTML(text) # 调用etree模块的HTML类，对response进行初始化，这样成功构造xpath解析对象。 result=html.xpath('*//div//a/@href') #  对html进行解析 for i in result:     a=i.encode('iso-8859-1').decode('utf-8') #  服务器默认的编码是'iso-8859-1'       print(a)</code></pre> <p><img decoding="async" alt="" height="492" src="http://img.555519.xyz/uploads/20230217/887286d5d9f02be1d48bd6b24e49c389.jpg"></p> <h3>属性多值匹配</h3> <p>有时候，某些节点的某个属性可能有多个值，例如：</p> <pre><code>from lxml import etree text=''' &lt;li class="li li-first"&gt;&lt;a href="link.html"&gt;first item&lt;a/&gt;&lt;/li&gt;''' html=etree.HTML('text') result=html.xpath('//li[class="li li-first"]/a/text()') print(result) </code></pre> <p>这里的html文本中li节点的class属性有两个值li和li-first，此时想用之前的属性匹配获取就无法获取，，此时的运行的结果如下：</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;[]</p> <p><span style="color:#fe2c24;">这时就需要用contains（）函数了，代码可以改下如下：</span></p> <pre><code>from lxml import etree text=''' &lt;li class="li li-first"&gt;&lt;a href="link.html"&gt;first item&lt;a/&gt;&lt;/li&gt; ''' html=etree.HTML(text) result=html.xpath('//li[contains(@class,"li-first")]/a/text()') print(result)</code></pre> <p>通过contains方法，第一个参数传入属性名称（@属性名称），第二个参数传入属性值（属性值任意一个就可以）。运行结果如下：</p> <p>['first item']</p> <h3>多属性匹配</h3> <p>如果一个属性需要多个属性来确定，那就需要匹配多个属性。此时用and来来连接就行。代码如下&nbsp;</p> <pre><code>from lxml import etree text=''' &lt;li class="li li-first" name="item"&gt;&lt;a href="link.html"&gt;first item&lt;/a&gt;&lt;/li&gt; ''' html=etree.HTML(text) result=html.xpath('//li[contains(@class,"li-first")and @name="item"]/a/text()') print(result)</code></pre> <p>运行结果如下：</p> <p>['first item']</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73440.htm">广州领养宠物中心地址查询（广州领养宠物狗的地方）</a></p>
+                                        <p>下一个：<a href="/news/article-74113.htm">宠物领养协议书 宠物领养协议书模板</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60246.htm" title="青岛动物医学招聘（青岛动物医学招聘事业编）">青岛动物医学招聘（青岛动物医学招聘事业编）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-free-node-subscribe.htm" title="「2月5日」最高速度19M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「2月5日」最高速度19M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-56261.htm" title="附近正规的宠物医院（附近正规的宠物医院在哪里）">附近正规的宠物医院（附近正规的宠物医院在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-57377.htm" title="springboot集成swagger碰到的坑（报404）">springboot集成swagger碰到的坑（报404）</a></li>
+                        <li class="py-2"><a href="/news/article-42388.htm" title="宠物领养协议有法律效力吗怎么写范文 宠物领养协议有法律效力吗怎么写范文图片">宠物领养协议有法律效力吗怎么写范文 宠物领养协议有法律效力吗怎么写范文图片</a></li>
+                        <li class="py-2"><a href="/news/article-48266.htm" title="狗粮品牌大全排行榜图片及价格（狗粮品牌大全排行榜图片及价格）">狗粮品牌大全排行榜图片及价格（狗粮品牌大全排行榜图片及价格）</a></li>
+                        <li class="py-2"><a href="/news/article-60838.htm" title="初中毕业兽医专业学校（兽医学校的招生条件初中毕业）">初中毕业兽医专业学校（兽医学校的招生条件初中毕业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-shadowrocket-node.htm" title="「1月30日」最高速度18.5M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月30日」最高速度18.5M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-free-node-subscribe-links.htm" title="「2月15日」最高速度21.8M/S，2025年Shadowrocket/Clash/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「2月15日」最高速度21.8M/S，2025年Shadowrocket/Clash/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35884.htm" title="被野猫抓出一点点血（被野猫抓破了一点点血很快就好了）">被野猫抓出一点点血（被野猫抓破了一点点血很快就好了）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
