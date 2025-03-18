@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-76135.htm" />
+    <title>go异常/错误机制（panic和error）</title>
+        <meta name="description" content="go异常/错误机制    defer   后进先出原则 立即解析原则 可修改返回值   panic      defer defer是go提供的一种延迟执行机制。  后进先出原则 当执行defer时，" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-76135.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="go异常/错误机制（panic和error）" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/b7df14f15e6fdd981a0dbf7dce557e36.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:11:56" />
+    <meta property="og:updated_time" content="2025-03-18T06:11:56" />
+        <meta property="og:description" content="go异常/错误机制    defer   后进先出原则 立即解析原则 可修改返回值   panic      defer defer是go提供的一种延迟执行机制。  后进先出原则 当执行defer时，" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="go异常/错误机制（panic和error）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">go异常/错误机制（panic和error）</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>go异常/错误机制</h3> <ul> <li> <ul> <li><a href="#defer_2" rel="nofollow">defer</a></li> <li> <ul> <li><a href="#_5" rel="nofollow">后进先出原则</a></li> <li><a href="#_24" rel="nofollow">立即解析原则</a></li> <li><a href="#_33" rel="nofollow">可修改返回值</a></li> </ul> </li> <li><a href="#panic_46" rel="nofollow">panic</a></li> </ul> </li> </ul> </div> <h2> <a id="defer_2" rel="nofollow"></a>defer</h2> <p>defer是go提供的一种<strong>延迟执行</strong>机制。</p> <h3> <a id="_5" rel="nofollow"></a>后进先出原则</h3> <p>当执行defer时，会将对应的函数压入栈中，在函数返回或者panic异常结束时，go会从栈中取出延迟函数执行。</p> <pre><code class="prism language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 	<span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span> 	<span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">)</span> 	<span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"3"</span><span class="token punctuation">)</span> 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> </code></pre> <p>打印结果为</p> <pre><code class="prism language-go">hello <span class="token number">3</span> <span class="token number">2</span> <span class="token number">1</span> </code></pre> <h3> <a id="_24" rel="nofollow"></a>立即解析原则</h3> <pre><code class="prism language-go">	i <span class="token operator">:=</span> <span class="token number">1</span> 	<span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"first is %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token comment">//1</span> 	i <span class="token operator">=</span> <span class="token number">2</span> 	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"current is %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token comment">//2</span> </code></pre> <p>当 defer 以<strong>闭包的方式引用外部变量</strong>时，则会在延迟函数真正执行的时候，根据整个上下文确定当前的值</p> <h3> <a id="_33" rel="nofollow"></a>可修改返回值</h3> <pre><code class="prism language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{<!-- --></span>  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token keyword">func</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>i <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>  <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> i<span class="token operator">++</span> <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">return</span> <span class="token number">1</span> <span class="token punctuation">}</span> </code></pre> <p>打印结果是2</p> <h2> <a id="panic_46" rel="nofollow"></a>panic</h2> <p>panic是一个严重错误机制，它会导致程序终止，并<strong>依次逆序执行 panic 所在函数可能存在的 defer 函数列表</strong>，然后返回该函数的调用方。<br /><strong>recover 内置函数可用于捕获 panic，重新恢复程序正常执行流程，但是 recover 函数只有在 defer 内部使用才有效</strong></p> <pre><code class="prism language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	err <span class="token operator">:=</span> <span class="token function">panicAndReturnErr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span><span class="token punctuation">{<!-- --></span> 		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"err is %+v\n"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span> 	<span class="token punctuation">}</span> 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"returned normally from panicAndReturnErr"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token keyword">func</span> <span class="token function">panicAndReturnErr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span><span class="token comment">//如果defer内有recover，则从 panic 中恢复，不会终止程序</span> 		<span class="token keyword">if</span> e <span class="token operator">:=</span> <span class="token function">recover</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> e <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{<!-- --></span><span class="token comment">//error occur!</span> 			<span class="token comment">// 打印栈信息</span> 			buf <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">)</span> 			buf <span class="token operator">=</span> buf<span class="token punctuation">[</span><span class="token punctuation">:</span>runtime<span class="token punctuation">.</span><span class="token function">Stack</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">]</span> 			err <span class="token operator">=</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"[PANIC]%v\n%s\n"</span><span class="token punctuation">,</span> e<span class="token punctuation">,</span> buf<span class="token punctuation">)</span> 		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"panic begin"</span><span class="token punctuation">)</span> 	<span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">"error occur!"</span><span class="token punctuation">)</span><span class="token comment">//开始执行defer函数</span> 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"panic over"</span><span class="token punctuation">)</span> 	<span class="token keyword">return</span> <span class="token boolean">nil</span> <span class="token punctuation">}</span>  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75463.htm">宠物粮怎么做? 创造与魔法高级宠物粮怎么做</a></p>
+                                        <p>下一个：<a href="/news/article-76136.htm">合肥宠物救助中心电话（合肥宠物救助中心电话多少）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-44373.htm" title="Spring-Gateway 路由配置">Spring-Gateway 路由配置</a></li>
+                        <li class="py-2"><a href="/news/article-70795.htm" title="国内十大宠物粮食品牌（国内十大宠物粮食品牌排名）">国内十大宠物粮食品牌（国内十大宠物粮食品牌排名）</a></li>
+                        <li class="py-2"><a href="/news/article-49319.htm" title="宠物粮市场销售渠道分析报告（宠物粮市场前景怎么样）">宠物粮市场销售渠道分析报告（宠物粮市场前景怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-54054.htm" title="同城免费领养小动物（同城免费领养猫猫）">同城免费领养小动物（同城免费领养猫猫）</a></li>
+                        <li class="py-2"><a href="/news/article-50846.htm" title="一个公司的品牌如何打造(公司品牌打造从哪几个方面)">一个公司的品牌如何打造(公司品牌打造从哪几个方面)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-node-share-links.htm" title="「3月14日」最高速度21.8M/S，2025年SSR/Shadowrocket/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「3月14日」最高速度21.8M/S，2025年SSR/Shadowrocket/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-clash-windows.htm" title="「2月10日」最高速度18.4M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「2月10日」最高速度18.4M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-42389.htm" title="动物疫苗监管部门投诉电话是多少（动物疫苗监管部门投诉电话是多少号）">动物疫苗监管部门投诉电话是多少（动物疫苗监管部门投诉电话是多少号）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-clash.htm" title="「1月16日」最高速度23M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「1月16日」最高速度23M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-6-node-share.htm" title="「2月6日」最高速度22M/S，2025年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接">「2月6日」最高速度22M/S，2025年V2ray/Shadowrocket/SSR/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
