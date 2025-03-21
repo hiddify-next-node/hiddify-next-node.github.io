@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-76798.htm" />
+    <title>Redis缓存过期策略</title>
+        <meta name="description" content="转载出处链接  线上你写代码的时候，想当然的认为写进 redis 的数据就一定会存在，后面导致系统各种 bug，谁来负责？ 常见的有两个问题： 往 redis 写入的数据怎么没了？ 可能有同学会遇到，" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-76798.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="Redis缓存过期策略" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/e52e2ba9497edc31f92f7f84775ee5dd.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:08:43" />
+    <meta property="og:updated_time" content="2025-03-19T09:08:43" />
+        <meta property="og:description" content="转载出处链接  线上你写代码的时候，想当然的认为写进 redis 的数据就一定会存在，后面导致系统各种 bug，谁来负责？ 常见的有两个问题： 往 redis 写入的数据怎么没了？ 可能有同学会遇到，" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis缓存过期策略">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Redis缓存过期策略</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/dudu2mama/p/11366292.html"  rel="nofollow">转载出处链接</a></p> </h1> <p>线上你写代码的时候，想当然的认为写进 redis 的数据就一定会存在，后面导致系统各种 bug，谁来负责？<br /> 常见的有两个问题：<br /> 往 redis 写入的数据怎么没了？<br /> 可能有同学会遇到，在生产环境的 redis 经常会丢掉一些数据，写进去了，过一会儿可能就没了。我的天，同学，你问这个问题就说明 redis 你就没用对啊。redis 是缓存，你给当存储了是吧？<br /> 啥叫缓存？用内存当缓存。内存是无限的吗，内存是很宝贵而且是有限的，磁盘是廉价而且是大量的。可能一台机器就几十个 G 的内存，但是可以有几个 T 的硬盘空间。redis 主要是基于内存来进行高性能、高并发的读写操作的。<br /> 那既然内存是有限的，比如 redis 就只能用 10G，你要是往里面写了 20G 的数据，会咋办？当然会干掉 10G 的数据，然后就保留 10G 的数据了。那干掉哪些数据？保留哪些数据？当然是干掉不常用的数据，保留常用的数据了。<br /> 数据明明过期了，怎么还占用着内存？<br /> 这是由 redis 的过期策略来决定。</p> </h1> <p>redis 过期策略<br /> redis是单线程，收割时间也会占用线程处理时间，如果收割过于频繁，会导致读写出现卡顿。</p> <h2><a id="1_13" rel="nofollow"></a>1、主库过期策略</h2> <p>1.1、定时扫描<br /> 首先将每个设置了过期时间的key放到一个独立的hash中，默认每秒定时遍历这个hash而不是整个空间：<br /> 并不会遍历所有的key，采用一种简单的贪心策略<br /> 1.1.1、从过期key字典中，随机找20个key。<br /> 1.1.2、删除20gekey中过期的key<br /> 1.1.3、如果2中过期的key超过1/4，则重复第一步<br /> 1.1.4、每次处理的时间都不会25ms<br /> 如果有大量的key在同一时间段内过期，就会造成数据库的集中访问，就是缓存雪崩！<br /> 1.2、惰性策略<br /> 客户端访问的时候，会对这个key的过期时间进行检查，如果过期了就立即删除。惰性策略是对定时策略的补充，因为定时策略不会删除所有过期的key</p> <h2><a id="2_24" rel="nofollow"></a>2、从库过期策略</h2> <p>redis不会扫描从库，删除主库数据的时候，在aof文件里生成一条del指令，在主从同步的时候，从库会执行这条指令，删除过期key。<br /> 所以集群分布式锁算法的漏洞就是这样产生的。</p> </h1> <p>FIFO ，first in first out ，最先进入缓存的数据在缓存空间不够情况下(超出最大元素限制时)会被首先清理出去<br /> LFU ， Less Frequently Used ，一直以来最少被使用的元素会被被清理掉。这就要求缓存的元素有一个hit 属性，在缓存空间不够得情况下,hit 值最小的将会被清出缓存。<br /> LRU ，Least Recently Used ，最近最少使用的，缓存的元素有一个时间戳，当缓存容量满了，而又需要腾出地方来缓存新的元素的时候，那么现有缓存元素中时间戳离当前时间最远的元素将被清出缓存。</p> </h1> <p>更新缓存的设计模式有四种：Cache aside, Read through, Write through, Write behind caching</p> <h2><a id="1Cache_aside_33" rel="nofollow"></a>1、Cache aside</h2> <p>读取：<br /> 失效：应用程序先从cache取数据，没有得到，则从数据库中取数据，成功后，放到缓存中。<br /> 命中：应用程序从cache中取数据，取到后返回。<br /> 更新：先把数据存到数据库中，成功后，再让缓存失效。</p> <p>Read/Write Through Pattern<br /> 我们可以看到，在上面的Cache Aside套路中，我们的应用代码需要维护两个数据存储，一个是缓存（Cache），一个是数据库（Repository）。所以，应用程序比较啰嗦。而Read/Write Through套路是把更新数据库（Repository）的操作由缓存自己代理了，所以，对于应用层来说，就简单很多了。可以理解为，应用认为后端就是一个单一的存储，而存储自己维护自己的Cache。</p> <h2><a id="2Read_Through_41" rel="nofollow"></a>2、Read Through</h2> <p>Read Through 套路就是在查询操作中更新缓存，也就是说，当缓存失效的时候（过期或LRU换出），Cache Aside是由调用方负责把数据加载入缓存，而Read Through则用缓存服务自己来加载，从而对应用方是透明的。</p> <h2><a id="3Write_Through_44" rel="nofollow"></a>3、Write Through</h2> <p>Write Through 套路和Read Through相仿，不过是在更新数据时发生。当有数据更新的时候，如果没有命中缓存，直接更新数据库，然后返回。如果命中了缓存，则更新缓存，然后再由Cache自己更新数据库（这是一个同步操作）</p> <h2><a id="4Write_Behind_Caching_Pattern_47" rel="nofollow"></a>4、Write Behind Caching Pattern</h2> <p>Write Back套路，一句说就是，在更新数据的时候，只更新缓存，不更新数据库，而我们的缓存会异步地批量更新数据库。这个设计的好处就是让数据的I/O操作飞快无比（因为直接操作内存嘛 ），因为异步，write backg还可以合并对同一个数据的多次操作，所以性能的提高是相当可观的。<br /> 但是，其带来的问题是，数据不是强一致性的。<br /> redis 过期策略是：定期删除+惰性删除。<br /> 所谓定期删除，指的是 redis 默认是每隔 100ms 就随机抽取一些设置了过期时间的 key，检查其是否过期，如果过期就删除。<br /> 假设 redis 里放了 10w 个 key，都设置了过期时间，你每隔几百毫秒，就检查 10w 个 key，那 redis 基本上就死了，cpu 负载会很高的，消耗在你的检查过期 key 上了。注意，这里可不是每隔 100ms 就遍历所有的设置过期时间的 key，那样就是一场性能上的灾难。实际上 redis 是每隔 100ms 随机抽取一些 key 来检查和删除的。<br /> 但是问题是，定期删除可能会导致很多过期 key 到了时间并没有被删除掉，那咋整呢？所以就是惰性删除了。这就是说，在你获取某个 key 的时候，redis 会检查一下 ，这个 key 如果设置了过期时间那么是否过期了？如果过期了此时就会删除，不会给你返回任何东西。<br /> 获取 key 的时候，如果此时 key 已经过期，就删除，不会返回任何东西。<br /> 但是实际上这还是有问题的，如果定期删除漏掉了很多过期 key，然后你也没及时去查，也就没走惰性删除，此时会怎么样？如果大量过期 key 堆积在内存里，导致 redis 内存块耗尽了，咋整？<br /> 答案是：走内存淘汰机制。</p> </h1> <p>redis 内存淘汰机制有以下几个：</p> <ul> <li> <p>noeviction: 不删除策略, 达到最大内存限制时, 如果需要更多内存, 直接返回错误信息。 大多数写命令都会导致占用更多的内存(有极少数会例外, 如 DEL )。</p> </li> <li> <p>allkeys-lru：所有key通用; 优先删除最近最少使用(less recently used ,LRU) 的 key。</p> </li> <li> <p>allkeys-random： 所有key通用; 随机删除一部分 key。</p> </li> <li> <p>volatile-lru：只限于设置了 expire 的部分; 优先删除最近最少使用(less recently used ,LRU) 的 key。</p> </li> <li> <p>volatile-random：只限于设置了 expire 的部分; 随机删除一部分 key。</p> </li> <li> <p>volatile-ttl：只限于设置了 expire 的部分; 优先删除剩余时间(time to live,TTL) 短的key。</p> </li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76136.htm">合肥宠物救助中心电话（合肥宠物救助中心电话多少）</a></p>
+                                        <p>下一个：<a href="/news/article-76799.htm">回收宠物电话多少（宠物回收店价格表）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-shadowrocket-node.htm" title="「1月7日」最高速度18.1M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「1月7日」最高速度18.1M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-clash-node-daily-updates.htm" title="「3月10日」最高速度20.4M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「3月10日」最高速度20.4M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39417.htm" title="标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）">标题动物临床常用的注射技术有哪些种类（动物常用的注射方法有）</a></li>
+                        <li class="py-2"><a href="/news/article-39904.htm" title="动物疫苗经营办营业执照是前置还是后置的好（动物疫苗经营办营业执照是前置还是后置的好一点）">动物疫苗经营办营业执照是前置还是后置的好（动物疫苗经营办营业执照是前置还是后置的好一点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-clash-node.htm" title="「3月13日」最高速度19.2M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接">「3月13日」最高速度19.2M/S，2025年Shadowrocket/V2ray/Clash/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44372.htm" title="toString()和new String()区别">toString()和new String()区别</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-v2ray.htm" title="「3月17日」最高速度20.6M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「3月17日」最高速度20.6M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36470.htm" title="动物园兽医院电话（兽医院和动物医院电话号码）">动物园兽医院电话（兽医院和动物医院电话号码）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-clash-windows.htm" title="「2月10日」最高速度18.4M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「2月10日」最高速度18.4M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-76135.htm" title="go异常/错误机制（panic和error）">go异常/错误机制（panic和error）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
