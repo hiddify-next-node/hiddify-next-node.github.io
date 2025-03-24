@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-79556.htm" />
+    <title>这些OAuth2客户端的认证方式你未必了解</title>
+        <meta name="description" content="OAuth2客户端按照它们与授权服务器进行安全认证的能力可以分为机密类型（Confidential）和公共类型（Public）。 机密类型的自身会有个密码凭据，比如Web服务器后端程序；而公共类型则没" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-79556.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="这些OAuth2客户端的认证方式你未必了解" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/655cd581496a37d53f6142352f95b95b.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:22:04" />
+    <meta property="og:updated_time" content="2025-03-23T08:22:04" />
+        <meta property="og:description" content="OAuth2客户端按照它们与授权服务器进行安全认证的能力可以分为机密类型（Confidential）和公共类型（Public）。 机密类型的自身会有个密码凭据，比如Web服务器后端程序；而公共类型则没" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="这些OAuth2客户端的认证方式你未必了解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">这些OAuth2客户端的认证方式你未必了解</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p><strong>OAuth2</strong>客户端按照它们与授权服务器进行安全认证的能力可以分为机密类型（<strong>Confidential</strong>）和公共类型（<strong>Public</strong>）。</p> <p>机密类型的自身会有个密码凭据，比如Web服务器后端程序；而公共类型则没有密码凭据，纯浏览器前端应用或者移动客户端应用大都属于这一种类型。不管是哪一种，它们都有客户端ID（<strong>client_id</strong>）。</p> <h3 id="oauth2客户端认证">OAuth2客户端认证</h3> <p>客户端在执行<strong>OAuth2</strong>授权的敏感流程中（<strong>相关的流程有令牌请求、令牌自省请求、令牌撤销请求</strong>）必须使用授权服务器进行客户端身份验证，确保客户端中途不会被调包。</p> <h3 id="客户端认证方式">客户端认证方式</h3> <p>目前客户端认证的方式有以下几种:</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2fac7ae488d49f35ac7813d93c7cca33.jpg" alt="这些OAuth2客户端的认证方式你未必了解"></p> <p>前面<strong>Gitee</strong>的<strong>DEMO</strong>使用的是过时的<strong>POST</strong>方式；微信DEMO使用的是非<strong>OAuth2</strong>标准的方式；<strong>Spring Authorization Server</strong>目前相关的<strong>DEMO</strong>使用的是<strong>client_secret_basic</strong>方式。剩下的方式中<strong>client_secret_jwt</strong>和<strong>private_key_jwt</strong>用的比较多，这两种方式可以很好地保护客户端的认证信息，安全性更高。<strong>Spring Security</strong>和<strong>Spring Authorization Server</strong>目前已经支持这两种方式。</p> <h4 id="client_secret_jwt">client_secret_jwt</h4> <p><code>client_secret_jwt</code>方式是<strong>OAuth2</strong>客户端将自己的密钥作为<code>HmacSHA256</code>算法的<strong>key</strong>生成<code>SecretKey</code>：</p> <pre><code class="language-java">byte[] pin = clientSecret.getBytes(StandardCharsets.UTF_8); SecretKeySpec  secretKey = new SecretKeySpec(pin,"HmacSHA256");</code></pre> <p>然后通过<code>SecretKey</code>生成一个携带<strong>OAuth2</strong>客户端信息的<strong>JWT</strong>，在授权码请求<strong>Token</strong>环节携带该<strong>JWT</strong>以便授权服务器进行客户端认证，请求的报文为:</p> <pre><code class="language-http">     POST /oauth2/token HTTP/1.1      Host: oauth2_client.felord.cn      Content-Type: application/x-www-form-urlencoded       grant_type=authorization_code&amp;      code=n0esc3NRze7LTCu7iYzS6a5acc3f0ogp4&amp;      client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&amp;      client_assertion=你的JWT</code></pre> <p>授权服务器收到请求后通过<strong>OAuth2</strong>客户端的<code>client_secret</code>对<strong>JWT</strong>进行解码校验以认证客户端。这种方式能很好的保护<code>client_secret</code>在非<strong>HTTPS</strong>环境下的传输。</p> <blockquote> <p>这里OAuth2客户端的密钥（<strong>client_secret</strong>）比特长度必须大于等于<strong>256</strong>。</p> </blockquote> <h4 id="private_key_jwt">private_key_jwt</h4> <p><code>private_key_jwt</code>和<code>client_secret_jwt</code>唯一的区别就是生成<strong>JWT</strong>的方式不同。通过这种方式，<strong>OAuth2</strong>客户端已经不需要<code>client_secret</code>，只需要配置一对<code>RSA</code>或者<code>EC</code>密钥，通过密钥来生成<strong>JWT</strong>，另外还需要向授权服务器提供公钥，通常是一个<strong>jwkSetUrl</strong>。该方式的细节已经在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_35067322/category_11691173.html"  target="_blank" rel="nofollow">OAuth2专栏</a>中<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://felord.blog.csdn.net/article/details/123540550"  target="_blank" rel="nofollow">JOSE规范</a>一文中进行过详细说明了，这里不再赘述。这种方式让客户端的认证信息更加安全的传输，是我个人比较喜欢的方式。</p> <h4 id="tls_client_auth">tls_client_auth</h4> <p>这个比较高级，嵌入了TLS安全层，在HTTP协议级别来认证<strong>OAuth2</strong>客户端，它涉及的证书来自可信任的<strong>CA</strong>。这种方式基本脱离了应用层，是一种无侵入的方式。</p> <h4 id="self_signed_tls_client_auth">self_signed_tls_client_auth</h4> <p>这个同样也是在TLS安全层，不过它使用了自签名的<strong>X.509</strong>证书。</p> <h3 id="总结">总结</h3> <p>市面上的教程大多只会提到过时的<s>POST</s>方式以及<strong>client_secret_basic</strong>和<strong>client_secret_post</strong>方式，对后面的五种则很少涉及，胖哥已经对<strong>private_key_jwt</strong>和<strong>client_secret_jwt</strong>进行了实现，详细请订阅我的<strong>Spring Security OAuth2</strong>专栏。这些OAuth2客户端认证方式在不同的场景有不同的优势，你可以根据不同的安全级别选择不同的<strong>OAuth2</strong>客户端认证方式。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-78865.htm">私人出售狗狗的网站有哪些（私人出售狗狗的网站有哪些呢）</a></p>
+                                        <p>下一个：<a href="/news/article-79557.htm">宠物零食加工厂要投资多少钱呢（宠物零食加工厂要投资多少钱呢视频）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-22-shadowrocket-node.htm" title="「2月22日」最高速度22.9M/S，2025年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「2月22日」最高速度22.9M/S，2025年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-clash-windows.htm" title="「2月20日」最高速度22.6M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「2月20日」最高速度22.6M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-clash-windows.htm" title="「2月10日」最高速度18.4M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「2月10日」最高速度18.4M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-51382.htm" title="宠物狗领养条件（宠物领养的条件）">宠物狗领养条件（宠物领养的条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-clash-windows.htm" title="「1月21日」最高速度21.6M/S，2025年SSR/Shadowrocket/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「1月21日」最高速度21.6M/S，2025年SSR/Shadowrocket/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-shadowrocket-node.htm" title="「1月31日」最高速度22.5M/S，2025年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月31日」最高速度22.5M/S，2025年Clash/Shadowrocket/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-61428.htm" title="三国杀全武将语音台词（三国杀全武将语音台词大全）">三国杀全武将语音台词（三国杀全武将语音台词大全）</a></li>
+                        <li class="py-2"><a href="/news/article-38425.htm" title="数据库上云实践：使用Ora2pg进行数据库迁移">数据库上云实践：使用Ora2pg进行数据库迁移</a></li>
+                        <li class="py-2"><a href="/news/article-73440.htm" title="广州领养宠物中心地址查询（广州领养宠物狗的地方）">广州领养宠物中心地址查询（广州领养宠物狗的地方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-shadowrocket-node.htm" title="「1月30日」最高速度18.5M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「1月30日」最高速度18.5M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
