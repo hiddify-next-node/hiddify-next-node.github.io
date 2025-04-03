@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-85892.htm" />
+    <title>SpringBoot之自定义Starter及AutoConfiguration</title>
+        <meta name="description" content="现在微服务化是大趋势，因为现在伴随着移动互联网的快速发展，快速上线，快速更新等需求越来越多，所以云平台营运而来，从Docker在到Kubernate，微服务逐渐成为了现代软件开发的新宠。说道微服务，我" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-85892.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="SpringBoot之自定义Starter及AutoConfiguration" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/654472e2317eab59472000c5d1c7c9f8.webp" />
+        <meta property="og:release_date" content="2025-04-01T09:46:57" />
+    <meta property="og:updated_time" content="2025-04-01T09:46:57" />
+        <meta property="og:description" content="现在微服务化是大趋势，因为现在伴随着移动互联网的快速发展，快速上线，快速更新等需求越来越多，所以云平台营运而来，从Docker在到Kubernate，微服务逐渐成为了现代软件开发的新宠。说道微服务，我" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot之自定义Starter及AutoConfiguration">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">SpringBoot之自定义Starter及AutoConfiguration</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p style="text-indent:50px;">现在微服务化是大趋势，因为现在伴随着移动互联网的快速发展，快速上线，快速更新等需求越来越多，所以云平台营运而来，从Docker在到Kubernate，微服务逐渐成为了现代软件开发的新宠。说道微服务，我们就要说一下，微服务需要哪些服务来支撑，为什么选择SpringBoot,微服务化因为服务粒度足够小，所以需要将多个服务进行组合来完成具体的一个业务，但是也伴随着问题而来，服务间的调用依赖，如果服务不可用就会出现问题，如果网络带宽不足，性能也会大打折扣，同时当多个服务依次调用的时候，整个链路异常定位同样很难，现在异步操作随处可见，好不容易业务跑通了，发现配置变更，不可能运行中的所有服务器都更改一下在重启吧，统一的配置管理迫在眉睫，最后关键的服务注册与发现不得不上，你不可能新增一个服务就维护一个IP和端口和URI吧。所以通过刚才的简述，学习过微服务的同学可能就已经能明白微服务需要哪些东西了，需要的东西很多，SpringBoot和SpringCloud提供了一站式解决方案，所以很多东西不需要自己再去实现就可以直接使用，因为微服务的逐步上线及业务拆分是需要一个长期的过程的，毕竟一个优质可靠的框架不是靠一次设计就可以完善的，也不是说SpingCloud就一定是最好的，通过入门，我们之后再使用过程中可以积累经验，再创造适合自己的微服务框架也未尝不可，好了今天就先说说微服务具体都有啥吧。微服务几个核心的部件分别是服务注册与发现，分布式配置管理，消息总线，熔断及降级，服务间调用Feign，性能监控，服务网关等。今天我们先说说微服务最基础的框架SpringBoot。</p> <p style="text-indent:50px;">SpringBoot是一套具有现代思想，为了完全解脱复杂配置而设计的快速开发框架，他提供了很多Enable*注解，只要使用对应的注解就会自动生成相应的配置文件，是不是很神奇，而且SpringBoot使用统一的配置文件application.properties，我们只需要在配置文件中定义必须的参数即可，然后我们就可以去开发我们的业务逻辑撸代码去了，是不是很爽。做过开发有几年的同志一定对开发环境的配置和搭建苦恼不已，往往大家都是更热衷于撸代码搞开发，而不是去搞环境，玩配置。因为环境往往不是天天搭建，而一整套环境搭建起来又非常复杂，所以Spring为了解决在代码中的配置就创造了SpringBoot，SpringBoot中包含了一个包AutoConfiguration，这个包专门用来处理配置相关管理，Spring已经封装了大部分主流的框架，单这还不够，作为一个专业撸代码的，自己做的代码怎么也能自动配置呢？这个很关键啊，是不是，也许有的人说了，提供的工具足够了啊，为什么还要自己开发呢？哈哈，这就说明了你还很嫩，还没有达到一定的高度，这里我不是说我是大牛，只是说明了一个态度，作为一个专业人员，一套框架的核心原理及精髓，我们还是需要去深入学习的，好了，说了半天也该来电干货了，先上代码，在根据代码详细说明。</p> <p style="text-indent:50px;">为了开发自定义的Starter我们需要引入依赖spring-boot-autoconfigure，这个依赖是必须要引入的依赖，其他的依赖可以根据需要进行添加，接下来是spring-boot-configuration-processor，这个依赖也是必须要引入的，但是有个前提，那就是当你需要配置文件的时候@ConfigurationProperties(prefix = "spring.mystarter")，你就必须引入。</p> <pre class="has"><code class="language-java">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt; 	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; 	&lt;groupId&gt;com.easy.starter&lt;/groupId&gt; 	&lt;artifactId&gt;MyStarter&lt;/artifactId&gt; 	&lt;version&gt;1.0.0&lt;/version&gt; 	&lt;packaging&gt;jar&lt;/packaging&gt; 	&lt;properties&gt; 		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; 	&lt;/properties&gt; 	&lt;dependencies&gt; 		&lt;dependency&gt; 			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; 			&lt;artifactId&gt;spring-boot-autoconfigure&lt;/artifactId&gt; 			&lt;version&gt;2.0.4.RELEASE&lt;/version&gt; 		&lt;/dependency&gt; 		&lt;dependency&gt; 			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; 			&lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt; 			&lt;version&gt;2.0.4.RELEASE&lt;/version&gt; 		&lt;/dependency&gt; 	&lt;/dependencies&gt; 	&lt;build&gt; 		&lt;finalName&gt;MyStarter&lt;/finalName&gt; 		&lt;plugins&gt; 			&lt;plugin&gt; 				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; 				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt; 				&lt;configuration&gt; 					&lt;source&gt;1.8&lt;/source&gt; 					&lt;target&gt;1.8&lt;/target&gt; 				&lt;/configuration&gt; 			&lt;/plugin&gt; 		&lt;/plugins&gt; 	&lt;/build&gt; &lt;/project&gt;</code></pre> <pre class="has"><code class="language-java">package com.easy.app.properties;  import org.springframework.boot.context.properties.ConfigurationProperties;  @ConfigurationProperties(prefix = "spring.mystarter") public class MyProperties { 	private String msg = "This is a starter Demo!"; 	private boolean show = true;  	public String getMsg() { 		return msg; 	}  	public void setMsg(String msg) { 		this.msg = msg; 	}  	public boolean isShow() { 		return show; 	}  	public void setShow(boolean show) { 		this.show = show; 	} } </code></pre> <pre class="has"><code class="language-java">package com.easy.app.config;  import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.autoconfigure.condition.ConditionalOnClass; import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean; import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.boot.context.properties.EnableConfigurationProperties; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration;  import com.easy.app.properties.MyProperties; import com.easy.app.service.MyService;  @Configuration @EnableConfigurationProperties(MyProperties.class) @ConditionalOnClass(MyService.class) @ConditionalOnProperty(prefix = "mystarter", value = "enabled", matchIfMissing = true) public class MyConfiguration { 	@Autowired 	private MyProperties myProperties;  	@Bean 	@ConditionalOnMissingBean(MyService.class) 	public MyService helloService() { 		MyService myService = new MyService(); 		myService.setMsg(myProperties.getMsg()); 		myService.setShow(myProperties.isShow()); 		return myService; 	}  } </code></pre> <pre class="has"><code class="language-java">package com.easy.app.service;  public class MyService { 	private String msg; 	private boolean show = true;  	public String sayHello() { 		return show ? "Hello，" + msg : "Hidden"; 	}  	public void setMsg(String msg) { 		this.msg = msg; 	}  	public void setShow(boolean show) { 		this.show = show; 	} } </code></pre> <p>&nbsp;下面的这段代码是开启自动配置的核心配置，是告诉Spring那个类是是自动配置的配置类。在src/main/resources下创建路径/META-INF/spring-factories</p> <pre class="has"><code class="language-java">org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.easy.app.config.MyConfiguration</code></pre> <p>&nbsp;虽然现在有了自动配置，但是我们还是需要在application.properties中配置参数，但是没有提示怎么办，没问题我们同样有办法，同样在src/main/resources下创建路径/META-INF/spring-configuration-metadata.json,配置好之后，我们在使用的时候就会出现配置了。</p> <pre class="has"><code class="language-java">{   "hints": [],   "groups": [     {       "sourceType": "com.easy.app.properties.MyProperties",       "name": "spring.mystarter",       "type": "com.easy.app.properties.MyProperties"     }   ],   "properties": [     {       "sourceType": "com.easy.app.properties.MyProperties",       "name": "spring.mystarter.msg",       "type": "java.lang.String"     },     {       "sourceType": "com.easy.app.properties.MyProperties",       "name": "spring.mystarter.show",       "type": "java.lang.Boolean"     }   ] }</code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-85181.htm">mysql limit和offset用法_在线工具</a></p>
+                                        <p>下一个：<a href="/news/article-85893.htm">【kafka】一次磁盘故障后消费者无法消费</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70141.htm" title="被宠物猫抓出一点点血要***吗（被宠物猫抓出了一点血有事吗）">被宠物猫抓出一点点血要***吗（被宠物猫抓出了一点血有事吗）</a></li>
+                        <li class="py-2"><a href="/news/article-76799.htm" title="回收宠物电话多少（宠物回收店价格表）">回收宠物电话多少（宠物回收店价格表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-subscribe-node.htm" title="「3月12日」最高速度21.4M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「3月12日」最高速度21.4M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-80931.htm" title="Vue导航栏，基于elementUI的导航菜单树">Vue导航栏，基于elementUI的导航菜单树</a></li>
+                        <li class="py-2"><a href="/news/article-80932.htm" title="动物防疫***收费吗现在多少钱（动物防疫***收费吗现在多少钱啊）">动物防疫***收费吗现在多少钱（动物防疫***收费吗现在多少钱啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-v2ray.htm" title="「3月23日」最高速度22.7M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「3月23日」最高速度22.7M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-83737.htm" title="狂犬疫苗需要打几针（狂犬疫苗需要多少钱）">狂犬疫苗需要打几针（狂犬疫苗需要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-71453.htm" title="1970年农历7月1日是什么星座（1970年农历7月是什么命）">1970年农历7月1日是什么星座（1970年农历7月是什么命）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-free-ssr-node.htm" title="「3月5日」最高速度22.5M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「3月5日」最高速度22.5M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-free-node-subscribe-links.htm" title="「3月21日」最高速度20.3M/S，2025年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「3月21日」最高速度20.3M/S，2025年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
