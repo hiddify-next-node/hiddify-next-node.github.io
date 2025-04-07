@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-89511.htm" />
+    <title>实现可以拖动的悬浮框</title>
+        <meta name="description" content="直接上代码，有注释 &lt;!DOCTYPE html&gt; &lt;html lang="en"&gt; &lt;head&gt;     &lt;meta charset="UTF-8"&gt;" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-89511.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="实现可以拖动的悬浮框" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/fc5057678e199176b8f574a40fb7469a.webp" />
+        <meta property="og:release_date" content="2025-04-06T10:06:15" />
+    <meta property="og:updated_time" content="2025-04-06T10:06:15" />
+        <meta property="og:description" content="直接上代码，有注释 &lt;!DOCTYPE html&gt; &lt;html lang="en"&gt; &lt;head&gt;     &lt;meta charset="UTF-8"&gt;" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="实现可以拖动的悬浮框">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">实现可以拖动的悬浮框</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <h2> <a id="_1" rel="nofollow"></a>直接上代码，有注释</h2> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token constant">DOCTYPE</span> html<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"viewport"</span> content<span class="token operator">=</span><span class="token string">"width=device-width, initial-scale=1.0"</span><span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span>实现可以拖动的悬浮框<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>         body<span class="token punctuation">{<!-- --></span>             height<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>             width<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>             position<span class="token punctuation">:</span> relative<span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token punctuation">.</span>btn<span class="token punctuation">{<!-- --></span>             width<span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>             margin<span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>             text<span class="token operator">-</span>align<span class="token punctuation">:</span> center<span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token punctuation">.</span>main<span class="token punctuation">{<!-- --></span>             <span class="token comment">/* 因为下面要用到所以绝对定位 */</span>             position<span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>             left<span class="token punctuation">:</span> <span class="token number">50</span><span class="token operator">%</span><span class="token punctuation">;</span>             transform<span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">50</span><span class="token operator">%</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             width<span class="token punctuation">:</span> <span class="token number">300</span>px<span class="token punctuation">;</span>             height<span class="token punctuation">:</span> <span class="token number">300</span>px<span class="token punctuation">;</span>             background<span class="token operator">-</span>color<span class="token punctuation">:</span> skyblue<span class="token punctuation">;</span>             text<span class="token operator">-</span>align<span class="token punctuation">:</span> center<span class="token punctuation">;</span>             line<span class="token operator">-</span>height<span class="token punctuation">:</span> <span class="token number">300</span>px<span class="token punctuation">;</span>             display<span class="token punctuation">:</span> none<span class="token punctuation">;</span>             z<span class="token operator">-</span>index<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token punctuation">.</span>close<span class="token operator">-</span>btn<span class="token punctuation">{<!-- --></span>             position<span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>             right<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">20</span>px<span class="token punctuation">;</span>             top<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">20</span>px<span class="token punctuation">;</span>             width<span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>             height<span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>             line<span class="token operator">-</span>height<span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span>             border<span class="token operator">-</span>radius<span class="token punctuation">:</span> <span class="token number">50</span><span class="token operator">%</span><span class="token punctuation">;</span>             background<span class="token operator">-</span>color<span class="token punctuation">:</span> #ccc<span class="token punctuation">;</span>             color<span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token punctuation">.</span>mask<span class="token punctuation">{<!-- --></span>             height<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>             width<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>             position<span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>             top<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>             left<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>             background<span class="token operator">-</span>color<span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             display<span class="token punctuation">:</span> none<span class="token punctuation">;</span>             z<span class="token operator">-</span>index<span class="token punctuation">:</span> <span class="token number">99</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn"</span><span class="token operator">&gt;</span>点击出现悬浮框<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"main"</span><span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>这就是出现的悬浮框<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"close-btn"</span><span class="token operator">&gt;</span>关闭<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"mask"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>         <span class="token comment">// 获取元素</span>         <span class="token keyword">let</span> btn<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.btn'</span><span class="token punctuation">)</span>         <span class="token keyword">let</span> main<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.main'</span><span class="token punctuation">)</span>         <span class="token keyword">let</span> closeBtn<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.close-btn'</span><span class="token punctuation">)</span>         <span class="token keyword">let</span> mask<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.mask'</span><span class="token punctuation">)</span>         <span class="token comment">// 点击显示悬浮框和mask蒙层</span>         btn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token string">'block'</span>             mask<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token string">'block'</span>         <span class="token punctuation">}</span><span class="token punctuation">)</span>         <span class="token comment">// 点击隐藏悬浮框和mask蒙层</span>         closeBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token string">'none'</span>             mask<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token string">'none'</span>         <span class="token punctuation">}</span><span class="token punctuation">)</span>         <span class="token comment">// 鼠标按下</span>         main<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token comment">// 获得鼠标在盒子里的坐标</span>             <span class="token comment">// console.log(event.pageX)</span>             <span class="token comment">// console.log(main.offsetLeft)</span>             <span class="token keyword">let</span> x<span class="token operator">=</span>event<span class="token punctuation">.</span>pageX<span class="token operator">-</span>main<span class="token punctuation">.</span>offsetLeft             <span class="token keyword">let</span> y<span class="token operator">=</span>event<span class="token punctuation">.</span>pageY<span class="token operator">-</span>main<span class="token punctuation">.</span>offsetTop             document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span>move<span class="token punctuation">)</span>             <span class="token comment">// 也可以吧document换成main都行</span>             <span class="token keyword">function</span> <span class="token function">move</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>                 <span class="token comment">// 盒子距离body的距离=鼠标距离body的距离-鼠标距离盒子的距离</span>                 main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left<span class="token operator">=</span>event<span class="token punctuation">.</span>pageX<span class="token operator">-</span>x<span class="token operator">+</span><span class="token string">'px'</span>                 main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top<span class="token operator">=</span>event<span class="token punctuation">.</span>pageY<span class="token operator">-</span>y<span class="token operator">+</span><span class="token string">'px'</span>             <span class="token punctuation">}</span>             <span class="token comment">// 鼠标抬起</span>             document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>                 document<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span>move<span class="token punctuation">)</span>             <span class="token punctuation">}</span><span class="token punctuation">)</span>         <span class="token punctuation">}</span><span class="token punctuation">)</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">&gt;</span> </code></pre> <h6> <a id="_103" rel="nofollow"></a>做为一个锻炼自己的过程，有什么错误欢迎指正</h6> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-88770.htm">违约养宠物还能退押金吗怎么处理（宠物店押金不退可以报警吗）</a></p>
+                                        <p>下一个：<a href="/news/article-89512.htm">青岛动物医院招聘护士（青岛动物医院招聘护士最新信息）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70140.htm" title="中国宠物粮之乡工业园区（中国最大的宠物粮食企业）">中国宠物粮之乡工业园区（中国最大的宠物粮食企业）</a></li>
+                        <li class="py-2"><a href="/news/article-67584.htm" title="猫咪领养协议模板免费下载（领养猫的协议是什么样的）">猫咪领养协议模板免费下载（领养猫的协议是什么样的）</a></li>
+                        <li class="py-2"><a href="/news/article-66927.htm" title="小猫养多久才认主人?怎样不让猫得猫藓呢（小猫养多久才认家）">小猫养多久才认主人?怎样不让猫得猫藓呢（小猫养多久才认家）</a></li>
+                        <li class="py-2"><a href="/news/article-74113.htm" title="宠物领养协议书 宠物领养协议书模板">宠物领养协议书 宠物领养协议书模板</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-free-node-subscribe-links.htm" title="「3月21日」最高速度20.3M/S，2025年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「3月21日」最高速度20.3M/S，2025年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-82326.htm" title="宠物领养协议书范本图片大全集 宠物领养协议书范本图片大全集下载">宠物领养协议书范本图片大全集 宠物领养协议书范本图片大全集下载</a></li>
+                        <li class="py-2"><a href="/news/article-83036.htm" title="和田市宠物店电话多少（和田宠物市场在哪里）">和田市宠物店电话多少（和田宠物市场在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-72117.htm" title="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？">当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</a></li>
+                        <li class="py-2"><a href="/news/article-84464.htm" title="宠物粮食代理 宠物粮食代理需要多少钱">宠物粮食代理 宠物粮食代理需要多少钱</a></li>
+                        <li class="py-2"><a href="/news/article-83737.htm" title="狂犬疫苗需要打几针（狂犬疫苗需要多少钱）">狂犬疫苗需要打几针（狂犬疫苗需要多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

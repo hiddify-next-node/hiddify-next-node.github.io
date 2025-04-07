@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-90231.htm" />
+    <title>关于VUE中组件之间传值以及调用方法汇总</title>
+        <meta name="description" content="VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。    一、父组件==&gt;子组件  1.父组件传值给子组件，通过类似于属性绑定的方式，" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-90231.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="关于VUE中组件之间传值以及调用方法汇总" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/c20da9ea3707317ba2f4d031a278a090.webp" />
+        <meta property="og:release_date" content="2025-04-07T09:01:41" />
+    <meta property="og:updated_time" content="2025-04-07T09:01:41" />
+        <meta property="og:description" content="VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。    一、父组件==&gt;子组件  1.父组件传值给子组件，通过类似于属性绑定的方式，" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="关于VUE中组件之间传值以及调用方法汇总">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">关于VUE中组件之间传值以及调用方法汇总</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3 id="vue中组件之间传值总结来讲有三种情况分别是父组件对子组件子组件对父组件以及兄弟组件之间传值以及调用">VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。</h3> <dl> <p>  一、父组件==&gt;子组件</p> <dd> <p><strong>1.父组件传值给子组件</strong>，通过类似于属性绑定的方式，将需要传入子组件中的数据，绑定在子组件上，子组件通过props接收传入进来的数据。</p> <pre><code>父组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs lasso"><span class="hljs-comment">//在teamplate中调用此组件</span> <span class="hljs-subst">&lt;</span>spList :keyword<span class="hljs-subst">=</span><span class="hljs-string">"keyword"</span> :activename<span class="hljs-subst">=</span><span class="hljs-string">"active"</span><span class="hljs-subst">&gt;&lt;</span>/spList<span class="hljs-subst">&gt;</span> <span class="hljs-comment">//引入子组件</span> <span class="hljs-keyword">import</span> spList from <span class="hljs-string">"../../components/sp_list.vue"</span>; components: {     spList }, <span class="hljs-built_in">data</span>() {     <span class="hljs-keyword">return</span> {         active: <span class="hljs-string">"2"</span>,         keyword: <span class="hljs-string">''</span>,     }; },</code></pre> <pre><code>子组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs javascript">props: {      keyword:<span class="hljs-built_in">String</span>,      activename:<span class="hljs-built_in">String</span>, }, <span class="hljs-comment">//或者</span> props: {      <span class="hljs-string">"keyword"</span>,      <span class="hljs-string">"activename"</span> },</code></pre> </dd> <dd> <p><strong>2.父组件调用子组件中的方法或数据</strong>，VUE官网中的描述：ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例。</p> <pre><code>父组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-comment">//在teamplate中调用此组件，并将该组件注册在$refs对象上</span> &lt;spList <span class="hljs-keyword">ref</span>=<span class="hljs-string">"splist"</span>&gt;&lt;/spList&gt; <span class="hljs-comment">//引入子组件</span> import spList <span class="hljs-keyword">from</span> <span class="hljs-string">"../../components/sp_list.vue"</span>; components: {     spList }, methods: {     getsomeList(){         <span class="hljs-keyword">this</span>.$refs.splist.getlist();<span class="hljs-comment">//调用子组件中的方法</span>         <span class="hljs-keyword">this</span>.$refs.splist.tableData;<span class="hljs-comment">//获取子组件中的数据</span>     } },</code></pre> <pre><code>子组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs haskell"><span class="hljs-typedef"><span class="hljs-keyword">data</span><span class="hljs-container">()</span> <span class="hljs-container">{     <span class="hljs-title">return</span> {         <span class="hljs-title">tableData</span>:[],     }</span></span> },  methods: {     //获取列表的方法     getlist(){      }, },</code></pre> </dd> <p>  二、子组件==&gt;父组件</p> <dd> <p>1.通过<strong>事件派发</strong>的方式传值给父组件，或者告知父组件需要调用方法。</p> <pre><code>父组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs scala"><span class="hljs-comment">//在teamplate中调用此组件，并绑定与子组件约定好的事件名称和在父组件中由该事件出发的方法</span> &lt;spList <span class="hljs-annotation">@changeBxd</span>=<span class="hljs-string">"setBxd"</span>&gt;&lt;/spList&gt; <span class="hljs-comment">//引入子组件</span> <span class="hljs-keyword">import</span> spList from <span class="hljs-string">"../../components/sp_list.vue"</span>; components: {     spList }, methods: {     setBxd(<span class="hljs-keyword">val</span>){         console.log(<span class="hljs-keyword">val</span>);<span class="hljs-comment">//'你好世界'</span>         <span class="hljs-keyword">this</span>.getFlow();<span class="hljs-comment">//触发事件后调用其他父组件中的方法</span>     },     getFlow(){      }, },</code></pre> <pre><code>子组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs cs">methods: {     <span class="hljs-comment">//获取列表的方法</span>     getlist(){         <span class="hljs-keyword">let</span> name = <span class="hljs-string">'你好世界'</span>;         <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'changeBxd'</span>,name );<span class="hljs-comment">//触发约定好的事件</span>     }, },</code></pre> </dd> <p>  三、兄弟组件之间</p> <dd> <p>1.通过<strong>eventbus</strong>的方式监听事件。 <br /> 首先需要先创建一个eventbus的事件容器，哪里需要哪里引用。 <br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b513e415939e3068697875d737f47435.jpg" alt="关于VUE中组件之间传值以及调用方法汇总"></p> <pre><code>兄弟组件1中的内容 </code></pre> <pre class="prettyprint"><code class="hljs lasso"><span class="hljs-comment">//引入eventbus</span> <span class="hljs-keyword">import</span> Bus from <span class="hljs-string">'@/util/bus.js'</span> <span class="hljs-comment">//在方法中触发事件，（提前约定好事件名称）</span> methods: {     getFlow(){         Bus<span class="hljs-built_in">.</span><span class="hljs-variable">$emit</span>(<span class="hljs-string">'getCwbxList'</span>)     }, },</code></pre> <pre><code>兄弟组件2中的内容 </code></pre> <pre class="prettyprint"><code class="hljs coffeescript"><span class="hljs-regexp">//</span> 引入eventbus <span class="hljs-reserved">import</span> Bus from <span class="hljs-string">'@/util/bus.js'</span> mounted(){     <span class="hljs-regexp">//</span> 监听此事件     Bus.$<span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'getCwbxList'</span>,()=&gt;{         <span class="hljs-keyword">this</span>.getlist();     })</span> }</span></code></pre> <blockquote> <p><strong>注意：</strong>：eventbus 这种传值方式，适用于任何组件之间传值，父子间或者兄弟间。</p> </blockquote> </dd> </dl> <p>另外，除了这些方法之外，还可以是用<strong>vuex</strong>官方推荐的状态管理。关于vuex在之后记录介绍，最近还在整理中。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-89512.htm">青岛动物医院招聘护士（青岛动物医院招聘护士最新信息）</a></p>
+                                        <p>下一个：<a href="/news/article-90232.htm">HCNP Routing&amp;Switching之代理ARP</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-free-node-subscribe-links.htm" title="「3月21日」最高速度20.3M/S，2025年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「3月21日」最高速度20.3M/S，2025年Clash/SSR/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-72117.htm" title="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？">当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</a></li>
+                        <li class="py-2"><a href="/news/article-76136.htm" title="合肥宠物救助中心电话（合肥宠物救助中心电话多少）">合肥宠物救助中心电话（合肥宠物救助中心电话多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-v2ray.htm" title="「3月17日」最高速度20.6M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接">「3月17日」最高速度20.6M/S，2025年SSR/Clash/Shadowrocket/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-65651.htm" title="2021国考公务员报考人数（2021年国考公务员报考人数）">2021国考公务员报考人数（2021年国考公务员报考人数）</a></li>
+                        <li class="py-2"><a href="/news/article-73439.htm" title="【和弦图】">【和弦图】</a></li>
+                        <li class="py-2"><a href="/news/article-70141.htm" title="被宠物猫抓出一点点血要***吗（被宠物猫抓出了一点血有事吗）">被宠物猫抓出一点点血要***吗（被宠物猫抓出了一点血有事吗）</a></li>
+                        <li class="py-2"><a href="/news/article-70796.htm" title="美联众合动物医院地址 美联众合动物医院地址在哪里">美联众合动物医院地址 美联众合动物医院地址在哪里</a></li>
+                        <li class="py-2"><a href="/news/article-79556.htm" title="这些OAuth2客户端的认证方式你未必了解">这些OAuth2客户端的认证方式你未必了解</a></li>
+                        <li class="py-2"><a href="/news/article-69498.htm" title="宠物鲜粮市场创业（宠物鲜粮市场创业项目）">宠物鲜粮市场创业（宠物鲜粮市场创业项目）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
