@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-93881.htm" />
+    <title>PHP如何使用名称空间方法详解</title>
+        <meta name="description" content="介绍 命名空间中的类，函数或常量可以通过以下方式使用：   在当前命名空间中使用类   指定相对于当前命名空间的命名空间   提供命名空间的全限定名称   从当前命名空间 在此示例中，从test1.p" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-93881.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="PHP如何使用名称空间方法详解" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/648fd8314e051167033e6a09bfb75037.webp" />
+        <meta property="og:release_date" content="2025-04-12T08:52:55" />
+    <meta property="og:updated_time" content="2025-04-12T08:52:55" />
+        <meta property="og:description" content="介绍 命名空间中的类，函数或常量可以通过以下方式使用：   在当前命名空间中使用类   指定相对于当前命名空间的命名空间   提供命名空间的全限定名称   从当前命名空间 在此示例中，从test1.p" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PHP如何使用名称空间方法详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">PHP如何使用名称空间方法详解</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>介绍</h2> <p>命名空间中的类，函数或常量可以通过以下方式使用：</p> <ul class="list-paddingleft-2"> <li> <p>在当前命名空间中使用类</p> </li> <li> <p>指定相对于当前命名空间的命名空间</p> </li> <li> <p>提供命名空间的全限定名称</p> </li> </ul> <h2>从当前命名空间</h2> <p>在此示例中，从test1.php加载了命名空间。没有命名空间引用的函数或类名称将访问当前命名空间中的功能或类名称</p> <h2>示例</h2> <pre>#test1.php &lt;?php namespace&nbsp;myspace\space1; const&nbsp;MAX&nbsp;=&nbsp;100; function&nbsp;hello()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;space1\n";} class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;hellomethod()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;space1\n";} } ?&gt;</pre> <p>在以下代码中使用此文件</p> <h2>示例</h2> <pre>&lt;?php namespace&nbsp;myspace; include&nbsp;'test1.php'; const&nbsp;MAX&nbsp;=&nbsp;200; function&nbsp;hello()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;myspace\n";} class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;hellomethod()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;myspace\n";} } hello(); myclass::hellomethod(); echo&nbsp;MAX; ?&gt;</pre> <p>输出结果</p> <pre>hello&nbsp;in&nbsp;myspace hello&nbsp;in&nbsp;myspace 200</pre> <h2>使用相对命名空间</h2> <p>在下面的示例中，函数和类使用相对命名空间</p> <h2>示例</h2> <pre>&lt;?php namespace&nbsp;myspace; include&nbsp;'test1.php'; const&nbsp;MAX&nbsp;=&nbsp;200; function&nbsp;hello()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;myspace\n";} class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;hellomethod()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;myspace\n";} } space1\hello(); space1\myclass::hellomethod(); echo&nbsp;space1\MAX; ?&gt;</pre> <p>输出结果</p> <p>上面的代码显示以下输出</p> <pre>hello&nbsp;in&nbsp;space1 hello&nbsp;in&nbsp;space1 100</pre> <h2>完全合格的命名空间</h2> <p>函数和类被赋予绝对命名空间名称</p> <h2>示例</h2> <pre>&lt;?php namespace&nbsp;myspace; include&nbsp;'test1.php'; const&nbsp;MAX&nbsp;=&nbsp;200; function&nbsp;hello()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;myspace\n";} class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;hellomethod()&nbsp;{echo&nbsp;"hello&nbsp;in&nbsp;myspace\n";} } \myspace\hello(); \myspace\space1\hello(); \myspace\myclass::hellomethod(); \myspace\space1\myclass::hellomethod(); echo&nbsp;\myspace\MAX&nbsp;.&nbsp;"\n"; echo&nbsp;\myspace\space1\MAX; ?&gt;</pre> <p>输出结果</p> <p>上面的代码显示以下输出</p> <pre>hello&nbsp;in&nbsp;myspace hello&nbsp;in&nbsp;space1 hello&nbsp;in&nbsp;myspace hello&nbsp;in&nbsp;space1 200 100</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93223.htm">宠物猫三针疫苗多少钱（宠物猫三针疫苗多少钱啊）</a></p>
+                                        <p>下一个：<a href="/news/article-93882.htm">动物疫苗的了解和看法英语作文初中（动物疫苗 英文）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-86611.htm" title="狗粮品牌都有哪些（狗粮品牌都有哪些）">狗粮品牌都有哪些（狗粮品牌都有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-92467.htm" title="新手开店适合开什么店成本低的（适合新手开的店铺）">新手开店适合开什么店成本低的（适合新手开的店铺）</a></li>
+                        <li class="py-2"><a href="/news/article-73440.htm" title="广州领养宠物中心地址查询（广州领养宠物狗的地方）">广州领养宠物中心地址查询（广州领养宠物狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-83737.htm" title="狂犬疫苗需要打几针（狂犬疫苗需要多少钱）">狂犬疫苗需要打几针（狂犬疫苗需要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-76799.htm" title="回收宠物电话多少（宠物回收店价格表）">回收宠物电话多少（宠物回收店价格表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-shadowrocket-node.htm" title="「3月22日」最高速度21.1M/S，2025年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接">「3月22日」最高速度21.1M/S，2025年Shadowrocket/SSR/V2ray/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-v2ray.htm" title="「3月23日」最高速度22.7M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「3月23日」最高速度22.7M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-82325.htm" title="系统设计的11个考虑编程一生">系统设计的11个考虑编程一生</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-clash-node-daily-updates.htm" title="「4月3日」最高速度21.6M/S，2025年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「4月3日」最高速度21.6M/S，2025年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-subscribe-node.htm" title="「3月12日」最高速度21.4M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接">「3月12日」最高速度21.4M/S，2025年Clash/V2ray/Shadowrocket/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
