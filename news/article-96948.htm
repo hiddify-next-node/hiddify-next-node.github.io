@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-96948.htm" />
+    <title>多语言文本到音素转换工具phonemizer实践</title>
+        <meta name="description" content="音素是语言识别领域的最小单元，文本到音素的转换是TTS任务（文本转语音）中重要的步骤之一，最近用了下python包（phonemizer），实践了下，觉得还挺有用的，因此记录一下过程。 （1）　下载源" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-96948.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="多语言文本到音素转换工具phonemizer实践" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/c20da9ea3707317ba2f4d031a278a090.webp" />
+        <meta property="og:release_date" content="2025-04-16T08:38:03" />
+    <meta property="og:updated_time" content="2025-04-16T08:38:03" />
+        <meta property="og:description" content="音素是语言识别领域的最小单元，文本到音素的转换是TTS任务（文本转语音）中重要的步骤之一，最近用了下python包（phonemizer），实践了下，觉得还挺有用的，因此记录一下过程。 （1）　下载源" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="多语言文本到音素转换工具phonemizer实践">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">多语言文本到音素转换工具phonemizer实践</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>音素是语言识别领域的最小单元，文本到音素的转换是TTS任务（文本转语音）中重要的步骤之一，最近用了下python包（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bootphon/phonemizer"  rel="nofollow">phonemizer</a>），实践了下，觉得还挺有用的，因此记录一下过程。</p> <p>（1）　下载源码，https://github.com/bootphon/phonemizer</p> <p>（2）　进行源码的编译和查看，发现其调用的是<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.cstr.ed.ac.uk/projects/festival"  style="background-color:rgb(255,255,255);color:rgb(3,102,214);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;" rel="nofollow">festival</a><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">&nbsp;and</span><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://espeak.sourceforge.net/"  style="background-color:rgb(255,255,255);color:rgb(3,102,214);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;" rel="nofollow">espeak</a><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">/</span><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/espeak-ng/espeak-ng/"  style="background-color:rgb(255,255,255);color:rgb(3,102,214);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;" rel="nofollow">espeak-ng</a><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">&nbsp;两个系统的东西，即相当于提供了一个接口调用的东西。上述两种音素转换工具的区别如下：Festival provides US English phonemization with syllable tokenization, espeak endows multiple languages but without syllable boundaries.，可见espeak支持更多的语言。</span></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">（3）　利用源码进行调试，编译，简化其输入和输出，即可进行调试。</span></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);"><br /></span></p> <p style="text-align:left;"><span style="font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#24292e;"><span style="background-color:rgb(255,255,255);">实验一：festival调用：en--&gt;us，输入hello，得到的是美语的音素。</span></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/8a8db7d7f055c01aef8a3614fb76a9da.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">实验二：espeak调用：en--&gt;us，输入hello，得到的是美语的音素。</span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/7477b28b9cb0efad5c439027e79a7cb9.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">实验三：espeak调用：fr--&gt;fr，输入</span><span style="text-align:left;background-color:rgb(255,255,255);"><span style="font-family:arial, sans-serif;color:#212121;"><span style="font-size:25px;white-space:pre-wrap;">法语的“你好世界”</span></span><span style="font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#24292e;">，得到的是法语的音素。</span></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/9129056ae1b3a727625dfe778a181e39.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> <pre style="font-family:'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;font-size:13.6px;margin-bottom:16px;padding-top:16px;padding-bottom:16px;line-height:1.45;background-color:rgb(246,248,250);color:rgb(36,41,46);text-align:left;">实验三：espeak调用：spanish，输入<span style="color:rgb(79,79,79);font-size:16px;font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;background-color:rgb(255,255,255);"><span style="font-family:arial, sans-serif;color:#212121;"><span style="font-size:25px;white-space:pre-wrap;">西班牙语的“你好”</span></span><span style="font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#24292e;">，得到的是西班牙语的音素。</span></span></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/e6650a64130232337c39e981308e3994.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-96248.htm">好忙的动物医院ppt（好忙的动物医院设计意图）</a></p>
+                                        <p>下一个：<a href="/news/article-96949.htm">Rancher上部署Redis部署</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-86612.htm" title="宠物领养文章怎么写好（宠物领养文章怎么写好一点）">宠物领养文章怎么写好（宠物领养文章怎么写好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-74112.htm" title="xpath的使用">xpath的使用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-node-subscribe-links.htm" title="「3月19日」最高速度20.3M/S，2025年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接">「3月19日」最高速度20.3M/S，2025年SSR/Shadowrocket/Clash/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-66927.htm" title="小猫养多久才认主人?怎样不让猫得猫藓呢（小猫养多久才认家）">小猫养多久才认主人?怎样不让猫得猫藓呢（小猫养多久才认家）</a></li>
+                        <li class="py-2"><a href="/news/article-65651.htm" title="2021国考公务员报考人数（2021年国考公务员报考人数）">2021国考公务员报考人数（2021年国考公务员报考人数）</a></li>
+                        <li class="py-2"><a href="/news/article-94736.htm" title="Java中的栈Stack、Deque、ArrayDeque、LinkedList">Java中的栈Stack、Deque、ArrayDeque、LinkedList</a></li>
+                        <li class="py-2"><a href="/news/article-70141.htm" title="被宠物猫抓出一点点血要***吗（被宠物猫抓出了一点血有事吗）">被宠物猫抓出一点点血要***吗（被宠物猫抓出了一点血有事吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-free-shadowrocket-node.htm" title="「4月5日」最高速度18.8M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「4月5日」最高速度18.8M/S，2025年Clash/Shadowrocket/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-clash-node-daily-updates.htm" title="「3月27日」最高速度18.7M/S，2025年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「3月27日」最高速度18.7M/S，2025年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-67581.htm" title="GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？">GET_FORMAT()函数如何与DATE_FORMAT()和STR_TO_DATE()函数结合使用？</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">47</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

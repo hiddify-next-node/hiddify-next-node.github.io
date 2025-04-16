@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-94736.htm" />
+    <title>Java中的栈Stack、Deque、ArrayDeque、LinkedList</title>
+        <meta name="description" content="文章目录      先来说说Java中的Stack类 不用Stack至少有以下两点原因 该用ArrayDeque还是LinkedList？ ArrayDeque的反向遍历 结论 加餐        先" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-94736.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="Java中的栈Stack、Deque、ArrayDeque、LinkedList" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/654472e2317eab59472000c5d1c7c9f8.webp" />
+        <meta property="og:release_date" content="2025-04-13T07:18:09" />
+    <meta property="og:updated_time" content="2025-04-13T07:18:09" />
+        <meta property="og:description" content="文章目录      先来说说Java中的Stack类 不用Stack至少有以下两点原因 该用ArrayDeque还是LinkedList？ ArrayDeque的反向遍历 结论 加餐        先" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java中的栈Stack、Deque、ArrayDeque、LinkedList">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">Java中的栈Stack、Deque、ArrayDeque、LinkedList</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li> <ul> <li> <ul> <li><a href="#JavaStack_1" rel="nofollow">先来说说Java中的Stack类</a></li> <li><a href="#Stack_12" rel="nofollow">不用Stack至少有以下两点原因</a></li> <li><a href="#ArrayDequeLinkedList_40" rel="nofollow">该用ArrayDeque还是LinkedList？</a></li> <li><a href="#ArrayDeque_106" rel="nofollow">ArrayDeque的反向遍历</a></li> <li><a href="#_113" rel="nofollow">结论</a></li> <li><a href="#_117" rel="nofollow">加餐</a></li> </ul> </li> </ul> </li> </ul> </div> <h3> <a id="JavaStack_1" rel="nofollow"></a>先来说说Java中的Stack类</h3> <p>Java中Stack类从Vector类继承，底层是用数组实现的<strong>线程安全</strong>的栈。栈是一种后进先出(LIFO)的容器，常用的操作<code>push/pop/peek</code>。</p> <p>不过Java中用来表达栈的功能（<code>push/pop/peek</code>），更适用的是使用双端队列接口Deque，并用实现类<code>ArrayDeque/LinkedList</code>来进行初始化。</p> <pre><code class="prism language-java"><span class="token class-name">Deque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayDeque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token class-name">Deque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <h3> <a id="Stack_12" rel="nofollow"></a>不用Stack至少有以下两点原因</h3> <p>1、从性能上来说应该使用Deque代替Stack。</p> <blockquote> <p>Stack和Vector都是线程安全的，其实多数情况下并不需要做到线程安全，因此没有必要使用Stack。毕竟保证线程安全需要上锁，有额外的系统开销。</p> </blockquote> <p>2、Stack从Vector继承是个历史遗留问题，JDK官方已建议优先使用Deque的实现类来代替Stack。</p> <blockquote> <p>Stack从Vector继承的一个副作用是，暴露了<code>set/get</code>方法，可以进行随机位置的访问，这与Stack只能从尾巴上进行增减的本意相悖。</p> <p>此外，Deque在转成ArrayList或者stream的时候保持了“后进先出”的语义，而Stack因为是从Vector继承，没有这个语义。</p> <pre><code class="prism language-java"><span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token class-name">Deque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> deque <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayDeque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> deque<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> deque<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1,2]</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list1 <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[1,2]</span>  <span class="token comment">// deque转成ArrayList或stream时保留了“后进先出”的语义</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>deque<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [2,1]</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list2 <span class="token operator">=</span> deque<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[2,1]</span> </code></pre> </blockquote> <h3> <a id="ArrayDequeLinkedList_40" rel="nofollow"></a>该用ArrayDeque还是LinkedList？</h3> <p>ArrayDeque和LinkedList这两者底层，一个采用数组存储，一个采用链表存储；</p> <p><strong>数组存储，容量不够时需要扩容和数组拷贝，通常容量不会填满，会有空间浪费</strong>；</p> <p><strong>链表存储，每次push都需要new Node节点，并且node节点里面有prev和next成员，也会有额外的空间占用</strong>。</p> <blockquote> <p>PS：这两者既可当成<strong>栈</strong>（仅支持在尾部加入或移除元素）使用；也可当成<strong>双端队列</strong>使用，即可以在队列的两端（头或尾）将元素加入或移除。<br /> 单次加入/移除元素的平均时间复杂度均为O(1)。</p> </blockquote> <p>那么问题来了，在用作栈时到底<strong>用ArrayDeque好还是LinkedList好</strong>呢？</p> <blockquote> <p>注意到ArrayDeque源码注释中有一句话：<br /> This class is likely to be faster than {@link Stack} when used as a stack,<br /> and faster than {@link LinkedList} when used as a queue.</p> </blockquote> <p><strong>ArrayDeque用作栈时比Stack快没有疑问，用作队列的时候似乎也会比LinkedList快！</strong></p> <p>笔者经过50W数据量的测试，发现两者性能基本接近，<code>ArrayDeque</code>平均耗时在18-24ms，<code>LinkedList</code>耗时平均在20-28ms。</p> <p>如果数据量上升到100W的话，<code>ArrayDeque</code>的优势会更明显。</p> <p>结论：<strong>ArrayDeque会略胜一筹，不过差别通常可以忽略</strong></p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">int</span> length <span class="token operator">=</span> <span class="token number">500000</span><span class="token punctuation">;</span>     <span class="token keyword">int</span> max <span class="token operator">=</span> length<span class="token punctuation">;</span>     <span class="token comment">// 生成一个长度为length，值从1~max的随机数组</span>     <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RandomIntArray</span><span class="token punctuation">(</span>length<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>length<span class="token punctuation">,</span>max<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">int</span> loopCount <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>     <span class="token keyword">long</span> t1<span class="token punctuation">,</span> t2<span class="token punctuation">;</span>      t1 <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> loopCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token comment">// testArrayDeque(data);</span>         <span class="token function">testLinkedList</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     t2 <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 测试loopCount次取平均结果</span>     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"timeTaken: "</span> <span class="token operator">+</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"%.1f"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>t2<span class="token operator">-</span>t1<span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>loopCount<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">testArrayDeque</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">int</span> length <span class="token operator">=</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>     <span class="token class-name">Deque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayDeque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">testLinkedList</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">int</span> length <span class="token operator">=</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>     <span class="token class-name">Deque</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <h3> <a id="ArrayDeque_106" rel="nofollow"></a>ArrayDeque的反向遍历</h3> <pre><code class="prism language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> it <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">descendingIterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token class-name">T</span> x <span class="token operator">=</span> it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <h3> <a id="_113" rel="nofollow"></a>结论</h3> <p><strong>ArrayDeque会略胜一筹，不过差别通常可以忽略</strong>。<br /> 经过性能对比，笔者更倾向于使用<code>ArrayDeque</code>来表达Java中的栈功能。</p> <h3> <a id="_117" rel="nofollow"></a>加餐</h3> <p>力扣上面有一道<strong>设计双端队列</strong>的题目（不要求扩容，简化版的<code>ArrayDeque</code>），有兴趣的朋友不妨去试试：<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://leetcode.cn/problems/design-circular-deque/"  rel="nofollow">641. 设计循环双端队列</a></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93882.htm">动物疫苗的了解和看法英语作文初中（动物疫苗 英文）</a></p>
+                                        <p>下一个：<a href="/news/article-94738.htm">将eclipse里的springboot项目打包成jar包部署到服务器上</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-76136.htm" title="合肥宠物救助中心电话（合肥宠物救助中心电话多少）">合肥宠物救助中心电话（合肥宠物救助中心电话多少）</a></li>
+                        <li class="py-2"><a href="/news/article-95518.htm" title="开一个宠物店大概需要多少钱呢知乎（开一个宠物店需要投资多少钱）">开一个宠物店大概需要多少钱呢知乎（开一个宠物店需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-free-shadowrocket-node.htm" title="「4月9日」最高速度22.5M/S，2025年SSR/V2ray/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「4月9日」最高速度22.5M/S，2025年SSR/V2ray/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-node-share-links.htm" title="「3月9日」最高速度18.3M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「3月9日」最高速度18.3M/S，2025年V2ray/SSR/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-83037.htm" title="宠物领养活动宣传语（宠物领养活动方案）">宠物领养活动宣传语（宠物领养活动方案）</a></li>
+                        <li class="py-2"><a href="/news/article-76798.htm" title="Redis缓存过期策略">Redis缓存过期策略</a></li>
+                        <li class="py-2"><a href="/news/article-80932.htm" title="动物防疫***收费吗现在多少钱（动物防疫***收费吗现在多少钱啊）">动物防疫***收费吗现在多少钱（动物防疫***收费吗现在多少钱啊）</a></li>
+                        <li class="py-2"><a href="/news/article-90967.htm" title="厦门领养宠物猫中心地址 厦门领养宠物猫中心地址在哪里">厦门领养宠物猫中心地址 厦门领养宠物猫中心地址在哪里</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-windows.htm" title="「4月2日」最高速度22.5M/S，2025年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「4月2日」最高速度22.5M/S，2025年SSR/Clash/V2ray/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-30-free-v2ray.htm" title="「3月30日」最高速度21.5M/S，2025年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「3月30日」最高速度21.5M/S，2025年SSR/V2ray/Clash/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">47</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

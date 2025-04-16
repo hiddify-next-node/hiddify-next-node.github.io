@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hiddify-next-node.github.io/news/article-94738.htm" />
+    <title>将eclipse里的springboot项目打包成jar包部署到服务器上</title>
+        <meta name="description" content="在此之前我的服务器已经配置了nginx和jdk了； 步骤： 1.在pom.xml里面配置： 2.打开cmd,路径切换到项目位置（我的如下：）： 3.运行打包： mvn clean package  4" />
+        <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/assets/website/img/hiddify_next_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="HiddifyNextNode官网节点站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hiddify-next-node.github.io/news/article-94738.htm" />
+    <meta property="og:site_name" content="HiddifyNextNode官网节点站" />
+    <meta property="og:title" content="将eclipse里的springboot项目打包成jar包部署到服务器上" />
+    <meta property="og:image" content="https://hiddify-next-node.github.io/uploads/20240413/e52e2ba9497edc31f92f7f84775ee5dd.webp" />
+        <meta property="og:release_date" content="2025-04-13T07:18:09" />
+    <meta property="og:updated_time" content="2025-04-13T07:18:09" />
+        <meta property="og:description" content="在此之前我的服务器已经配置了nginx和jdk了； 步骤： 1.在pom.xml里面配置： 2.打开cmd,路径切换到项目位置（我的如下：）： 3.运行打包： mvn clean package  4" />
+            
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="将eclipse里的springboot项目打包成jar包部署到服务器上">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- //for-mobile-apps -->
+    <link href="/assets/website/css/hiddify_next_node/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/website/css/hiddify_next_node/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/jquery.iconmenu.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#sti-menu').iconmenu();
+    });
+    </script>
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/move-top.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/hiddify_next_node/easing.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        });
+    });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0CTNFKETTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0CTNFKETTL');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- banner -->
+    <div class="banner pagehead">
+                <div class="header">
+            <div class="container">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                                        <i></i><span>Hiddify Next Node</span>
+                                                        </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                                                <li>
+                                    <a href="/">首页</a>
+                                </li>
+                                                                <li>
+                                    <a href="/free-nodes/">免费节点</a>
+                                </li>
+                                                                <li>
+                                    <a href="/paid-subscribe/">推荐机场</a>
+                                </li>
+                                                                <li>
+                                    <a href="/client.htm">客户端</a>
+                                </li>
+                                                                <li>
+                                    <a href="/news/">新闻资讯</a>
+                                </li>
+                                                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        <!-- search-scripts -->
+                        <script src="/assets/website/js/frontend/hiddify_next_node/classie.js"></script>
+                        <script src="/assets/website/js/frontend/hiddify_next_node/uisearch.js"></script>
+                        <script>
+                        new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <!-- //search-scripts -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li class="active">正文</li>
+                    </ol>
+                    <h1 class="tittle">将eclipse里的springboot项目打包成jar包部署到服务器上</h1>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>在此之前我的服务器已经配置了nginx和jdk了；</strong><br /> 步骤：<br /> 1.在pom.xml里面配置：<img decoding="async" src="http://img.555519.xyz/uploads3/20220603/f592f75937de605c5f704ccfe608c574.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 2.打开cmd,路径切换到项目位置（我的如下：）：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/bcc9407092aa004044fd37dc97291d78.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 3.运行打包：</p> <pre><code>mvn clean package</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/5a793ac309d786cce6df255fa98dabaf.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 4.打包好的项目默认存放在项目的target目录里：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/be5ddb403b3779200ef50c92af49d725.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 5.把jar包传到服务器里（我使用软件xftp）<br /> 6.用xshell连接服务器，切换到刚刚jar包保存的路径<br /> 7.使用java -jar “自己的项目jar包名”（我的是：java -jar springbootdemo-0.0.1-SNAPSHOT.jar）,来启动服务器的springboot项目<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/a7e6f932d8c18912367f2f567c0bb3de.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"></p> <p>**注意：<br /> ①在使用java命令时，要先配好java环境（下载java jdk）<em>,不然会报错：</em><br /><strong>②如果使用java -jar "jar包名"报错以下错误（解决方案：是你权限不够，你得开启root 权限（输入sudo su,然后输入密码，就成功开启root了），在运行就成功了）</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/03c6758d834dc6ca857e18a26fbd437d.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-94736.htm">Java中的栈Stack、Deque、ArrayDeque、LinkedList</a></p>
+                                        <p>下一个：<a href="/news/article-95518.htm">开一个宠物店大概需要多少钱呢知乎（开一个宠物店需要投资多少钱）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70795.htm" title="国内十大宠物粮食品牌（国内十大宠物粮食品牌排名）">国内十大宠物粮食品牌（国内十大宠物粮食品牌排名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-clash-v2ray-ss-ssr.htm" title="「3月25日」最高速度18.8M/S，2025年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接">「3月25日」最高速度18.8M/S，2025年Shadowrocket/Clash/V2ray/SSR/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-65651.htm" title="2021国考公务员报考人数（2021年国考公务员报考人数）">2021国考公务员报考人数（2021年国考公务员报考人数）</a></li>
+                        <li class="py-2"><a href="/news/article-94738.htm" title="将eclipse里的springboot项目打包成jar包部署到服务器上">将eclipse里的springboot项目打包成jar包部署到服务器上</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-ssr-node.htm" title="「3月6日」最高速度20.2M/S，2025年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接">「3月6日」最高速度20.2M/S，2025年Clash/V2ray/SSR/Shadowrocket/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-92469.htm" title="动物***搞笑场面（给动物***的动画片）">动物***搞笑场面（给动物***的动画片）</a></li>
+                        <li class="py-2"><a href="/news/article-91726.htm" title="兽医打疫苗简报内容（牲畜打疫苗完成的简报）">兽医打疫苗简报内容（牲畜打疫苗完成的简报）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-free-clash-subscribe.htm" title="「4月15日」最高速度22.4M/S，2025年Shadowrocket/Clash/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接">「4月15日」最高速度22.4M/S，2025年Shadowrocket/Clash/SSR/V2ray/HiddifyNext每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-95519.htm" title="养猫打疫苗费用（养猫咪打疫苗多少钱）">养猫打疫苗费用（养猫咪打疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-12-free-node-subscribe.htm" title="「4月12日」最高速度19.2M/S，2025年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接">「4月12日」最高速度19.2M/S，2025年V2ray/SSR/Shadowrocket/Clash/HiddifyNext每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">47</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+        <!-- footer-top -->
+    <div class="footer-top">
+        <div class="container">
+                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+            <p>
+                HiddifyNextNode官网节点站 版权所有
+                <br />
+                Powered by WordPress
+            </p>
+        </div>
+    </div>
+    <!-- //footer-top -->
+    <!-- for bootstrap working -->
+    <script src="/assets/website/js/frontend/hiddify_next_node/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        	var defaults = {
+        	containerID: 'toTop', // fading element id
+        	containerHoverID: 'toTopHover', // fading element hover id
+        	scrollSpeed: 1200,
+        	easingType: 'linear' 
+        	};
+        */
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
