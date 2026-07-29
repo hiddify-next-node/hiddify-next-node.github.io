@@ -335,14 +335,9 @@ SSR采用多协议混淆和优化算法，减少被防火墙检测的风险，�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 服务器启动后提示端口被占用，该如何处理？</h5></div>
+    <div class="panel-heading"><h5>如何优化 Clash 的 DNS 设置？</h5></div>
     <div class="panel-body">
-        先用 netstat 或 ss 工具查看占用该端口的进程（例如 `ss -ltnp`），确认是旧进程或其他服务占用。停止占用进程或修改 V2Ray 配置端口，然后重启服务并检查防火墙规则是否开放了新端口。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 在新版 iOS 上无法连接怎么办？</h5></div>
-    <div class="panel-body">
-        苹果系统更新后，Potatso Lite 可能需要重新授权 VPN 权限。请删除旧的 VPN 配置，重新安装并导入节点。若仍无法使用，可尝试更换网络模式或等待开发者更新兼容版本。<hr />    </div>
+        在 Clash 中使用自定义 DNS 可以加快域名解析速度。建议使用 doh（DNS over HTTPS）或 dot（DNS over TLS）配置方式，既能提升速度，也能保护隐私防止 DNS 泄露。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的 VMess gRPC 传输适合高延迟环境吗？</h5></div>
@@ -355,14 +350,9 @@ SSR采用多协议混淆和优化算法，减少被防火墙检测的风险，�
         是的，Trojan 必须使用有效的 TLS 证书才能运行。推荐使用 Let's Encrypt 免费证书。若证书过期或配置错误，客户端将无法建立加密连接，导致无法访问外部网络。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 的节点测速结果会自动更新吗？</h5></div>
     <div class="panel-body">
-        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的 Rule Provider 功能是干什么的？</h5></div>
-    <div class="panel-body">
-        Rule Provider 是 Clash 的规则订阅机制，它可以通过远程 URL 自动更新分流规则文件。这样用户无需手动修改本地配置，就能保持规则同步更新，例如广告过滤或流媒体分流。<hr />    </div>
+        PassWall2 可设置定期自动测速节点，更新延迟和可用性。结合策略组自动选择最优节点，可确保用户使用网络时始终连接到速度最快、最稳定的节点。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的混淆参数该如何填写？</h5></div>
@@ -370,19 +360,29 @@ SSR采用多协议混淆和优化算法，减少被防火墙检测的风险，�
         SSR 混淆参数位于节点配置中，通常选择如 tls1.2_ticket_auth 或 http_simple。参数字段可以自定义伪装主机或路径，以模拟正常流量行为，从而提高隐蔽性和抗封锁能力。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 服务器启动后提示端口被占用，该如何处理？</h5></div>
+    <div class="panel-body">
+        先用 netstat 或 ss 工具查看占用该端口的进程（例如 `ss -ltnp`），确认是旧进程或其他服务占用。停止占用进程或修改 V2Ray 配置端口，然后重启服务并检查防火墙规则是否开放了新端口。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的 Rule Provider 功能是干什么的？</h5></div>
+    <div class="panel-body">
+        Rule Provider 是 Clash 的规则订阅机制，它可以通过远程 URL 自动更新分流规则文件。这样用户无需手动修改本地配置，就能保持规则同步更新，例如广告过滤或流媒体分流。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的透明代理适合哪些应用场景？</h5></div>
     <div class="panel-body">
         透明代理通过 TUN 或 WinDivert 拦截系统 IP 层流量，无需配置每个应用。适合全局科学上网、在线游戏或对局域网设备统一代理的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何优化 Clash 的 DNS 设置？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
     <div class="panel-body">
-        在 Clash 中使用自定义 DNS 可以加快域名解析速度。建议使用 doh（DNS over HTTPS）或 dot（DNS over TLS）配置方式，既能提升速度，也能保护隐私防止 DNS 泄露。<hr />    </div>
+        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的节点测速结果会自动更新吗？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 在新版 iOS 上无法连接怎么办？</h5></div>
     <div class="panel-body">
-        PassWall2 可设置定期自动测速节点，更新延迟和可用性。结合策略组自动选择最优节点，可确保用户使用网络时始终连接到速度最快、最稳定的节点。    </div>
+        苹果系统更新后，Potatso Lite 可能需要重新授权 VPN 权限。请删除旧的 VPN 配置，重新安装并导入节点。若仍无法使用，可尝试更换网络模式或等待开发者更新兼容版本。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -430,16 +430,16 @@ SSR采用多协议混淆和优化算法，减少被防火墙检测的风险，�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-7-1-free-clash-subscribe.htm" title="「7月1日」最高速度21M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/V2ray节点/Clash节点/HiddifyNext每天更新免费节点订阅链接">「7月1日」最高速度21M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/V2ray节点/Clash节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-14-free-clash.htm" title="「7月14日」最高速度20M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接">「7月14日」最高速度20M/S，2025年Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-9-clash-windows.htm" title="「7月9日」最高速度20.7M/S，2025年Clash节点/SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/HiddifyNext每天更新免费节点订阅链接">「7月9日」最高速度20.7M/S，2025年Clash节点/SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-10-free-ssr-subscribe.htm" title="「7月10日」最高速度20.9M/S，2025年Singbox节点/Clash节点/Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接">「7月10日」最高速度20.9M/S，2025年Singbox节点/Clash节点/Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-12-clash-node.htm" title="「7月12日」最高速度19.4M/S，2025年Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接">「7月12日」最高速度19.4M/S，2025年Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-8-free-clash.htm" title="「6月8日」最高速度19.9M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接">「6月8日」最高速度19.9M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-5-node-share-links.htm" title="「7月5日」最高速度19.2M/S，2025年Shadowrocket节点/Trojan节点/Clash节点/Singbox节点/SSR节点/V2ray节点/HiddifyNext每天更新免费节点订阅链接">「7月5日」最高速度19.2M/S，2025年Shadowrocket节点/Trojan节点/Clash节点/Singbox节点/SSR节点/V2ray节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-29-clash-windows.htm" title="「6月29日」最高速度22.1M/S，2025年Trojan节点/SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接">「6月29日」最高速度22.1M/S，2025年Trojan节点/SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-4-clash-node.htm" title="「7月4日」最高速度22.7M/S，2025年Trojan节点/Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接">「7月4日」最高速度22.7M/S，2025年Trojan节点/Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-25-shadowrocket-node.htm" title="「7月25日」最高速度21.1M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/V2ray节点/Singbox节点/Clash节点/HiddifyNext每天更新免费节点订阅链接">「7月25日」最高速度21.1M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/V2ray节点/Singbox节点/Clash节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-17-free-subscribe-node.htm" title="「6月17日」最高速度21.6M/S，2025年Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接">「6月17日」最高速度21.6M/S，2025年Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-19-free-high-speed-nodes.htm" title="「6月19日」最高速度19.6M/S，2025年Clash节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接">「6月19日」最高速度19.6M/S，2025年Clash节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-21-free-clash-subscribe.htm" title="「6月21日」最高速度18.1M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接">「6月21日」最高速度18.1M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-21-free-node-subscribe-links.htm" title="「7月21日」最高速度19.8M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接">「7月21日」最高速度19.8M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-16-free-v2ray.htm" title="「7月16日」最高速度20.5M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/HiddifyNext每天更新免费节点订阅链接">「7月16日」最高速度20.5M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-6-22-free-v2ray.htm" title="「6月22日」最高速度19.1M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接">「6月22日」最高速度19.1M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-18-free-ssr-subscribe.htm" title="「7月18日」最高速度22.9M/S，2025年SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接">「7月18日」最高速度22.9M/S，2025年SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-11-free-v2ray-subscribe.htm" title="「7月11日」最高速度18.7M/S，2025年Clash节点/SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点/HiddifyNext每天更新免费节点订阅链接">「7月11日」最高速度18.7M/S，2025年Clash节点/SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-2-clash-node.htm" title="「7月2日」最高速度20.9M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点/HiddifyNext每天更新免费节点订阅链接">「7月2日」最高速度20.9M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点/HiddifyNext每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -451,7 +451,7 @@ SSR采用多协议混淆和优化算法，减少被防火墙检测的风险，�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">23</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
