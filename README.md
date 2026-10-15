@@ -1,4 +1,4 @@
-# 「10月7日」最高速度21.1M/S，2025年SSR节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/HiddifyNext每天更新免费节点订阅链接  更新时间 2026-10-07 09:56:25
+# 「10月15日」最高速度22.6M/S，2025年Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点/HiddifyNext每天更新免费节点订阅链接  更新时间 2026-10-15 00:28:40
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hiddify-next-node.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://hiddify-next-node.github.io/uploads/2026/10/0-20261007.yaml
-- https://hiddify-next-node.github.io/uploads/2026/10/1-20261007.yaml
-- https://hiddify-next-node.github.io/uploads/2026/10/2-20261007.yaml
-- https://hiddify-next-node.github.io/uploads/2026/10/3-20261007.yaml
-- https://hiddify-next-node.github.io/uploads/2026/10/4-20261007.yaml
+- https://hiddify-next-node.github.io/uploads/2026/10/0-20261015.yaml
+- https://hiddify-next-node.github.io/uploads/2026/10/1-20261015.yaml
+- https://hiddify-next-node.github.io/uploads/2026/10/2-20261015.yaml
+- https://hiddify-next-node.github.io/uploads/2026/10/3-20261015.yaml
+- https://hiddify-next-node.github.io/uploads/2026/10/4-20261015.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://hiddify-next-node.github.io/uploads/2026/10/0-20261007.txt
-- https://hiddify-next-node.github.io/uploads/2026/10/1-20261007.txt
-- https://hiddify-next-node.github.io/uploads/2026/10/2-20261007.txt
-- https://hiddify-next-node.github.io/uploads/2026/10/3-20261007.txt
-- https://hiddify-next-node.github.io/uploads/2026/10/4-20261007.txt
+- https://hiddify-next-node.github.io/uploads/2026/10/0-20261015.txt
+- https://hiddify-next-node.github.io/uploads/2026/10/1-20261015.txt
+- https://hiddify-next-node.github.io/uploads/2026/10/2-20261015.txt
+- https://hiddify-next-node.github.io/uploads/2026/10/3-20261015.txt
+- https://hiddify-next-node.github.io/uploads/2026/10/4-20261015.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://hiddify-next-node.github.io/uploads/2026/10/20261007.json
+- https://hiddify-next-node.github.io/uploads/2026/10/20261015.json
 
 ## 更多Clash节点订阅 ：
 
